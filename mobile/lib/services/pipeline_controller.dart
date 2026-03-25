@@ -1,0 +1,298 @@
+import 'dart:async';
+import 'dart:developer' as developer;
+
+import 'package:camera/camera.dart';
+import 'package:flutter/foundation.dart';
+
+import '../models/match.dart';
+import '../models/rally.dart';
+import 'buffer_service.dart';
+import 'camera_service.dart';
+import 'clip_service.dart';
+import 'detection_isolate.dart';
+import 'match_service.dart';
+import 'rally_controller.dart';
+
+/// Orchestrates the full recording and detection pipeline.
+///
+/// Ties together all services into a single cohesive flow:
+///   Camera -> Buffer (disk)
+///   Camera -> Detection Isolate -> RallyController -> ClipService
+///
+/// This is the primary interface used by [RecordingScreen] to control the
+/// entire recording session. Exposes real-time stats for the UI overlay.
+///
+/// Pipeline lifecycle:
+///   1. [startRecording] — initializes camera, buffer, detection isolate
+///   2. Camera frames stream to both buffer (for video) and isolate (for AI)
+///   3. Detection results feed into RallyController state machine
+///   4. Rally completion triggers ClipService extraction from buffer
+///   5. [stopRecording] — tears down everything cleanly
+class PipelineController extends ChangeNotifier {
+  final CameraService _cameraService;
+  final BufferService _bufferService;
+  final ClipService _clipService;
+  final RallyController _rallyController;
+  final MatchService _matchService;
+
+  late final IsolateDetectionService _detectionService;
+  StreamSubscription<DetectionResult>? _detectionSubscription;
+
+  bool _isRecording = false;
+  bool _modelAvailable = false;
+  Match? _currentMatch;
+
+  // --- Performance stats ---
+  int _framesProcessed = 0;
+  int _detectionsFound = 0;
+  int _inferenceTimeMs = 0;
+  double _fps = 0.0;
+  DateTime? _lastFpsUpdate;
+  int _framesSinceLastFpsUpdate = 0;
+
+  PipelineController({
+    required CameraService cameraService,
+    required BufferService bufferService,
+    required ClipService clipService,
+    required RallyController rallyController,
+    required MatchService matchService,
+  })  : _cameraService = cameraService,
+        _bufferService = bufferService,
+        _clipService = clipService,
+        _rallyController = rallyController,
+        _matchService = matchService {
+    _detectionService = IsolateDetectionService();
+  }
+
+  // --- Public getters ---
+
+  /// Whether the full pipeline is active.
+  bool get isRecording => _isRecording;
+
+  /// Whether the TFLite model was loaded successfully.
+  bool get modelAvailable => _modelAvailable;
+
+  /// Current rally state from the state machine.
+  RallyState get currentState => _rallyController.state;
+
+  /// Number of rallies detected in the current match.
+  int get rallyCount => _rallyController.rallyCount;
+
+  /// Total frames processed by the detection isolate.
+  int get framesProcessed => _framesProcessed;
+
+  /// Total detections found across all frames.
+  int get detectionsFound => _detectionsFound;
+
+  /// Most recent inference time in milliseconds.
+  int get inferenceTimeMs => _inferenceTimeMs;
+
+  /// Approximate detection FPS (frames per second through the model).
+  double get fps => _fps;
+
+  /// The current active match.
+  Match? get currentMatch => _currentMatch;
+
+  /// The underlying camera service (for preview widget access).
+  CameraService get cameraService => _cameraService;
+
+  /// The underlying rally controller (for detailed rally state).
+  RallyController get rallyController => _rallyController;
+
+  /// The clip service (for accessing saved clips).
+  ClipService get clipService => _clipService;
+
+  // --- Pipeline control ---
+
+  /// Starts the full recording and detection pipeline.
+  ///
+  /// 1. Creates a new match
+  /// 2. Initializes camera (if needed)
+  /// 3. Starts disk buffer
+  /// 4. Spawns detection isolate and loads model
+  /// 5. Begins camera frame streaming
+  /// 6. Starts rally state machine
+  Future<void> startRecording() async {
+    if (_isRecording) {
+      _log('warn', 'Pipeline already recording');
+      return;
+    }
+
+    try {
+      _log('info', 'Starting pipeline...');
+
+      // Reset stats.
+      _framesProcessed = 0;
+      _detectionsFound = 0;
+      _inferenceTimeMs = 0;
+      _fps = 0.0;
+      _lastFpsUpdate = DateTime.now();
+      _framesSinceLastFpsUpdate = 0;
+
+      // Step 1: Create a new match.
+      _currentMatch = await _matchService.createMatch();
+      _log('info', 'Match created: ${_currentMatch!.id}');
+
+      // Step 2: Initialize camera.
+      if (!_cameraService.isInitialized) {
+        await _cameraService.initialize();
+      }
+      if (!_cameraService.isInitialized) {
+        _log('error', 'Camera initialization failed, aborting pipeline');
+        return;
+      }
+
+      // Step 3: Start disk buffer.
+      await _bufferService.initialize();
+      await _bufferService.startBuffering();
+
+      // Step 4: Start camera recording (for buffer segments).
+      await _cameraService.startRecording();
+
+      // Step 5: Spawn detection isolate.
+      _modelAvailable = await _detectionService.start();
+      if (!_modelAvailable) {
+        _log('warn', 'Model not available; recording without detection');
+      }
+
+      // Step 6: Listen to detection results.
+      _detectionSubscription = _detectionService.detections.listen(
+        _onDetectionResult,
+      );
+
+      // Step 7: Start rally state machine.
+      _rallyController.startMatch(_currentMatch!.id);
+
+      // Step 8: Start camera frame streaming for detection.
+      await _cameraService.startImageStream(_onCameraFrame);
+
+      _isRecording = true;
+      _log('info', 'Pipeline started (model=$_modelAvailable)');
+      notifyListeners();
+    } catch (e) {
+      _log('error', 'Failed to start pipeline: $e');
+      await _cleanupOnError();
+    }
+  }
+
+  /// Stops the full pipeline and cleans up all resources.
+  Future<void> stopRecording() async {
+    if (!_isRecording) return;
+
+    _log('info', 'Stopping pipeline...');
+    _isRecording = false;
+
+    try {
+      // Stop frame streaming first to prevent new frames.
+      await _cameraService.stopImageStream();
+
+      // Stop detection isolate.
+      await _detectionService.stop();
+      await _detectionSubscription?.cancel();
+      _detectionSubscription = null;
+
+      // Stop camera recording.
+      await _cameraService.stopRecording();
+
+      // Stop buffer (keep files for final clip extraction).
+      await _bufferService.stopBuffering(keepFiles: true);
+
+      // End rally state machine.
+      _rallyController.endMatch();
+
+      // Update match metadata.
+      if (_currentMatch != null) {
+        final updatedMatch = _currentMatch!.copyWith(
+          clipCount: _clipService.clipCountForMatch(_currentMatch!.id),
+        );
+        await _matchService.updateMatch(updatedMatch);
+      }
+
+      _matchService.endCurrentMatch();
+      _currentMatch = null;
+
+      _log('info', 'Pipeline stopped '
+          '(frames=$_framesProcessed detections=$_detectionsFound '
+          'rallies=${_rallyController.rallyCount})');
+      notifyListeners();
+    } catch (e) {
+      _log('error', 'Error stopping pipeline: $e');
+    }
+  }
+
+  // --- Private handlers ---
+
+  /// Called for each camera frame from the image stream.
+  void _onCameraFrame(CameraImage image) {
+    if (!_isRecording) return;
+
+    // Send frame to detection isolate. If busy, it will be dropped
+    // automatically by IsolateDetectionService.
+    if (_modelAvailable) {
+      _detectionService.processFrame(image);
+    }
+  }
+
+  /// Called when the detection isolate returns results for a frame.
+  void _onDetectionResult(DetectionResult result) {
+    if (!_isRecording) return;
+
+    _framesProcessed++;
+    _framesSinceLastFpsUpdate++;
+    _inferenceTimeMs = result.inferenceTimeMs;
+
+    // Update FPS counter every second.
+    final now = DateTime.now();
+    if (_lastFpsUpdate != null) {
+      final elapsed = now.difference(_lastFpsUpdate!).inMilliseconds;
+      if (elapsed >= 1000) {
+        _fps = _framesSinceLastFpsUpdate / (elapsed / 1000.0);
+        _framesSinceLastFpsUpdate = 0;
+        _lastFpsUpdate = now;
+      }
+    }
+
+    // Count total detections.
+    _detectionsFound += result.detections.length;
+
+    // Feed detections into the rally state machine.
+    _rallyController.processDetections(
+      result.detections,
+      timestamp: result.frameTimestamp,
+    );
+
+    // Notify UI of updated stats.
+    notifyListeners();
+  }
+
+  /// Cleans up resources after a startup failure.
+  Future<void> _cleanupOnError() async {
+    try {
+      await _detectionService.stop();
+      await _detectionSubscription?.cancel();
+      await _cameraService.stopImageStream();
+      await _cameraService.stopRecording();
+      await _bufferService.stopBuffering();
+      _rallyController.endMatch();
+    } catch (_) {
+      // Best-effort cleanup.
+    }
+    _isRecording = false;
+    notifyListeners();
+  }
+
+  void _log(String level, String message) {
+    developer.log(
+      message,
+      name: 'PipelineController',
+      level: level == 'error' ? 1000 : (level == 'warn' ? 900 : 800),
+    );
+  }
+
+  @override
+  void dispose() {
+    _detectionSubscription?.cancel();
+    _detectionService.dispose();
+    super.dispose();
+  }
+}

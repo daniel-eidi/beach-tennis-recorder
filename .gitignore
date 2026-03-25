@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+venv/
+.venv/
+*.tflite
+*.pt
+*.onnx
+
+# Vision outputs
+vision/runs/
+vision/test_results/
+vision/models/*.pt
+vision/models/*.tflite
+vision/models/*.onnx
+!vision/models/.gitkeep
+
+# Video outputs
+video/test_results/
+
+# Flutter
+mobile/.dart_tool/
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+mobile/build/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/ios/Pods/
+mobile/ios/.symlinks/
+mobile/ios/Flutter/Flutter.framework
+mobile/ios/Flutter/Flutter.podspec
+mobile/ios/Flutter/Generated.xcconfig
+mobile/ios/Flutter/flutter_export_environment.sh
+mobile/ios/Runner.xcworkspace/
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/app/build/
+
+# Test artifacts
+tests/mock_data/videos/
+*.mp4
+*.avi
+*.mkv
+*.webm
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dataset (too large for git)
+vision/dataset/roboflow/
+vision/dataset/images/
+vision/dataset/labels/
+!vision/dataset/data.yaml
+!vision/dataset/images/.gitkeep
+!vision/dataset/labels/.gitkeep

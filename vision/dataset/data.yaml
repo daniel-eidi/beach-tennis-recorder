@@ -1,0 +1,28 @@
+# Beach Tennis Recorder - YOLOv8 Dataset Configuration
+# AGENT-02 | TASK-02-05
+#
+# Classes: ball, net, court_line
+# Split: 70% train / 20% val / 10% test
+# Format: YOLOv8 (normalized xywh)
+
+path: ../dataset
+train: images/train
+val: images/val
+test: images/test
+
+nc: 3
+names:
+  0: ball
+  1: net
+  2: court_line
+
+# Dataset statistics (target)
+# - Total images: ~3000 (extracted at 5fps from 30+ min video)
+# - Train: ~2100 images
+# - Val: ~600 images
+# - Test: ~300 images
+#
+# Annotation notes:
+# - ball: small bounding box around the beach tennis ball
+# - net: bounding box covering the entire net structure
+# - court_line: bounding box around visible court boundary lines

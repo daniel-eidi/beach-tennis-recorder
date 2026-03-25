@@ -1,0 +1,180 @@
+workflows:
+  ios-development:
+    name: iOS Development Build
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      flutter: stable
+      xcode: latest
+      groups:
+        - ios_credentials  # Configure in Codemagic UI
+      ios_signing:
+        distribution_type: development
+        bundle_identifier: com.beachtennis.recorder
+      vars:
+        BUNDLE_ID: "com.beachtennis.recorder"
+        APP_NAME: "BT Recorder"
+
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+        - pattern: develop
+          include: true
+
+    scripts:
+      - name: Generate platform files
+        script: |
+          # Generate ios/ and android/ dirs if they don't exist
+          if [ ! -d "ios/Runner.xcodeproj" ] || [ ! -f "ios/Runner.xcodeproj/project.pbxproj" ] || [ $(wc -l < ios/Runner.xcodeproj/project.pbxproj) -lt 10 ]; then
+            rm -rf ios android
+            flutter create --org com.beachtennis --project-name beach_tennis_recorder .
+          fi
+
+      - name: Set iOS deployment target and permissions
+        script: |
+          # Update Info.plist with camera permissions
+          /usr/libexec/PlistBuddy -c "Set :NSCameraUsageDescription 'BT Recorder precisa da camera para gravar partidas de beach tennis.'" ios/Runner/Info.plist || true
+          /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string 'BT Recorder precisa da camera para gravar partidas de beach tennis.'" ios/Runner/Info.plist || true
+          /usr/libexec/PlistBuddy -c "Set :NSMicrophoneUsageDescription 'BT Recorder precisa do microfone para gravar audio.'" ios/Runner/Info.plist || true
+          /usr/libexec/PlistBuddy -c "Add :NSMicrophoneUsageDescription string 'BT Recorder precisa do microfone para gravar audio.'" ios/Runner/Info.plist || true
+          /usr/libexec/PlistBuddy -c "Set :NSPhotoLibraryUsageDescription 'BT Recorder precisa acessar fotos para salvar clipes.'" ios/Runner/Info.plist || true
+          /usr/libexec/PlistBuddy -c "Add :NSPhotoLibraryUsageDescription string 'BT Recorder precisa acessar fotos para salvar clipes.'" ios/Runner/Info.plist || true
+          # Set landscape only
+          /usr/libexec/PlistBuddy -c "Delete :UISupportedInterfaceOrientations" ios/Runner/Info.plist || true
+          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations array" ios/Runner/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:0 string UIInterfaceOrientationLandscapeLeft" ios/Runner/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:1 string UIInterfaceOrientationLandscapeRight" ios/Runner/Info.plist
+          # Set minimum iOS version
+          sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9.]*/IPHONEOS_DEPLOYMENT_TARGET = 14.0/g' ios/Runner.xcodeproj/project.pbxproj
+
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+
+      - name: Create assets directory
+        script: |
+          mkdir -p assets/models
+          if [ ! -f assets/models/ball_detector.tflite ]; then
+            echo "placeholder" > assets/models/ball_detector.tflite
+          fi
+
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios && pod install
+
+      - name: Set up code signing
+        script: |
+          keychain initialize
+
+      - name: Build iOS
+        script: |
+          flutter build ios --debug --no-codesign
+
+      - name: Build IPA
+        script: |
+          flutter build ipa --debug \
+            --export-options-plist=/Users/builder/export_options.plist || \
+          echo "IPA build requires signing. Debug .app is available."
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - build/ios/archive/*.xcarchive
+      - /tmp/xcodebuild_logs/*.log
+      - build/**/outputs/**/*.apk
+      - build/**/outputs/**/mapping.txt
+      - flutter_drive.log
+
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com  # Update with your email
+        notify:
+          success: true
+          failure: true
+
+  ios-testflight:
+    name: iOS TestFlight Build
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      flutter: stable
+      xcode: latest
+      groups:
+        - ios_credentials
+        - app_store_connect
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.beachtennis.recorder
+
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: 'v*'
+          include: true
+
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+
+      - name: Create assets directory
+        script: |
+          mkdir -p assets/models
+          if [ ! -f assets/models/ball_detector.tflite ]; then
+            echo "placeholder" > assets/models/ball_detector.tflite
+          fi
+
+      - name: Install CocoaPods
+        script: |
+          cd ios && pod install
+
+      - name: Set up code signing
+        script: |
+          keychain initialize
+
+      - name: Build IPA for TestFlight
+        script: |
+          flutter build ipa --release \
+            --build-number=$PROJECT_BUILD_NUMBER \
+            --export-options-plist=/Users/builder/export_options.plist
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        beta_groups:
+          - Beach Tennis Testers
+
+  android-development:
+    name: Android Development Build
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    environment:
+      flutter: stable
+      java: 17
+
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+
+      - name: Create assets directory
+        script: |
+          mkdir -p assets/models
+          if [ ! -f assets/models/ball_detector.tflite ]; then
+            echo "placeholder" > assets/models/ball_detector.tflite
+          fi
+
+      - name: Build APK (Debug)
+        script: |
+          flutter build apk --debug
+
+    artifacts:
+      - build/**/outputs/**/*.apk
