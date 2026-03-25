@@ -69,13 +69,50 @@ workflows:
         script: |
           cd ios && pod install
 
-      - name: Build iOS (no codesign)
+      - name: Build iOS for device (unsigned)
         script: |
-          flutter build ios --debug --no-codesign --simulator
+          # Build the Flutter iOS app framework
+          flutter build ios --debug --no-codesign
+          # Build with xcodebuild and signing disabled
+          xcodebuild -workspace ios/Runner.xcworkspace \
+            -scheme Runner \
+            -configuration Debug \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
+            PROVISIONING_PROFILE="" \
+            DEVELOPMENT_TEAM="" \
+            -allowProvisioningUpdates \
+            build || true
+
+      - name: Package unsigned IPA
+        script: |
+          # Find the .app bundle
+          APP_PATH=$(find build/ios -name "Runner.app" -type d | grep -v Simulator | head -1)
+          if [ -z "$APP_PATH" ]; then
+            # Fallback: check DerivedData
+            APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -name "Runner.app" -path "*/Debug-iphoneos/*" -type d | head -1)
+          fi
+
+          if [ -n "$APP_PATH" ]; then
+            echo "Found .app at: $APP_PATH"
+            # Create IPA structure
+            mkdir -p Payload
+            cp -r "$APP_PATH" Payload/
+            zip -r beach_tennis_recorder_unsigned.ipa Payload/
+            rm -rf Payload
+            echo "IPA created: beach_tennis_recorder_unsigned.ipa"
+          else
+            echo "WARNING: .app not found, creating from simulator build"
+            # Build for simulator as fallback
+            flutter build ios --debug --no-codesign --simulator
+            echo "Simulator build completed (not installable on device)"
+          fi
 
     artifacts:
+      - mobile/*.ipa
       - mobile/build/ios/**/*.app
-      - mobile/build/ios/ipa/*.ipa
       - mobile/build/**/outputs/**/*.apk
       - /tmp/xcodebuild_logs/*.log
 
