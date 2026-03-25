@@ -7,11 +7,6 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
-      groups:
-        - ios_credentials
-      ios_signing:
-        distribution_type: development
-        bundle_identifier: com.beachtennis.recorder
       vars:
         BUNDLE_ID: "com.beachtennis.recorder"
         APP_NAME: "BT Recorder"
@@ -64,23 +59,13 @@ workflows:
         script: |
           cd ios && pod install
 
-      - name: Set up code signing
-        script: |
-          keychain initialize
-
-      - name: Build iOS
+      - name: Build iOS (no codesign)
         script: |
           flutter build ios --debug --no-codesign
 
-      - name: Build IPA
-        script: |
-          flutter build ipa --debug \
-            --export-options-plist=/Users/builder/export_options.plist || \
-          echo "IPA build requires signing. Debug .app is available."
-
     artifacts:
+      - mobile/build/ios/**/*.app
       - mobile/build/ios/ipa/*.ipa
-      - mobile/build/ios/archive/*.xcarchive
       - mobile/build/**/outputs/**/*.apk
       - /tmp/xcodebuild_logs/*.log
 
