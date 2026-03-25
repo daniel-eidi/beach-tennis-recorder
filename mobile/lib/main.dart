@@ -20,8 +20,9 @@ import 'screens/settings_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Lock orientation to landscape for optimal court recording.
+  // Allow all orientations — user can record in portrait or landscape.
   await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
   ]);

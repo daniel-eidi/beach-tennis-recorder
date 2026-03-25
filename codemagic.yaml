@@ -40,8 +40,9 @@ workflows:
           /usr/libexec/PlistBuddy -c "Add :NSPhotoLibraryUsageDescription string 'BT Recorder precisa acessar fotos para salvar clipes.'" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Delete :UISupportedInterfaceOrientations" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations array" ios/Runner/Info.plist
-          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:0 string UIInterfaceOrientationLandscapeLeft" ios/Runner/Info.plist
-          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:1 string UIInterfaceOrientationLandscapeRight" ios/Runner/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:0 string UIInterfaceOrientationPortrait" ios/Runner/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:1 string UIInterfaceOrientationLandscapeLeft" ios/Runner/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:2 string UIInterfaceOrientationLandscapeRight" ios/Runner/Info.plist
           sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9.]*/IPHONEOS_DEPLOYMENT_TARGET = 14.0/g' ios/Runner.xcodeproj/project.pbxproj
 
       - name: Get Flutter packages

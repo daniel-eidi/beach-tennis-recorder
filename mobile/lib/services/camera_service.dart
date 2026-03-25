@@ -55,11 +55,28 @@ class CameraService extends ChangeNotifier {
         return;
       }
 
-      // Prefer the back-facing camera for court recording.
-      final backCamera = _cameras.firstWhere(
-        (cam) => cam.lensDirection == CameraLensDirection.back,
-        orElse: () => _cameras.first,
-      );
+      // Prefer the main (wide) back camera, not ultrawide/telephoto.
+      // On iOS, the first back camera is typically the wide-angle lens.
+      // Filter back cameras and pick the first one (main wide lens).
+      final backCameras = _cameras
+          .where((cam) => cam.lensDirection == CameraLensDirection.back)
+          .toList();
+
+      CameraDescription backCamera;
+      if (backCameras.isEmpty) {
+        backCamera = _cameras.first;
+      } else if (backCameras.length == 1) {
+        backCamera = backCameras.first;
+      } else {
+        // Multiple back cameras: pick the one with the shortest name
+        // or the one that doesn't contain "ultra" or "telephoto".
+        // On iOS, the wide camera is typically "Back Camera" (shortest name).
+        backCameras.sort((a, b) => a.name.length.compareTo(b.name.length));
+        backCamera = backCameras.first;
+      }
+
+      _log('info', 'Available cameras: ${_cameras.map((c) => "${c.name} (${c.lensDirection})").toList()}');
+      _log('info', 'Selected camera: ${backCamera.name}');
 
       _controller = CameraController(
         backCamera,
