@@ -165,31 +165,25 @@ class PipelineController extends ChangeNotifier {
       await _bufferService.initialize();
       await _bufferService.startBuffering();
 
-      // Step 4: Start camera recording (for buffer segments).
+      // Step 4: Start camera recording.
+      // Note: On iOS, startVideoRecording and startImageStream are
+      // mutually exclusive. For MVP, we prioritize video recording
+      // (so highlights work) over real-time detection.
       await _cameraService.startRecording();
 
-      // Step 5: Spawn detection isolate.
-      _modelAvailable = await _detectionService.start();
-      if (!_modelAvailable) {
-        _log('warn', 'Model not available; recording without detection');
-      }
-
-      // Step 6: Listen to detection results.
-      _detectionSubscription = _detectionService.detections.listen(
-        _onDetectionResult,
-      );
-
-      // Step 7: Start rally state machine.
+      // Step 5: Start rally state machine.
       _rallyController.startMatch(_currentMatch!.id);
 
-      // Step 7b: Reset gesture detector and listen for gesture events.
+      // Step 6: Reset gesture detector and listen for gesture events.
       _gestureDetectorService.reset();
       _gestureSubscription = _gestureDetectorService.gestureEvents.listen(
         _onGestureEvent,
       );
 
-      // Step 8: Start camera frame streaming for detection.
-      await _cameraService.startImageStream(_onCameraFrame);
+      // Step 7: Detection isolate (disabled for MVP — conflicts with recording).
+      // TODO: Enable when using a separate camera stream or platform channels.
+      _modelAvailable = false;
+      _log('info', 'Detection disabled for MVP (recording mode)');
 
       _isRecording = true;
       _log('info', 'Pipeline started (model=$_modelAvailable)');

@@ -262,6 +262,68 @@ class ClipService extends ChangeNotifier {
     }
   }
 
+  /// Saves an existing video file as a highlight clip.
+  ///
+  /// Used when the camera recording is stopped and the video file is
+  /// available directly (no buffer extraction needed).
+  Future<Clip?> saveHighlightFromFile({
+    required String sourceFilePath,
+    required int matchId,
+  }) async {
+    if (_clipsDir == null) {
+      await initialize();
+    }
+
+    _isProcessing = true;
+    notifyListeners();
+
+    try {
+      final sourceFile = File(sourceFilePath);
+      if (!await sourceFile.exists()) {
+        _log('error', 'Source file not found: $sourceFilePath');
+        return null;
+      }
+
+      final now = DateTime.now();
+      final highlightCount = _clips
+          .where((c) => c.matchId == matchId && c.clipType == ClipType.highlight)
+          .length;
+      final highlightNumber = highlightCount + 1;
+
+      final fileName = _generateHighlightFileName(matchId, highlightNumber, now);
+      final outputPath = p.join(_clipsDir!.path, fileName);
+
+      // Copy the video file to clips directory
+      await sourceFile.copy(outputPath);
+      final fileSize = await File(outputPath).length();
+      final duration = await _probeClipDuration(outputPath);
+
+      final clip = Clip(
+        id: const Uuid().v4(),
+        matchId: matchId,
+        rallyNumber: highlightNumber,
+        filePath: outputPath,
+        thumbnailPath: null,
+        durationSeconds: duration ?? 0.0,
+        createdAt: now,
+        fileSizeBytes: fileSize,
+        clipType: ClipType.highlight,
+      );
+
+      _clips.insert(0, clip);
+      _log('info', 'Highlight saved from file: $fileName '
+          '(${(fileSize / 1024 / 1024).toStringAsFixed(1)} MB)');
+
+      return clip;
+    } catch (e) {
+      _log('error', 'Highlight save from file failed: $e');
+      return null;
+    } finally {
+      _isProcessing = false;
+      notifyListeners();
+    }
+  }
+
   /// Deletes a clip from disk and the local library.
   Future<bool> deleteClip(String clipId) async {
     final index = _clips.indexWhere((c) => c.id == clipId);

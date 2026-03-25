@@ -113,23 +113,32 @@ class _RecordingScreenState extends State<RecordingScreen>
   }
 
   Future<void> _saveHighlight(PipelineController pipeline) async {
-    final settings = context.read<SettingsService>();
-    final duration = settings.gestureHighlightDuration;
-
     try {
-      await pipeline.clipService.saveHighlight(
-        triggerTime: DateTime.now(),
-        durationSeconds: duration,
-        matchId: pipeline.currentMatch?.id ?? 0,
+      // Stop camera recording, save the video file as a highlight clip,
+      // then restart recording. This captures everything recorded so far.
+      final videoFile = await pipeline.cameraService.stopRecording();
+      if (videoFile == null) {
+        throw Exception('No video file from camera');
+      }
+
+      // Save the recorded video as a highlight clip
+      final matchId = pipeline.currentMatch?.id ?? 0;
+      await pipeline.clipService.saveHighlightFromFile(
+        sourceFilePath: videoFile.path,
+        matchId: matchId,
       );
+
+      // Restart camera recording to continue capturing
+      await pipeline.cameraService.startRecording();
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Row(
+            content: const Row(
               children: [
-                const Icon(Icons.star, color: Colors.amber),
-                const SizedBox(width: 8),
-                Text('HIGHLIGHT SAVED! (last ${duration}s)'),
+                Icon(Icons.star, color: Colors.amber),
+                SizedBox(width: 8),
+                Text('HIGHLIGHT SAVED!'),
               ],
             ),
             backgroundColor: Colors.amber.shade800,
@@ -139,10 +148,12 @@ class _RecordingScreenState extends State<RecordingScreen>
         );
       }
     } catch (e) {
+      // Restart recording even if save failed
+      try { await pipeline.cameraService.startRecording(); } catch (_) {}
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Failed to save highlight: $e'),
+            content: Text('Failed to save: $e'),
             backgroundColor: Colors.red,
           ),
         );
