@@ -66,7 +66,8 @@ class CameraService extends ChangeNotifier {
         // 1080p target resolution per TASK-01-02.
         ResolutionPreset.high,
         enableAudio: true,
-        imageFormatGroup: ImageFormatGroup.yuv420,
+        // Let platform choose optimal format:
+        // iOS uses BGRA8888, Android uses YUV420
       );
 
       await _controller!.initialize();

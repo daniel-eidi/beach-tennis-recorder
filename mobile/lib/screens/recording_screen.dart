@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../models/gesture.dart';
 import '../models/rally.dart';
+import '../services/camera_service.dart';
 import '../services/pipeline_controller.dart';
 import '../services/settings_service.dart';
 
@@ -71,6 +72,8 @@ class _RecordingScreenState extends State<RecordingScreen>
     final pipeline = context.read<PipelineController>();
     if (!pipeline.cameraService.isInitialized) {
       await pipeline.cameraService.initialize();
+      // Force rebuild after camera is ready
+      if (mounted) setState(() {});
     }
   }
 
@@ -118,7 +121,8 @@ class _RecordingScreenState extends State<RecordingScreen>
   @override
   Widget build(BuildContext context) {
     final pipeline = context.watch<PipelineController>();
-    final cameraService = pipeline.cameraService;
+    // Watch CameraService directly to rebuild when camera initializes
+    final cameraService = context.watch<CameraService>();
     final rallyController = pipeline.rallyController;
 
     return Scaffold(
