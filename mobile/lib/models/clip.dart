@@ -46,6 +46,10 @@ class Clip {
   /// Remote URL if the clip has been uploaded. Null otherwise.
   final String? remoteUrl;
 
+  /// Highlight bookmark markers (timestamps from start of recording).
+  /// Used in the player to jump to marked moments.
+  final List<Duration> highlightMarkers;
+
   const Clip({
     required this.id,
     required this.matchId,
@@ -58,6 +62,7 @@ class Clip {
     this.clipType = ClipType.rally,
     this.isUploaded = false,
     this.remoteUrl,
+    this.highlightMarkers = const [],
   });
 
   /// Human-readable duration string (e.g. "0:12").
@@ -82,6 +87,9 @@ class Clip {
   bool get isRally => clipType == ClipType.rally;
 
   /// Creates a copy with updated fields.
+  /// Whether this clip has highlight markers (bookmarked moments).
+  bool get hasHighlights => highlightMarkers.isNotEmpty;
+
   Clip copyWith({
     String? id,
     int? matchId,
@@ -94,6 +102,7 @@ class Clip {
     ClipType? clipType,
     bool? isUploaded,
     String? remoteUrl,
+    List<Duration>? highlightMarkers,
   }) {
     return Clip(
       id: id ?? this.id,
@@ -107,6 +116,7 @@ class Clip {
       clipType: clipType ?? this.clipType,
       isUploaded: isUploaded ?? this.isUploaded,
       remoteUrl: remoteUrl ?? this.remoteUrl,
+      highlightMarkers: highlightMarkers ?? this.highlightMarkers,
     );
   }
 
@@ -122,6 +132,7 @@ class Clip {
         'clipType': clipType.name,
         'isUploaded': isUploaded,
         'remoteUrl': remoteUrl,
+        'highlightMarkers': highlightMarkers.map((d) => d.inMilliseconds).toList(),
       };
 
   factory Clip.fromJson(Map<String, dynamic> json) => Clip(
@@ -138,6 +149,10 @@ class Clip {
             : ClipType.rally,
         isUploaded: json['isUploaded'] as bool? ?? false,
         remoteUrl: json['remoteUrl'] as String?,
+        highlightMarkers: (json['highlightMarkers'] as List<dynamic>?)
+                ?.map((ms) => Duration(milliseconds: ms as int))
+                .toList() ??
+            const [],
       );
 
   @override

@@ -324,6 +324,70 @@ class ClipService extends ChangeNotifier {
     }
   }
 
+  /// Saves the full continuous recording as a clip with highlight markers.
+  ///
+  /// The full video is saved to the clips directory. Highlight markers
+  /// are stored in the clip metadata for timeline navigation in the player.
+  Future<Clip?> saveFullRecording({
+    required String sourceFilePath,
+    required int matchId,
+    List<Duration> highlightMarkers = const [],
+  }) async {
+    if (_clipsDir == null) {
+      await initialize();
+    }
+
+    _isProcessing = true;
+    notifyListeners();
+
+    try {
+      final sourceFile = File(sourceFilePath);
+      if (!await sourceFile.exists()) {
+        _log('error', 'Source recording not found: $sourceFilePath');
+        return null;
+      }
+
+      final now = DateTime.now();
+      final dateFmt = DateFormat('yyyyMMdd').format(now);
+      final timeFmt = DateFormat('HHmmss').format(now);
+      final fileName = 'match_${matchId}_full_${dateFmt}_$timeFmt.mp4';
+      final outputPath = p.join(_clipsDir!.path, fileName);
+
+      // Move (not copy) the video to save disk space
+      await sourceFile.copy(outputPath);
+      await sourceFile.delete().catchError((_) => sourceFile);
+
+      final fileSize = await File(outputPath).length();
+      final duration = await _probeClipDuration(outputPath);
+
+      final clip = Clip(
+        id: const Uuid().v4(),
+        matchId: matchId,
+        rallyNumber: 0,
+        filePath: outputPath,
+        thumbnailPath: null,
+        durationSeconds: duration ?? 0.0,
+        createdAt: now,
+        fileSizeBytes: fileSize,
+        clipType: ClipType.rally,  // full recording
+        highlightMarkers: highlightMarkers,
+      );
+
+      _clips.insert(0, clip);
+      _log('info', 'Full recording saved: $fileName '
+          '(${(fileSize / 1024 / 1024).toStringAsFixed(1)} MB, '
+          '${highlightMarkers.length} markers)');
+
+      return clip;
+    } catch (e) {
+      _log('error', 'Full recording save failed: $e');
+      return null;
+    } finally {
+      _isProcessing = false;
+      notifyListeners();
+    }
+  }
+
   /// Deletes a clip from disk and the local library.
   Future<bool> deleteClip(String clipId) async {
     final index = _clips.indexWhere((c) => c.id == clipId);

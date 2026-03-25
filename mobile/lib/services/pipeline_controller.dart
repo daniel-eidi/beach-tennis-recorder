@@ -45,6 +45,10 @@ class PipelineController extends ChangeNotifier {
   bool _isRecording = false;
   bool _modelAvailable = false;
   Match? _currentMatch;
+  DateTime? _recordingStartTime;
+
+  // Highlight bookmarks (timestamps relative to recording start)
+  final List<Duration> _highlightMarkers = [];
 
   // --- Performance stats ---
   int _framesProcessed = 0;
@@ -121,6 +125,23 @@ class PipelineController extends ChangeNotifier {
   /// The clip service (for accessing saved clips).
   ClipService get clipService => _clipService;
 
+  /// Highlight bookmark markers (timestamps from recording start).
+  List<Duration> get highlightMarkers => List.unmodifiable(_highlightMarkers);
+
+  /// Number of highlight markers in current session.
+  int get highlightCount => _highlightMarkers.length;
+
+  /// Adds a highlight marker at the current recording position.
+  /// Does NOT stop the recording — just saves the timestamp.
+  void addHighlightMarker() {
+    if (!_isRecording || _recordingStartTime == null) return;
+    final marker = DateTime.now().difference(_recordingStartTime!);
+    _highlightMarkers.add(marker);
+    _log('info', 'Highlight marker added at ${marker.inSeconds}s '
+        '(total: ${_highlightMarkers.length})');
+    notifyListeners();
+  }
+
   // --- Pipeline control ---
 
   /// Starts the full recording and detection pipeline.
@@ -140,13 +161,15 @@ class PipelineController extends ChangeNotifier {
     try {
       _log('info', 'Starting pipeline...');
 
-      // Reset stats.
+      // Reset stats and markers.
       _framesProcessed = 0;
       _detectionsFound = 0;
       _inferenceTimeMs = 0;
       _fps = 0.0;
       _lastFpsUpdate = DateTime.now();
       _framesSinceLastFpsUpdate = 0;
+      _highlightMarkers.clear();
+      _recordingStartTime = DateTime.now();
 
       // Step 1: Create a new match.
       _currentMatch = await _matchService.createMatch();
@@ -202,26 +225,29 @@ class PipelineController extends ChangeNotifier {
     _isRecording = false;
 
     try {
-      // Stop frame streaming first to prevent new frames.
-      await _cameraService.stopImageStream();
-
-      // Stop detection isolate.
-      await _detectionService.stop();
-      await _detectionSubscription?.cancel();
-      _detectionSubscription = null;
-
       // Stop gesture detection.
       await _gestureSubscription?.cancel();
       _gestureSubscription = null;
 
-      // Stop camera recording.
-      await _cameraService.stopRecording();
+      // Stop camera recording and get the full video file.
+      final videoFile = await _cameraService.stopRecording();
 
-      // Stop buffer (keep files for final clip extraction).
-      await _bufferService.stopBuffering(keepFiles: true);
+      // Stop buffer.
+      await _bufferService.stopBuffering(keepFiles: false);
 
       // End rally state machine.
       _rallyController.endMatch();
+
+      // Save the full recording to the clip library.
+      if (videoFile != null && _currentMatch != null) {
+        await _clipService.saveFullRecording(
+          sourceFilePath: videoFile.path,
+          matchId: _currentMatch!.id,
+          highlightMarkers: _highlightMarkers,
+        );
+        _log('info', 'Full recording saved with '
+            '${_highlightMarkers.length} highlight markers');
+      }
 
       // Update match metadata.
       if (_currentMatch != null) {
@@ -232,11 +258,11 @@ class PipelineController extends ChangeNotifier {
       }
 
       _matchService.endCurrentMatch();
+      _recordingStartTime = null;
       _currentMatch = null;
 
       _log('info', 'Pipeline stopped '
-          '(frames=$_framesProcessed detections=$_detectionsFound '
-          'rallies=${_rallyController.rallyCount} '
+          '(highlights=${_highlightMarkers.length} '
           'gestures=${_gestureDetectorService.gestureCount})');
       notifyListeners();
     } catch (e) {
