@@ -162,6 +162,107 @@ class ClipService extends ChangeNotifier {
     }
   }
 
+  /// Extracts a highlight clip from the buffer based on a gesture trigger.
+  ///
+  /// Captures the last [durationSeconds] of video from the buffer ending at
+  /// [triggerTime]. Returns the created [Clip] or null if extraction fails.
+  ///
+  /// Highlights are stored alongside rally clips but marked with
+  /// [ClipType.highlight]. Naming convention:
+  /// highlight_{matchId}_{number}_{date}_{time}.mp4
+  Future<Clip?> saveHighlight({
+    required DateTime triggerTime,
+    required int durationSeconds,
+    required int matchId,
+  }) async {
+    if (_clipsDir == null) {
+      await initialize();
+    }
+
+    _isProcessing = true;
+    notifyListeners();
+
+    try {
+      final startTime = triggerTime.subtract(
+        Duration(seconds: durationSeconds),
+      );
+
+      _log('info', 'Saving highlight: last ${durationSeconds}s '
+          'for match $matchId');
+
+      // Extract the segment from the buffer.
+      final extractedFile = await _bufferService.extractSegment(
+        startTime,
+        triggerTime,
+      );
+
+      if (extractedFile == null) {
+        _log('error', 'Buffer extraction returned null for highlight');
+        return null;
+      }
+
+      // Count existing highlights for this match for numbering.
+      final highlightCount = _clips
+          .where((c) => c.matchId == matchId && c.clipType == ClipType.highlight)
+          .length;
+      final highlightNumber = highlightCount + 1;
+
+      // Generate the output filename.
+      final fileName = _generateHighlightFileName(
+        matchId,
+        highlightNumber,
+        triggerTime,
+      );
+      final outputPath = p.join(_clipsDir!.path, fileName);
+
+      // Move the extracted file to the clips directory.
+      final clipFile = await extractedFile.rename(outputPath);
+      final fileSize = await clipFile.length();
+
+      // Validate the clip.
+      if (fileSize > maxClipSizeBytes) {
+        _log('warn', 'Highlight exceeds max size: '
+            '${fileSize ~/ (1024 * 1024)} MB');
+      }
+
+      // Get clip duration using FFmpeg probe.
+      final duration = await _probeClipDuration(outputPath);
+      if (duration != null && duration < minClipDurationSeconds) {
+        _log('warn', 'Highlight too short: ${duration}s');
+        await clipFile.delete();
+        return null;
+      }
+
+      // Generate thumbnail from middle frame.
+      final thumbnailPath = await _generateThumbnail(outputPath);
+
+      // Create the clip model.
+      final clip = Clip(
+        id: _uuid.v4(),
+        matchId: matchId,
+        rallyNumber: highlightNumber,
+        filePath: outputPath,
+        thumbnailPath: thumbnailPath,
+        durationSeconds: duration ??
+            triggerTime.difference(startTime).inMilliseconds / 1000.0,
+        fileSizeBytes: fileSize,
+        createdAt: DateTime.now(),
+        clipType: ClipType.highlight,
+      );
+
+      _clips.insert(0, clip);
+      _log('info', 'Highlight saved: $fileName (${clip.durationFormatted})');
+
+      return clip;
+    } catch (e) {
+      _log('error', 'Highlight extraction failed: $e');
+      return null;
+    } finally {
+      _isProcessing = false;
+      notifyListeners();
+    }
+  }
+
   /// Deletes a clip from disk and the local library.
   Future<bool> deleteClip(String clipId) async {
     final index = _clips.indexWhere((c) => c.id == clipId);
@@ -212,6 +313,18 @@ class ClipService extends ChangeNotifier {
     final dateFmt = DateFormat('yyyyMMdd').format(timestamp);
     final timeFmt = DateFormat('HHmmss').format(timestamp);
     return 'rally_${matchId}_${rallyNumber}_${dateFmt}_$timeFmt.mp4';
+  }
+
+  /// Generates a filename for highlight clips.
+  /// Format: highlight_{matchId}_{number}_{date}_{time}.mp4
+  String _generateHighlightFileName(
+    int matchId,
+    int highlightNumber,
+    DateTime timestamp,
+  ) {
+    final dateFmt = DateFormat('yyyyMMdd').format(timestamp);
+    final timeFmt = DateFormat('HHmmss').format(timestamp);
+    return 'highlight_${matchId}_${highlightNumber}_${dateFmt}_$timeFmt.mp4';
   }
 
   /// Generates a thumbnail image from the middle frame of a clip.
@@ -299,6 +412,7 @@ class ClipService extends ChangeNotifier {
             durationSeconds: 0, // Will be probed lazily if needed.
             fileSizeBytes: fileSize,
             createdAt: entity.statSync().modified,
+            clipType: parsed['clipType'] as ClipType? ?? ClipType.rally,
           ));
         }
       }
@@ -311,17 +425,22 @@ class ClipService extends ChangeNotifier {
   }
 
   /// Parses a clip filename back into its component parts.
-  /// Expected format: rally_{matchId}_{number}_{date}_{time}.mp4
+  /// Expected formats:
+  ///   rally_{matchId}_{number}_{date}_{time}.mp4
+  ///   highlight_{matchId}_{number}_{date}_{time}.mp4
   Map<String, dynamic>? _parseFileName(String fileName) {
-    final regex = RegExp(r'rally_(\d+)_(\d+)_(\d{8})_(\d{6})\.mp4');
+    final regex = RegExp(r'(rally|highlight)_(\d+)_(\d+)_(\d{8})_(\d{6})\.mp4');
     final match = regex.firstMatch(fileName);
     if (match == null) return null;
 
     return {
-      'matchId': int.parse(match.group(1)!),
-      'rallyNumber': int.parse(match.group(2)!),
-      'date': match.group(3),
-      'time': match.group(4),
+      'clipType': match.group(1) == 'highlight'
+          ? ClipType.highlight
+          : ClipType.rally,
+      'matchId': int.parse(match.group(2)!),
+      'rallyNumber': int.parse(match.group(3)!),
+      'date': match.group(4),
+      'time': match.group(5),
     };
   }
 

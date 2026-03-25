@@ -58,6 +58,12 @@ class Detection {
   /// Whether this detection represents a court line.
   bool get isCourtLine => classId == DetectionClass.courtLine;
 
+  /// Whether this detection represents a player.
+  bool get isPlayer => classId == DetectionClass.player;
+
+  /// Whether this detection represents a racket.
+  bool get isRacket => classId == DetectionClass.racket;
+
   /// Creates a Detection from the raw model output array.
   ///
   /// [raw] is expected to be [x, y, w, h, confidence, classId].
@@ -110,10 +116,14 @@ abstract class DetectionClass {
   static const int ball = 0;
   static const int net = 1;
   static const int courtLine = 2;
+  static const int player = 3;
+  static const int racket = 4;
 
   static const Map<int, String> names = {
     ball: 'ball',
     net: 'net',
     courtLine: 'court_line',
+    player: 'player',
+    racket: 'racket',
   };
 }

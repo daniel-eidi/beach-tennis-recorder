@@ -4,12 +4,14 @@ import 'dart:developer' as developer;
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 
+import '../models/gesture.dart';
 import '../models/match.dart';
 import '../models/rally.dart';
 import 'buffer_service.dart';
 import 'camera_service.dart';
 import 'clip_service.dart';
 import 'detection_isolate.dart';
+import 'gesture_detector_service.dart';
 import 'match_service.dart';
 import 'rally_controller.dart';
 
@@ -34,9 +36,11 @@ class PipelineController extends ChangeNotifier {
   final ClipService _clipService;
   final RallyController _rallyController;
   final MatchService _matchService;
+  final GestureDetectorService _gestureDetectorService;
 
   late final IsolateDetectionService _detectionService;
   StreamSubscription<DetectionResult>? _detectionSubscription;
+  StreamSubscription<GestureEvent>? _gestureSubscription;
 
   bool _isRecording = false;
   bool _modelAvailable = false;
@@ -56,11 +60,13 @@ class PipelineController extends ChangeNotifier {
     required ClipService clipService,
     required RallyController rallyController,
     required MatchService matchService,
+    required GestureDetectorService gestureDetectorService,
   })  : _cameraService = cameraService,
         _bufferService = bufferService,
         _clipService = clipService,
         _rallyController = rallyController,
-        _matchService = matchService {
+        _matchService = matchService,
+        _gestureDetectorService = gestureDetectorService {
     _detectionService = IsolateDetectionService();
   }
 
@@ -98,6 +104,19 @@ class PipelineController extends ChangeNotifier {
 
   /// The underlying rally controller (for detailed rally state).
   RallyController get rallyController => _rallyController;
+
+  /// The gesture detector service (for gesture state).
+  GestureDetectorService get gestureDetectorService =>
+      _gestureDetectorService;
+
+  /// Current state of the gesture detection state machine.
+  GestureState get gestureState => _gestureDetectorService.state;
+
+  /// Number of gestures detected in the current session.
+  int get gestureCount => _gestureDetectorService.gestureCount;
+
+  /// Whether gesture detection is currently enabled.
+  bool get isGestureEnabled => _gestureDetectorService.enabled;
 
   /// The clip service (for accessing saved clips).
   ClipService get clipService => _clipService;
@@ -163,6 +182,12 @@ class PipelineController extends ChangeNotifier {
       // Step 7: Start rally state machine.
       _rallyController.startMatch(_currentMatch!.id);
 
+      // Step 7b: Reset gesture detector and listen for gesture events.
+      _gestureDetectorService.reset();
+      _gestureSubscription = _gestureDetectorService.gestureEvents.listen(
+        _onGestureEvent,
+      );
+
       // Step 8: Start camera frame streaming for detection.
       await _cameraService.startImageStream(_onCameraFrame);
 
@@ -191,6 +216,10 @@ class PipelineController extends ChangeNotifier {
       await _detectionSubscription?.cancel();
       _detectionSubscription = null;
 
+      // Stop gesture detection.
+      await _gestureSubscription?.cancel();
+      _gestureSubscription = null;
+
       // Stop camera recording.
       await _cameraService.stopRecording();
 
@@ -213,7 +242,8 @@ class PipelineController extends ChangeNotifier {
 
       _log('info', 'Pipeline stopped '
           '(frames=$_framesProcessed detections=$_detectionsFound '
-          'rallies=${_rallyController.rallyCount})');
+          'rallies=${_rallyController.rallyCount} '
+          'gestures=${_gestureDetectorService.gestureCount})');
       notifyListeners();
     } catch (e) {
       _log('error', 'Error stopping pipeline: $e');
@@ -261,8 +291,42 @@ class PipelineController extends ChangeNotifier {
       timestamp: result.frameTimestamp,
     );
 
+    // Feed detections into the gesture detector (runs in parallel with rally).
+    _gestureDetectorService.processDetections(
+      result.detections,
+      640, // Model input size (detections are in model coordinate space).
+      640,
+    );
+
     // Notify UI of updated stats.
     notifyListeners();
+  }
+
+  /// Called when the gesture detector emits a gesture event.
+  ///
+  /// Triggers a highlight clip extraction from the buffer.
+  void _onGestureEvent(GestureEvent event) {
+    if (!_isRecording || _currentMatch == null) return;
+
+    _log('info', 'Gesture event received — saving '
+        '${event.clipDurationSeconds}s highlight');
+
+    _clipService
+        .saveHighlight(
+          triggerTime: event.timestamp,
+          durationSeconds: event.clipDurationSeconds,
+          matchId: _currentMatch!.id,
+        )
+        .then((clip) {
+      if (clip != null) {
+        _log('info', 'Highlight clip saved: ${clip.fileName}');
+      } else {
+        _log('warn', 'Highlight clip extraction failed');
+      }
+      notifyListeners();
+    }).catchError((e) {
+      _log('error', 'Highlight extraction error: $e');
+    });
   }
 
   /// Cleans up resources after a startup failure.
@@ -270,6 +334,7 @@ class PipelineController extends ChangeNotifier {
     try {
       await _detectionService.stop();
       await _detectionSubscription?.cancel();
+      await _gestureSubscription?.cancel();
       await _cameraService.stopImageStream();
       await _cameraService.stopRecording();
       await _bufferService.stopBuffering();
@@ -292,6 +357,7 @@ class PipelineController extends ChangeNotifier {
   @override
   void dispose() {
     _detectionSubscription?.cancel();
+    _gestureSubscription?.cancel();
     _detectionService.dispose();
     super.dispose();
   }

@@ -28,6 +28,10 @@ class SettingsService extends ChangeNotifier {
   static const _kTimeoutSeconds = 'settings_timeout_seconds';
   static const _kNetCrossRequired = 'settings_net_cross_required';
   static const _kActiveCalibrationId = 'settings_active_calibration_id';
+  static const _kGestureEnabled = 'settings_gesture_enabled';
+  static const _kGestureCooldownSeconds = 'settings_gesture_cooldown_seconds';
+  static const _kGestureHighlightDuration = 'settings_gesture_highlight_duration';
+  static const _kGestureSensitivity = 'settings_gesture_sensitivity';
 
   // ─── Defaults (from CLAUDE.md) ──────────────────────────────────────────
 
@@ -40,6 +44,10 @@ class SettingsService extends ChangeNotifier {
   static const int defaultPostRallySeconds = 2;
   static const int defaultTimeoutSeconds = 8;
   static const bool defaultNetCrossRequired = true;
+  static const bool defaultGestureEnabled = true;
+  static const int defaultGestureCooldownSeconds = 5;
+  static const int defaultGestureHighlightDuration = 30;
+  static const double defaultGestureSensitivity = 0.5;
 
   // ─── Initialization ─────────────────────────────────────────────────────
 
@@ -148,6 +156,49 @@ class SettingsService extends ChangeNotifier {
     notifyListeners();
   }
 
+  // ─── Gesture detection settings ─────────────────────────────────────────
+
+  /// Whether gesture detection (palm-to-racket highlight) is enabled.
+  bool get gestureEnabled =>
+      _prefs?.getBool(_kGestureEnabled) ?? defaultGestureEnabled;
+
+  set gestureEnabled(bool value) {
+    _prefs?.setBool(_kGestureEnabled, value);
+    _log('info', 'Gesture enabled set to $value');
+    notifyListeners();
+  }
+
+  /// Cooldown seconds between gesture triggers (3 – 10).
+  int get gestureCooldownSeconds =>
+      _prefs?.getInt(_kGestureCooldownSeconds) ?? defaultGestureCooldownSeconds;
+
+  set gestureCooldownSeconds(int value) {
+    _prefs?.setInt(_kGestureCooldownSeconds, value);
+    _log('info', 'Gesture cooldown set to ${value}s');
+    notifyListeners();
+  }
+
+  /// Duration of highlight clips in seconds (10 – 60).
+  int get gestureHighlightDuration =>
+      _prefs?.getInt(_kGestureHighlightDuration) ??
+      defaultGestureHighlightDuration;
+
+  set gestureHighlightDuration(int value) {
+    _prefs?.setInt(_kGestureHighlightDuration, value);
+    _log('info', 'Gesture highlight duration set to ${value}s');
+    notifyListeners();
+  }
+
+  /// Gesture detection sensitivity (0.0 = low, 0.5 = medium, 1.0 = high).
+  double get gestureSensitivity =>
+      _prefs?.getDouble(_kGestureSensitivity) ?? defaultGestureSensitivity;
+
+  set gestureSensitivity(double value) {
+    _prefs?.setDouble(_kGestureSensitivity, value);
+    _log('info', 'Gesture sensitivity set to $value');
+    notifyListeners();
+  }
+
   // ─── Calibration ────────────────────────────────────────────────────────
 
   /// ID of the active court calibration, or null if none is set.
@@ -177,6 +228,10 @@ class SettingsService extends ChangeNotifier {
     await _prefs?.remove(_kPostRallySeconds);
     await _prefs?.remove(_kTimeoutSeconds);
     await _prefs?.remove(_kNetCrossRequired);
+    await _prefs?.remove(_kGestureEnabled);
+    await _prefs?.remove(_kGestureCooldownSeconds);
+    await _prefs?.remove(_kGestureHighlightDuration);
+    await _prefs?.remove(_kGestureSensitivity);
     // Note: active calibration is NOT reset — it is location-specific.
     _log('info', 'All settings reset to defaults');
     notifyListeners();

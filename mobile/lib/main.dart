@@ -6,6 +6,7 @@ import 'services/camera_service.dart';
 import 'services/buffer_service.dart';
 import 'services/calibration_service.dart';
 import 'services/clip_service.dart';
+import 'services/gesture_detector_service.dart';
 import 'services/match_service.dart';
 import 'services/pipeline_controller.dart';
 import 'services/rally_controller.dart';
@@ -76,6 +77,20 @@ class BeachTennisRecorderApp extends StatelessWidget {
               previous ?? ClipService(bufferService: bufferService),
         ),
 
+        // Gesture detector depends on Settings.
+        ChangeNotifierProxyProvider<SettingsService, GestureDetectorService>(
+          create: (context) => GestureDetectorService(
+            settingsService: context.read<SettingsService>(),
+          ),
+          update: (_, settings, previous) {
+            if (previous != null) {
+              previous.updateSettings(settings);
+              return previous;
+            }
+            return GestureDetectorService(settingsService: settings);
+          },
+        ),
+
         // Rally controller depends on Clip + Settings.
         ChangeNotifierProxyProvider2<ClipService, SettingsService,
             RallyController>(
@@ -96,16 +111,18 @@ class BeachTennisRecorderApp extends StatelessWidget {
         ),
 
         // Pipeline orchestrates everything.
-        ChangeNotifierProxyProvider5<CameraService, BufferService, ClipService,
-            RallyController, MatchService, PipelineController>(
+        ChangeNotifierProxyProvider6<CameraService, BufferService, ClipService,
+            RallyController, MatchService, GestureDetectorService,
+            PipelineController>(
           create: (context) => PipelineController(
             cameraService: context.read<CameraService>(),
             bufferService: context.read<BufferService>(),
             clipService: context.read<ClipService>(),
             rallyController: context.read<RallyController>(),
             matchService: context.read<MatchService>(),
+            gestureDetectorService: context.read<GestureDetectorService>(),
           ),
-          update: (_, camera, buffer, clip, rally, match, previous) =>
+          update: (_, camera, buffer, clip, rally, match, gesture, previous) =>
               previous ??
               PipelineController(
                 cameraService: camera,
@@ -113,6 +130,7 @@ class BeachTennisRecorderApp extends StatelessWidget {
                 clipService: clip,
                 rallyController: rally,
                 matchService: match,
+                gestureDetectorService: gesture,
               ),
         ),
       ],

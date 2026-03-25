@@ -57,6 +57,13 @@ class SettingsScreen extends StatelessWidget {
               _buildNetCrossTile(context, settings),
               const Divider(),
 
+              _buildSectionHeader(context, 'Gesture Detection'),
+              _buildGestureEnabledTile(context, settings),
+              _buildHighlightDurationTile(context, settings),
+              _buildGestureCooldownTile(context, settings),
+              _buildGestureSensitivityTile(context, settings),
+              const Divider(),
+
               _buildSectionHeader(context, 'Court Calibration'),
               _buildCalibrationTile(context),
               const Divider(),
@@ -283,6 +290,124 @@ class SettingsScreen extends StatelessWidget {
       subtitle: const Text('Ball must cross the net to confirm rally'),
       value: settings.netCrossRequired,
       onChanged: (value) => settings.netCrossRequired = value,
+    );
+  }
+
+  // ─── Gesture detection settings ─────────────────────────────────────────
+
+  Widget _buildGestureEnabledTile(
+    BuildContext context,
+    SettingsService settings,
+  ) {
+    return SwitchListTile(
+      secondary: const Icon(Icons.front_hand),
+      title: const Text('Enable Gesture Detection'),
+      subtitle: const Text(
+        'Raise racket and clap to save highlight clip',
+      ),
+      value: settings.gestureEnabled,
+      onChanged: (value) => settings.gestureEnabled = value,
+    );
+  }
+
+  Widget _buildHighlightDurationTile(
+    BuildContext context,
+    SettingsService settings,
+  ) {
+    return ListTile(
+      leading: const Icon(Icons.movie_creation),
+      title: const Text('Highlight Duration'),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Slider(
+            value: settings.gestureHighlightDuration.toDouble(),
+            min: 10,
+            max: 60,
+            divisions: 10,
+            label: '${settings.gestureHighlightDuration}s',
+            onChanged: settings.gestureEnabled
+                ? (value) {
+                    settings.gestureHighlightDuration = value.round();
+                  }
+                : null,
+          ),
+          Text(
+            'Save last ${settings.gestureHighlightDuration} seconds '
+            '(default: ${SettingsService.defaultGestureHighlightDuration}s)',
+            style: const TextStyle(fontSize: 12, color: Colors.white38),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGestureCooldownTile(
+    BuildContext context,
+    SettingsService settings,
+  ) {
+    return ListTile(
+      leading: const Icon(Icons.timer),
+      title: const Text('Gesture Cooldown'),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Slider(
+            value: settings.gestureCooldownSeconds.toDouble(),
+            min: 3,
+            max: 10,
+            divisions: 7,
+            label: '${settings.gestureCooldownSeconds}s',
+            onChanged: settings.gestureEnabled
+                ? (value) {
+                    settings.gestureCooldownSeconds = value.round();
+                  }
+                : null,
+          ),
+          Text(
+            'Wait ${settings.gestureCooldownSeconds}s between gestures '
+            '(default: ${SettingsService.defaultGestureCooldownSeconds}s)',
+            style: const TextStyle(fontSize: 12, color: Colors.white38),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGestureSensitivityTile(
+    BuildContext context,
+    SettingsService settings,
+  ) {
+    final sensitivityLabel = settings.gestureSensitivity < 0.33
+        ? 'Low'
+        : (settings.gestureSensitivity < 0.67 ? 'Medium' : 'High');
+
+    return ListTile(
+      leading: const Icon(Icons.sensitivity_high),
+      title: const Text('Gesture Sensitivity'),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Slider(
+            value: settings.gestureSensitivity,
+            min: 0.0,
+            max: 1.0,
+            divisions: 10,
+            label: sensitivityLabel,
+            onChanged: settings.gestureEnabled
+                ? (value) {
+                    settings.gestureSensitivity =
+                        double.parse(value.toStringAsFixed(1));
+                  }
+                : null,
+          ),
+          Text(
+            'Sensitivity: $sensitivityLabel '
+            '(high = easier to trigger, more false positives)',
+            style: const TextStyle(fontSize: 12, color: Colors.white38),
+          ),
+        ],
+      ),
     );
   }
 
