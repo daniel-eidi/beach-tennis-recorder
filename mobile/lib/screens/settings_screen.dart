@@ -383,7 +383,7 @@ class SettingsScreen extends StatelessWidget {
         : (settings.gestureSensitivity < 0.67 ? 'Medium' : 'High');
 
     return ListTile(
-      leading: const Icon(Icons.sensitivity_high),
+      leading: const Icon(Icons.tune),
       title: const Text('Gesture Sensitivity'),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -465,8 +465,8 @@ class SettingsScreen extends StatelessWidget {
 
   // ─── Dialogs ────────────────────────────────────────────────────────────
 
-  void _showOptionDialog<T>({
-    required BuildContext context,
+  void _showOptionDialog<T>(
+    BuildContext context, {
     required String title,
     required List<T> options,
     List<String>? labels,

@@ -161,7 +161,7 @@ class BeachTennisRecorderApp extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: const Color(0xFF1A1A2E),
         elevation: 2,
         shape: RoundedRectangleBorder(
