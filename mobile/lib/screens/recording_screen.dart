@@ -118,8 +118,9 @@ class _RecordingScreenState extends State<RecordingScreen>
 
     try {
       await pipeline.clipService.saveHighlight(
-        DateTime.now(),
-        duration,
+        triggerTime: DateTime.now(),
+        durationSeconds: duration,
+        matchId: pipeline.currentMatch?.id ?? 0,
       );
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
