@@ -55,13 +55,23 @@ workflows:
             echo "placeholder" > assets/models/ball_detector.tflite
           fi
 
+      - name: Disable code signing in Xcode project
+        script: |
+          # Disable automatic signing and set to manual with no team
+          cd ios
+          sed -i '' 's/CODE_SIGN_IDENTITY = "Apple Development"/CODE_SIGN_IDENTITY = ""/g' Runner.xcodeproj/project.pbxproj
+          sed -i '' 's/CODE_SIGN_IDENTITY = "iPhone Developer"/CODE_SIGN_IDENTITY = ""/g' Runner.xcodeproj/project.pbxproj
+          sed -i '' '/DEVELOPMENT_TEAM/d' Runner.xcodeproj/project.pbxproj
+          # Add CODE_SIGNING_ALLOWED = NO to all build configs
+          sed -i '' 's/PRODUCT_BUNDLE_IDENTIFIER/CODE_SIGNING_ALLOWED = NO;\n\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER/g' Runner.xcodeproj/project.pbxproj
+
       - name: Install CocoaPods dependencies
         script: |
           cd ios && pod install
 
       - name: Build iOS (no codesign)
         script: |
-          flutter build ios --debug --no-codesign
+          flutter build ios --debug --no-codesign --simulator
 
     artifacts:
       - mobile/build/ios/**/*.app
