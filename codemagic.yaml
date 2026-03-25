@@ -70,9 +70,24 @@ workflows:
         script: |
           cd ios && pod install
 
-      - name: Build iOS for device (unsigned release)
+      - name: Build iOS for device (unsigned)
         script: |
-          flutter build ios --release --no-codesign
+          # flutter build ios --no-codesign only works with --debug but
+          # debug crashes on sideload. Use xcodebuild directly for Release.
+          flutter build ios --debug --no-codesign
+          # Now rebuild as Release with xcodebuild, signing fully disabled
+          xcodebuild \
+            -workspace ios/Runner.xcworkspace \
+            -scheme Runner \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build/ios/DerivedData \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGN_ENTITLEMENTS="" \
+            PROVISIONING_PROFILE="" \
+            DEVELOPMENT_TEAM=""
 
       - name: Package unsigned IPA
         script: |
@@ -81,18 +96,17 @@ workflows:
           find ~/Library/Developer/Xcode/DerivedData -name "Runner.app" -type d 2>/dev/null
           echo "=== End search ==="
 
-          # The flutter build puts the .app here:
-          APP_PATH="build/ios/iphoneos/Runner.app"
+          # Find Release-iphoneos .app from our DerivedData
+          APP_PATH=$(find build/ios/DerivedData -name "Runner.app" -path "*Release-iphoneos*" -type d 2>/dev/null | head -1)
 
-          if [ ! -d "$APP_PATH" ]; then
-            echo "Not at default path, searching..."
-            # Search in build directory
-            APP_PATH=$(find build -name "Runner.app" -type d 2>/dev/null | head -1)
+          if [ -z "$APP_PATH" ]; then
+            # Any iphoneos build
+            APP_PATH=$(find build/ios/DerivedData -name "Runner.app" -path "*iphoneos*" -type d 2>/dev/null | head -1)
           fi
 
-          if [ ! -d "$APP_PATH" ] || [ -z "$APP_PATH" ]; then
-            echo "Searching DerivedData..."
-            APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -name "Runner.app" -type d 2>/dev/null | head -1)
+          if [ -z "$APP_PATH" ]; then
+            # Search broader
+            APP_PATH=$(find build -name "Runner.app" -type d 2>/dev/null | grep -v Simulator | head -1)
           fi
 
           echo "Using .app at: $APP_PATH"
