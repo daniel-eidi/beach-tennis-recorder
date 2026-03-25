@@ -3,11 +3,12 @@ workflows:
     name: iOS Development Build
     max_build_duration: 60
     instance_type: mac_mini_m2
+    working_directory: mobile
     environment:
       flutter: stable
       xcode: latest
       groups:
-        - ios_credentials  # Configure in Codemagic UI
+        - ios_credentials
       ios_signing:
         distribution_type: development
         bundle_identifier: com.beachtennis.recorder
@@ -19,6 +20,8 @@ workflows:
       events:
         - push
       branch_patterns:
+        - pattern: master
+          include: true
         - pattern: main
           include: true
         - pattern: develop
@@ -27,7 +30,6 @@ workflows:
     scripts:
       - name: Generate platform files
         script: |
-          # Generate ios/ and android/ dirs if they don't exist
           if [ ! -d "ios/Runner.xcodeproj" ] || [ ! -f "ios/Runner.xcodeproj/project.pbxproj" ] || [ $(wc -l < ios/Runner.xcodeproj/project.pbxproj) -lt 10 ]; then
             rm -rf ios android
             flutter create --org com.beachtennis --project-name beach_tennis_recorder .
@@ -35,19 +37,16 @@ workflows:
 
       - name: Set iOS deployment target and permissions
         script: |
-          # Update Info.plist with camera permissions
           /usr/libexec/PlistBuddy -c "Set :NSCameraUsageDescription 'BT Recorder precisa da camera para gravar partidas de beach tennis.'" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string 'BT Recorder precisa da camera para gravar partidas de beach tennis.'" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Set :NSMicrophoneUsageDescription 'BT Recorder precisa do microfone para gravar audio.'" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Add :NSMicrophoneUsageDescription string 'BT Recorder precisa do microfone para gravar audio.'" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Set :NSPhotoLibraryUsageDescription 'BT Recorder precisa acessar fotos para salvar clipes.'" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Add :NSPhotoLibraryUsageDescription string 'BT Recorder precisa acessar fotos para salvar clipes.'" ios/Runner/Info.plist || true
-          # Set landscape only
           /usr/libexec/PlistBuddy -c "Delete :UISupportedInterfaceOrientations" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations array" ios/Runner/Info.plist
           /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:0 string UIInterfaceOrientationLandscapeLeft" ios/Runner/Info.plist
           /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:1 string UIInterfaceOrientationLandscapeRight" ios/Runner/Info.plist
-          # Set minimum iOS version
           sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9.]*/IPHONEOS_DEPLOYMENT_TARGET = 14.0/g' ios/Runner.xcodeproj/project.pbxproj
 
       - name: Get Flutter packages
@@ -80,17 +79,15 @@ workflows:
           echo "IPA build requires signing. Debug .app is available."
 
     artifacts:
-      - build/ios/ipa/*.ipa
-      - build/ios/archive/*.xcarchive
+      - mobile/build/ios/ipa/*.ipa
+      - mobile/build/ios/archive/*.xcarchive
+      - mobile/build/**/outputs/**/*.apk
       - /tmp/xcodebuild_logs/*.log
-      - build/**/outputs/**/*.apk
-      - build/**/outputs/**/mapping.txt
-      - flutter_drive.log
 
     publishing:
       email:
         recipients:
-          - your-email@example.com  # Update with your email
+          - daniel.eidi@gmail.com
         notify:
           success: true
           failure: true
@@ -99,6 +96,7 @@ workflows:
     name: iOS TestFlight Build
     max_build_duration: 60
     instance_type: mac_mini_m2
+    working_directory: mobile
     environment:
       flutter: stable
       xcode: latest
@@ -117,6 +115,13 @@ workflows:
           include: true
 
     scripts:
+      - name: Generate platform files
+        script: |
+          if [ ! -d "ios/Runner.xcodeproj" ] || [ $(wc -l < ios/Runner.xcodeproj/project.pbxproj) -lt 10 ]; then
+            rm -rf ios android
+            flutter create --org com.beachtennis --project-name beach_tennis_recorder .
+          fi
+
       - name: Get Flutter packages
         script: |
           flutter packages pub get
@@ -143,7 +148,7 @@ workflows:
             --export-options-plist=/Users/builder/export_options.plist
 
     artifacts:
-      - build/ios/ipa/*.ipa
+      - mobile/build/ios/ipa/*.ipa
 
     publishing:
       app_store_connect:
@@ -156,11 +161,18 @@ workflows:
     name: Android Development Build
     max_build_duration: 30
     instance_type: mac_mini_m2
+    working_directory: mobile
     environment:
       flutter: stable
       java: 17
 
     scripts:
+      - name: Generate platform files
+        script: |
+          if [ ! -d "android" ]; then
+            flutter create --org com.beachtennis --project-name beach_tennis_recorder .
+          fi
+
       - name: Get Flutter packages
         script: |
           flutter packages pub get
@@ -177,4 +189,4 @@ workflows:
           flutter build apk --debug
 
     artifacts:
-      - build/**/outputs/**/*.apk
+      - mobile/build/**/outputs/**/*.apk
