@@ -151,11 +151,12 @@ workflows:
       - mobile/build/ios/ipa/*.ipa
 
     publishing:
-      app_store_connect:
-        auth: integration
-        submit_to_testflight: true
-        beta_groups:
-          - Beach Tennis Testers
+      email:
+        recipients:
+          - daniel.eidi@gmail.com
+        notify:
+          success: true
+          failure: true
 
   android-development:
     name: Android Development Build
