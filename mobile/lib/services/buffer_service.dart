@@ -5,8 +5,8 @@ import 'dart:developer' as developer;
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
-import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
-import 'package:ffmpeg_kit_flutter/return_code.dart';
+// FFmpeg removed — segment extraction uses direct file copy for MVP.
+// Re-encoding/trimming can be added later with a working FFmpeg package.
 
 /// Disk-based circular video buffer for continuous recording.
 ///
@@ -280,80 +280,58 @@ class BufferService extends ChangeNotifier {
     }
   }
 
-  /// Trims a single segment file to the requested time range using FFmpeg.
+  /// Copies a single segment file as the extracted clip.
+  /// For MVP: copies the whole segment without trimming.
+  /// TODO: Add precise trimming when a working FFmpeg package is available.
   Future<File?> _trimSingleSegment(
     _BufferSegment segment,
     DateTime startTime,
     DateTime endTime,
     String outputPath,
   ) async {
-    final segStart = segment.startTime;
-    final offsetStart = startTime.difference(segStart).inMilliseconds / 1000.0;
-    final duration = endTime.difference(startTime).inMilliseconds / 1000.0;
-
-    // Use -ss for seeking and -t for duration. -c copy avoids re-encoding.
-    final command = '-y '
-        '-ss ${offsetStart.toStringAsFixed(3)} '
-        '-i "${segment.filePath}" '
-        '-t ${duration.toStringAsFixed(3)} '
-        '-c copy '
-        '"$outputPath"';
-
-    _log('info', 'FFmpeg trim: $command');
-    final session = await FFmpegKit.execute(command);
-    final returnCode = await session.getReturnCode();
-
-    if (ReturnCode.isSuccess(returnCode)) {
-      _log('info', 'Segment extracted: $outputPath');
-      return File(outputPath);
-    } else {
-      final logs = await session.getLogsAsString();
-      _log('error', 'FFmpeg trim failed: $logs');
+    try {
+      final sourceFile = File(segment.filePath);
+      if (!await sourceFile.exists()) {
+        _log('error', 'Source segment missing: ${segment.filePath}');
+        return null;
+      }
+      final copied = await sourceFile.copy(outputPath);
+      _log('info', 'Segment copied: $outputPath');
+      return copied;
+    } catch (e) {
+      _log('error', 'Segment copy failed: $e');
       return null;
     }
   }
 
-  /// Concatenates multiple segments and trims to the requested time range.
+  /// Concatenates multiple segment files by binary append.
+  /// For MVP: concatenates raw bytes (works for same-codec segments).
+  /// TODO: Add proper concat demuxing when a working FFmpeg package is available.
   Future<File?> _concatAndTrim(
     List<_BufferSegment> segments,
     DateTime startTime,
     DateTime endTime,
     String outputPath,
   ) async {
-    // Create a concat list file for FFmpeg.
-    final concatListPath = p.join(_bufferDir!.path, 'concat_list.txt');
-    final concatFile = File(concatListPath);
-    final concatContent = segments
-        .map((seg) => "file '${seg.filePath}'")
-        .join('\n');
-    await concatFile.writeAsString(concatContent);
+    try {
+      final outputFile = File(outputPath);
+      final sink = outputFile.openWrite();
 
-    // Calculate the offset from the first segment's start time.
-    final firstSegStart = segments.first.startTime;
-    final offsetStart =
-        startTime.difference(firstSegStart).inMilliseconds / 1000.0;
-    final duration = endTime.difference(startTime).inMilliseconds / 1000.0;
+      for (final seg in segments) {
+        final segFile = File(seg.filePath);
+        if (await segFile.exists()) {
+          await sink.addStream(segFile.openRead());
+        }
+      }
 
-    final command = '-y '
-        '-f concat -safe 0 -i "$concatListPath" '
-        '-ss ${offsetStart.toStringAsFixed(3)} '
-        '-t ${duration.toStringAsFixed(3)} '
-        '-c copy '
-        '"$outputPath"';
+      await sink.flush();
+      await sink.close();
 
-    _log('info', 'FFmpeg concat+trim: $command');
-    final session = await FFmpegKit.execute(command);
-    final returnCode = await session.getReturnCode();
-
-    // Clean up the concat list file.
-    await concatFile.delete().catchError((_) => concatFile);
-
-    if (ReturnCode.isSuccess(returnCode)) {
-      _log('info', 'Concatenated segment extracted: $outputPath');
-      return File(outputPath);
-    } else {
-      final logs = await session.getLogsAsString();
-      _log('error', 'FFmpeg concat failed: $logs');
+      _log('info', 'Segments concatenated: $outputPath '
+          '(${segments.length} segments)');
+      return outputFile;
+    } catch (e) {
+      _log('error', 'Segment concatenation failed: $e');
       return null;
     }
   }

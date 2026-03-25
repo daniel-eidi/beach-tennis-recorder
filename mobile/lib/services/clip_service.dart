@@ -6,8 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:intl/intl.dart';
-import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
-import 'package:ffmpeg_kit_flutter/return_code.dart';
+// FFmpeg removed — thumbnail and duration use placeholder for MVP.
 import 'package:uuid/uuid.dart';
 
 import '../models/clip.dart';
@@ -327,60 +326,25 @@ class ClipService extends ChangeNotifier {
     return 'highlight_${matchId}_${highlightNumber}_${dateFmt}_$timeFmt.mp4';
   }
 
-  /// Generates a thumbnail image from the middle frame of a clip.
-  ///
-  /// Uses FFmpeg to extract a single frame at the midpoint of the video.
-  /// Returns the thumbnail file path, or null if generation fails.
+  /// Generates a thumbnail placeholder for a clip.
+  /// TODO: Use video_thumbnail package or FFmpeg when available.
   Future<String?> _generateThumbnail(String clipPath) async {
-    final thumbnailPath = clipPath.replaceAll('.mp4', '_thumb.jpg');
-
-    // First, probe the duration to find the midpoint.
-    final duration = await _probeClipDuration(clipPath);
-    final seekTo = duration != null ? (duration / 2).toStringAsFixed(3) : '1';
-
-    final command = '-y '
-        '-ss $seekTo '
-        '-i "$clipPath" '
-        '-vframes 1 '
-        '-q:v 3 '
-        '"$thumbnailPath"';
-
-    try {
-      final session = await FFmpegKit.execute(command);
-      final returnCode = await session.getReturnCode();
-
-      if (ReturnCode.isSuccess(returnCode)) {
-        return thumbnailPath;
-      }
-    } catch (e) {
-      _log('warn', 'Thumbnail generation failed: $e');
-    }
-
+    // For MVP, thumbnail generation is skipped.
+    // The UI will show a default video icon instead.
+    _log('info', 'Thumbnail generation skipped (no FFmpeg)');
     return null;
   }
 
-  /// Probes a video file to get its duration in seconds.
+  /// Estimates clip duration from file size and known bitrate.
+  /// TODO: Use proper probing when FFmpeg is available.
   Future<double?> _probeClipDuration(String filePath) async {
     try {
-      // Use FFmpeg to get duration via a quick analysis pass.
-      final command = '-i "$filePath" -f null -';
-      final session = await FFmpegKit.execute(command);
-      final logs = await session.getLogsAsString();
-
-      // Parse duration from FFmpeg output: "Duration: HH:MM:SS.ms"
-      final durationRegex = RegExp(r'Duration:\s*(\d+):(\d+):(\d+)\.(\d+)');
-      final match = durationRegex.firstMatch(logs ?? '');
-
-      if (match != null) {
-        final hours = int.parse(match.group(1)!);
-        final minutes = int.parse(match.group(2)!);
-        final seconds = int.parse(match.group(3)!);
-        final centiseconds = int.parse(match.group(4)!);
-        return hours * 3600.0 +
-            minutes * 60.0 +
-            seconds +
-            centiseconds / 100.0;
-      }
+      final file = File(filePath);
+      if (!await file.exists()) return null;
+      final bytes = await file.length();
+      // Estimate: ~2.5 Mbps for 1080p/30fps H.264 = ~312 KB/s
+      final estimatedSeconds = bytes / (312 * 1024);
+      return estimatedSeconds.clamp(1.0, 300.0);
     } catch (e) {
       _log('warn', 'Duration probe failed: $e');
     }
