@@ -1,0 +1,3002 @@
+[
+  {
+    "filename": "frame_00000_t0.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00000_t0.0s.jpg",
+    "frame_index": 0,
+    "timestamp_s": 0.0
+  },
+  {
+    "filename": "frame_00001_t2.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00001_t2.8s.jpg",
+    "frame_index": 165,
+    "timestamp_s": 2.75
+  },
+  {
+    "filename": "frame_00002_t5.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00002_t5.5s.jpg",
+    "frame_index": 330,
+    "timestamp_s": 5.5
+  },
+  {
+    "filename": "frame_00003_t8.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00003_t8.2s.jpg",
+    "frame_index": 495,
+    "timestamp_s": 8.25
+  },
+  {
+    "filename": "frame_00004_t11.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00004_t11.0s.jpg",
+    "frame_index": 660,
+    "timestamp_s": 11.0
+  },
+  {
+    "filename": "frame_00005_t13.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00005_t13.8s.jpg",
+    "frame_index": 825,
+    "timestamp_s": 13.75
+  },
+  {
+    "filename": "frame_00006_t16.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00006_t16.5s.jpg",
+    "frame_index": 990,
+    "timestamp_s": 16.5
+  },
+  {
+    "filename": "frame_00007_t19.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00007_t19.2s.jpg",
+    "frame_index": 1155,
+    "timestamp_s": 19.25
+  },
+  {
+    "filename": "frame_00008_t22.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00008_t22.0s.jpg",
+    "frame_index": 1320,
+    "timestamp_s": 22.0
+  },
+  {
+    "filename": "frame_00009_t24.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00009_t24.8s.jpg",
+    "frame_index": 1485,
+    "timestamp_s": 24.75
+  },
+  {
+    "filename": "frame_00010_t27.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00010_t27.5s.jpg",
+    "frame_index": 1650,
+    "timestamp_s": 27.5
+  },
+  {
+    "filename": "frame_00011_t30.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00011_t30.2s.jpg",
+    "frame_index": 1815,
+    "timestamp_s": 30.25
+  },
+  {
+    "filename": "frame_00012_t33.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00012_t33.0s.jpg",
+    "frame_index": 1980,
+    "timestamp_s": 33.0
+  },
+  {
+    "filename": "frame_00013_t35.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00013_t35.8s.jpg",
+    "frame_index": 2145,
+    "timestamp_s": 35.75
+  },
+  {
+    "filename": "frame_00014_t38.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00014_t38.5s.jpg",
+    "frame_index": 2310,
+    "timestamp_s": 38.5
+  },
+  {
+    "filename": "frame_00015_t41.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00015_t41.2s.jpg",
+    "frame_index": 2475,
+    "timestamp_s": 41.25
+  },
+  {
+    "filename": "frame_00016_t44.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00016_t44.0s.jpg",
+    "frame_index": 2640,
+    "timestamp_s": 44.0
+  },
+  {
+    "filename": "frame_00017_t46.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00017_t46.8s.jpg",
+    "frame_index": 2805,
+    "timestamp_s": 46.75
+  },
+  {
+    "filename": "frame_00018_t49.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00018_t49.5s.jpg",
+    "frame_index": 2970,
+    "timestamp_s": 49.5
+  },
+  {
+    "filename": "frame_00019_t52.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00019_t52.2s.jpg",
+    "frame_index": 3135,
+    "timestamp_s": 52.25
+  },
+  {
+    "filename": "frame_00020_t55.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00020_t55.0s.jpg",
+    "frame_index": 3300,
+    "timestamp_s": 55.0
+  },
+  {
+    "filename": "frame_00021_t57.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00021_t57.8s.jpg",
+    "frame_index": 3465,
+    "timestamp_s": 57.75
+  },
+  {
+    "filename": "frame_00022_t60.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00022_t60.5s.jpg",
+    "frame_index": 3630,
+    "timestamp_s": 60.5
+  },
+  {
+    "filename": "frame_00023_t63.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00023_t63.2s.jpg",
+    "frame_index": 3795,
+    "timestamp_s": 63.25
+  },
+  {
+    "filename": "frame_00024_t66.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00024_t66.0s.jpg",
+    "frame_index": 3960,
+    "timestamp_s": 66.0
+  },
+  {
+    "filename": "frame_00025_t68.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00025_t68.8s.jpg",
+    "frame_index": 4125,
+    "timestamp_s": 68.75
+  },
+  {
+    "filename": "frame_00026_t71.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00026_t71.5s.jpg",
+    "frame_index": 4290,
+    "timestamp_s": 71.5
+  },
+  {
+    "filename": "frame_00027_t74.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00027_t74.2s.jpg",
+    "frame_index": 4455,
+    "timestamp_s": 74.25
+  },
+  {
+    "filename": "frame_00028_t77.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00028_t77.0s.jpg",
+    "frame_index": 4620,
+    "timestamp_s": 77.0
+  },
+  {
+    "filename": "frame_00029_t79.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00029_t79.8s.jpg",
+    "frame_index": 4785,
+    "timestamp_s": 79.75
+  },
+  {
+    "filename": "frame_00030_t82.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00030_t82.5s.jpg",
+    "frame_index": 4950,
+    "timestamp_s": 82.5
+  },
+  {
+    "filename": "frame_00031_t85.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00031_t85.2s.jpg",
+    "frame_index": 5115,
+    "timestamp_s": 85.25
+  },
+  {
+    "filename": "frame_00032_t88.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00032_t88.0s.jpg",
+    "frame_index": 5280,
+    "timestamp_s": 88.0
+  },
+  {
+    "filename": "frame_00033_t90.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00033_t90.8s.jpg",
+    "frame_index": 5445,
+    "timestamp_s": 90.75
+  },
+  {
+    "filename": "frame_00034_t93.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00034_t93.5s.jpg",
+    "frame_index": 5610,
+    "timestamp_s": 93.5
+  },
+  {
+    "filename": "frame_00035_t96.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00035_t96.2s.jpg",
+    "frame_index": 5775,
+    "timestamp_s": 96.25
+  },
+  {
+    "filename": "frame_00036_t99.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00036_t99.0s.jpg",
+    "frame_index": 5940,
+    "timestamp_s": 99.0
+  },
+  {
+    "filename": "frame_00037_t101.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00037_t101.8s.jpg",
+    "frame_index": 6105,
+    "timestamp_s": 101.75
+  },
+  {
+    "filename": "frame_00038_t104.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00038_t104.5s.jpg",
+    "frame_index": 6270,
+    "timestamp_s": 104.5
+  },
+  {
+    "filename": "frame_00039_t107.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00039_t107.2s.jpg",
+    "frame_index": 6435,
+    "timestamp_s": 107.25
+  },
+  {
+    "filename": "frame_00040_t110.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00040_t110.0s.jpg",
+    "frame_index": 6600,
+    "timestamp_s": 110.0
+  },
+  {
+    "filename": "frame_00041_t112.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00041_t112.8s.jpg",
+    "frame_index": 6765,
+    "timestamp_s": 112.75
+  },
+  {
+    "filename": "frame_00042_t115.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00042_t115.5s.jpg",
+    "frame_index": 6930,
+    "timestamp_s": 115.5
+  },
+  {
+    "filename": "frame_00043_t118.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00043_t118.2s.jpg",
+    "frame_index": 7095,
+    "timestamp_s": 118.25
+  },
+  {
+    "filename": "frame_00044_t121.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00044_t121.0s.jpg",
+    "frame_index": 7260,
+    "timestamp_s": 121.0
+  },
+  {
+    "filename": "frame_00045_t123.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00045_t123.8s.jpg",
+    "frame_index": 7425,
+    "timestamp_s": 123.75
+  },
+  {
+    "filename": "frame_00046_t126.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00046_t126.5s.jpg",
+    "frame_index": 7590,
+    "timestamp_s": 126.5
+  },
+  {
+    "filename": "frame_00047_t129.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00047_t129.2s.jpg",
+    "frame_index": 7755,
+    "timestamp_s": 129.25
+  },
+  {
+    "filename": "frame_00048_t132.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00048_t132.0s.jpg",
+    "frame_index": 7920,
+    "timestamp_s": 132.0
+  },
+  {
+    "filename": "frame_00049_t134.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00049_t134.8s.jpg",
+    "frame_index": 8085,
+    "timestamp_s": 134.75
+  },
+  {
+    "filename": "frame_00050_t137.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00050_t137.5s.jpg",
+    "frame_index": 8250,
+    "timestamp_s": 137.5
+  },
+  {
+    "filename": "frame_00051_t140.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00051_t140.2s.jpg",
+    "frame_index": 8415,
+    "timestamp_s": 140.25
+  },
+  {
+    "filename": "frame_00052_t143.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00052_t143.0s.jpg",
+    "frame_index": 8580,
+    "timestamp_s": 143.0
+  },
+  {
+    "filename": "frame_00053_t145.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00053_t145.8s.jpg",
+    "frame_index": 8745,
+    "timestamp_s": 145.75
+  },
+  {
+    "filename": "frame_00054_t148.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00054_t148.5s.jpg",
+    "frame_index": 8910,
+    "timestamp_s": 148.5
+  },
+  {
+    "filename": "frame_00055_t151.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00055_t151.2s.jpg",
+    "frame_index": 9075,
+    "timestamp_s": 151.25
+  },
+  {
+    "filename": "frame_00056_t154.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00056_t154.0s.jpg",
+    "frame_index": 9240,
+    "timestamp_s": 154.0
+  },
+  {
+    "filename": "frame_00057_t156.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00057_t156.8s.jpg",
+    "frame_index": 9405,
+    "timestamp_s": 156.75
+  },
+  {
+    "filename": "frame_00058_t159.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00058_t159.5s.jpg",
+    "frame_index": 9570,
+    "timestamp_s": 159.5
+  },
+  {
+    "filename": "frame_00059_t162.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00059_t162.2s.jpg",
+    "frame_index": 9735,
+    "timestamp_s": 162.25
+  },
+  {
+    "filename": "frame_00060_t165.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00060_t165.0s.jpg",
+    "frame_index": 9900,
+    "timestamp_s": 165.0
+  },
+  {
+    "filename": "frame_00061_t167.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00061_t167.8s.jpg",
+    "frame_index": 10065,
+    "timestamp_s": 167.75
+  },
+  {
+    "filename": "frame_00062_t170.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00062_t170.5s.jpg",
+    "frame_index": 10230,
+    "timestamp_s": 170.5
+  },
+  {
+    "filename": "frame_00063_t173.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00063_t173.2s.jpg",
+    "frame_index": 10395,
+    "timestamp_s": 173.25
+  },
+  {
+    "filename": "frame_00064_t176.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00064_t176.0s.jpg",
+    "frame_index": 10560,
+    "timestamp_s": 176.0
+  },
+  {
+    "filename": "frame_00065_t178.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00065_t178.8s.jpg",
+    "frame_index": 10725,
+    "timestamp_s": 178.75
+  },
+  {
+    "filename": "frame_00066_t181.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00066_t181.5s.jpg",
+    "frame_index": 10890,
+    "timestamp_s": 181.5
+  },
+  {
+    "filename": "frame_00067_t184.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00067_t184.2s.jpg",
+    "frame_index": 11055,
+    "timestamp_s": 184.25
+  },
+  {
+    "filename": "frame_00068_t187.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00068_t187.0s.jpg",
+    "frame_index": 11220,
+    "timestamp_s": 187.0
+  },
+  {
+    "filename": "frame_00069_t189.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00069_t189.8s.jpg",
+    "frame_index": 11385,
+    "timestamp_s": 189.75
+  },
+  {
+    "filename": "frame_00070_t192.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00070_t192.5s.jpg",
+    "frame_index": 11550,
+    "timestamp_s": 192.5
+  },
+  {
+    "filename": "frame_00071_t195.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00071_t195.2s.jpg",
+    "frame_index": 11715,
+    "timestamp_s": 195.25
+  },
+  {
+    "filename": "frame_00072_t198.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00072_t198.0s.jpg",
+    "frame_index": 11880,
+    "timestamp_s": 198.0
+  },
+  {
+    "filename": "frame_00073_t200.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00073_t200.8s.jpg",
+    "frame_index": 12045,
+    "timestamp_s": 200.75
+  },
+  {
+    "filename": "frame_00074_t203.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00074_t203.5s.jpg",
+    "frame_index": 12210,
+    "timestamp_s": 203.5
+  },
+  {
+    "filename": "frame_00075_t206.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00075_t206.2s.jpg",
+    "frame_index": 12375,
+    "timestamp_s": 206.25
+  },
+  {
+    "filename": "frame_00076_t209.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00076_t209.0s.jpg",
+    "frame_index": 12540,
+    "timestamp_s": 209.0
+  },
+  {
+    "filename": "frame_00077_t211.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00077_t211.8s.jpg",
+    "frame_index": 12705,
+    "timestamp_s": 211.75
+  },
+  {
+    "filename": "frame_00078_t214.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00078_t214.5s.jpg",
+    "frame_index": 12870,
+    "timestamp_s": 214.5
+  },
+  {
+    "filename": "frame_00079_t217.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00079_t217.2s.jpg",
+    "frame_index": 13035,
+    "timestamp_s": 217.25
+  },
+  {
+    "filename": "frame_00080_t220.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00080_t220.0s.jpg",
+    "frame_index": 13200,
+    "timestamp_s": 220.0
+  },
+  {
+    "filename": "frame_00081_t222.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00081_t222.8s.jpg",
+    "frame_index": 13365,
+    "timestamp_s": 222.75
+  },
+  {
+    "filename": "frame_00082_t225.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00082_t225.5s.jpg",
+    "frame_index": 13530,
+    "timestamp_s": 225.5
+  },
+  {
+    "filename": "frame_00083_t228.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00083_t228.2s.jpg",
+    "frame_index": 13695,
+    "timestamp_s": 228.25
+  },
+  {
+    "filename": "frame_00084_t231.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00084_t231.0s.jpg",
+    "frame_index": 13860,
+    "timestamp_s": 231.0
+  },
+  {
+    "filename": "frame_00085_t233.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00085_t233.8s.jpg",
+    "frame_index": 14025,
+    "timestamp_s": 233.75
+  },
+  {
+    "filename": "frame_00086_t236.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00086_t236.5s.jpg",
+    "frame_index": 14190,
+    "timestamp_s": 236.5
+  },
+  {
+    "filename": "frame_00087_t239.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00087_t239.2s.jpg",
+    "frame_index": 14355,
+    "timestamp_s": 239.25
+  },
+  {
+    "filename": "frame_00088_t242.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00088_t242.0s.jpg",
+    "frame_index": 14520,
+    "timestamp_s": 242.0
+  },
+  {
+    "filename": "frame_00089_t244.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00089_t244.8s.jpg",
+    "frame_index": 14685,
+    "timestamp_s": 244.75
+  },
+  {
+    "filename": "frame_00090_t247.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00090_t247.5s.jpg",
+    "frame_index": 14850,
+    "timestamp_s": 247.5
+  },
+  {
+    "filename": "frame_00091_t250.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00091_t250.2s.jpg",
+    "frame_index": 15015,
+    "timestamp_s": 250.25
+  },
+  {
+    "filename": "frame_00092_t253.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00092_t253.0s.jpg",
+    "frame_index": 15180,
+    "timestamp_s": 253.0
+  },
+  {
+    "filename": "frame_00093_t255.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00093_t255.8s.jpg",
+    "frame_index": 15345,
+    "timestamp_s": 255.75
+  },
+  {
+    "filename": "frame_00094_t258.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00094_t258.5s.jpg",
+    "frame_index": 15510,
+    "timestamp_s": 258.5
+  },
+  {
+    "filename": "frame_00095_t261.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00095_t261.2s.jpg",
+    "frame_index": 15675,
+    "timestamp_s": 261.25
+  },
+  {
+    "filename": "frame_00096_t264.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00096_t264.0s.jpg",
+    "frame_index": 15840,
+    "timestamp_s": 264.0
+  },
+  {
+    "filename": "frame_00097_t266.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00097_t266.8s.jpg",
+    "frame_index": 16005,
+    "timestamp_s": 266.75
+  },
+  {
+    "filename": "frame_00098_t269.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00098_t269.5s.jpg",
+    "frame_index": 16170,
+    "timestamp_s": 269.5
+  },
+  {
+    "filename": "frame_00099_t272.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00099_t272.2s.jpg",
+    "frame_index": 16335,
+    "timestamp_s": 272.25
+  },
+  {
+    "filename": "frame_00100_t275.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00100_t275.0s.jpg",
+    "frame_index": 16500,
+    "timestamp_s": 275.0
+  },
+  {
+    "filename": "frame_00101_t277.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00101_t277.8s.jpg",
+    "frame_index": 16665,
+    "timestamp_s": 277.75
+  },
+  {
+    "filename": "frame_00102_t280.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00102_t280.5s.jpg",
+    "frame_index": 16830,
+    "timestamp_s": 280.5
+  },
+  {
+    "filename": "frame_00103_t283.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00103_t283.2s.jpg",
+    "frame_index": 16995,
+    "timestamp_s": 283.25
+  },
+  {
+    "filename": "frame_00104_t286.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00104_t286.0s.jpg",
+    "frame_index": 17160,
+    "timestamp_s": 286.0
+  },
+  {
+    "filename": "frame_00105_t288.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00105_t288.8s.jpg",
+    "frame_index": 17325,
+    "timestamp_s": 288.75
+  },
+  {
+    "filename": "frame_00106_t291.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00106_t291.5s.jpg",
+    "frame_index": 17490,
+    "timestamp_s": 291.5
+  },
+  {
+    "filename": "frame_00107_t294.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00107_t294.2s.jpg",
+    "frame_index": 17655,
+    "timestamp_s": 294.25
+  },
+  {
+    "filename": "frame_00108_t297.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00108_t297.0s.jpg",
+    "frame_index": 17820,
+    "timestamp_s": 297.0
+  },
+  {
+    "filename": "frame_00109_t299.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00109_t299.8s.jpg",
+    "frame_index": 17985,
+    "timestamp_s": 299.75
+  },
+  {
+    "filename": "frame_00110_t302.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00110_t302.5s.jpg",
+    "frame_index": 18150,
+    "timestamp_s": 302.5
+  },
+  {
+    "filename": "frame_00111_t305.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00111_t305.2s.jpg",
+    "frame_index": 18315,
+    "timestamp_s": 305.25
+  },
+  {
+    "filename": "frame_00112_t308.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00112_t308.0s.jpg",
+    "frame_index": 18480,
+    "timestamp_s": 308.0
+  },
+  {
+    "filename": "frame_00113_t310.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00113_t310.8s.jpg",
+    "frame_index": 18645,
+    "timestamp_s": 310.75
+  },
+  {
+    "filename": "frame_00114_t313.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00114_t313.5s.jpg",
+    "frame_index": 18810,
+    "timestamp_s": 313.5
+  },
+  {
+    "filename": "frame_00115_t316.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00115_t316.2s.jpg",
+    "frame_index": 18975,
+    "timestamp_s": 316.25
+  },
+  {
+    "filename": "frame_00116_t319.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00116_t319.0s.jpg",
+    "frame_index": 19140,
+    "timestamp_s": 319.0
+  },
+  {
+    "filename": "frame_00117_t321.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00117_t321.8s.jpg",
+    "frame_index": 19305,
+    "timestamp_s": 321.75
+  },
+  {
+    "filename": "frame_00118_t324.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00118_t324.5s.jpg",
+    "frame_index": 19470,
+    "timestamp_s": 324.5
+  },
+  {
+    "filename": "frame_00119_t327.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00119_t327.2s.jpg",
+    "frame_index": 19635,
+    "timestamp_s": 327.25
+  },
+  {
+    "filename": "frame_00120_t330.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00120_t330.0s.jpg",
+    "frame_index": 19800,
+    "timestamp_s": 330.0
+  },
+  {
+    "filename": "frame_00121_t332.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00121_t332.8s.jpg",
+    "frame_index": 19965,
+    "timestamp_s": 332.75
+  },
+  {
+    "filename": "frame_00122_t335.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00122_t335.5s.jpg",
+    "frame_index": 20130,
+    "timestamp_s": 335.5
+  },
+  {
+    "filename": "frame_00123_t338.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00123_t338.2s.jpg",
+    "frame_index": 20295,
+    "timestamp_s": 338.25
+  },
+  {
+    "filename": "frame_00124_t341.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00124_t341.0s.jpg",
+    "frame_index": 20460,
+    "timestamp_s": 341.0
+  },
+  {
+    "filename": "frame_00125_t343.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00125_t343.8s.jpg",
+    "frame_index": 20625,
+    "timestamp_s": 343.75
+  },
+  {
+    "filename": "frame_00126_t346.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00126_t346.5s.jpg",
+    "frame_index": 20790,
+    "timestamp_s": 346.5
+  },
+  {
+    "filename": "frame_00127_t349.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00127_t349.2s.jpg",
+    "frame_index": 20955,
+    "timestamp_s": 349.25
+  },
+  {
+    "filename": "frame_00128_t352.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00128_t352.0s.jpg",
+    "frame_index": 21120,
+    "timestamp_s": 352.0
+  },
+  {
+    "filename": "frame_00129_t354.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00129_t354.8s.jpg",
+    "frame_index": 21285,
+    "timestamp_s": 354.75
+  },
+  {
+    "filename": "frame_00130_t357.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00130_t357.5s.jpg",
+    "frame_index": 21450,
+    "timestamp_s": 357.5
+  },
+  {
+    "filename": "frame_00131_t360.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00131_t360.2s.jpg",
+    "frame_index": 21615,
+    "timestamp_s": 360.25
+  },
+  {
+    "filename": "frame_00132_t363.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00132_t363.0s.jpg",
+    "frame_index": 21780,
+    "timestamp_s": 363.0
+  },
+  {
+    "filename": "frame_00133_t365.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00133_t365.8s.jpg",
+    "frame_index": 21945,
+    "timestamp_s": 365.75
+  },
+  {
+    "filename": "frame_00134_t368.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00134_t368.5s.jpg",
+    "frame_index": 22110,
+    "timestamp_s": 368.5
+  },
+  {
+    "filename": "frame_00135_t371.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00135_t371.2s.jpg",
+    "frame_index": 22275,
+    "timestamp_s": 371.25
+  },
+  {
+    "filename": "frame_00136_t374.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00136_t374.0s.jpg",
+    "frame_index": 22440,
+    "timestamp_s": 374.0
+  },
+  {
+    "filename": "frame_00137_t376.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00137_t376.8s.jpg",
+    "frame_index": 22605,
+    "timestamp_s": 376.75
+  },
+  {
+    "filename": "frame_00138_t379.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00138_t379.5s.jpg",
+    "frame_index": 22770,
+    "timestamp_s": 379.5
+  },
+  {
+    "filename": "frame_00139_t382.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00139_t382.2s.jpg",
+    "frame_index": 22935,
+    "timestamp_s": 382.25
+  },
+  {
+    "filename": "frame_00140_t385.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00140_t385.0s.jpg",
+    "frame_index": 23100,
+    "timestamp_s": 385.0
+  },
+  {
+    "filename": "frame_00141_t387.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00141_t387.8s.jpg",
+    "frame_index": 23265,
+    "timestamp_s": 387.75
+  },
+  {
+    "filename": "frame_00142_t390.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00142_t390.5s.jpg",
+    "frame_index": 23430,
+    "timestamp_s": 390.5
+  },
+  {
+    "filename": "frame_00143_t393.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00143_t393.2s.jpg",
+    "frame_index": 23595,
+    "timestamp_s": 393.25
+  },
+  {
+    "filename": "frame_00144_t396.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00144_t396.0s.jpg",
+    "frame_index": 23760,
+    "timestamp_s": 396.0
+  },
+  {
+    "filename": "frame_00145_t398.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00145_t398.8s.jpg",
+    "frame_index": 23925,
+    "timestamp_s": 398.75
+  },
+  {
+    "filename": "frame_00146_t401.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00146_t401.5s.jpg",
+    "frame_index": 24090,
+    "timestamp_s": 401.5
+  },
+  {
+    "filename": "frame_00147_t404.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00147_t404.2s.jpg",
+    "frame_index": 24255,
+    "timestamp_s": 404.25
+  },
+  {
+    "filename": "frame_00148_t407.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00148_t407.0s.jpg",
+    "frame_index": 24420,
+    "timestamp_s": 407.0
+  },
+  {
+    "filename": "frame_00149_t409.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00149_t409.8s.jpg",
+    "frame_index": 24585,
+    "timestamp_s": 409.75
+  },
+  {
+    "filename": "frame_00150_t412.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00150_t412.5s.jpg",
+    "frame_index": 24750,
+    "timestamp_s": 412.5
+  },
+  {
+    "filename": "frame_00151_t415.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00151_t415.2s.jpg",
+    "frame_index": 24915,
+    "timestamp_s": 415.25
+  },
+  {
+    "filename": "frame_00152_t418.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00152_t418.0s.jpg",
+    "frame_index": 25080,
+    "timestamp_s": 418.0
+  },
+  {
+    "filename": "frame_00153_t420.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00153_t420.8s.jpg",
+    "frame_index": 25245,
+    "timestamp_s": 420.75
+  },
+  {
+    "filename": "frame_00154_t423.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00154_t423.5s.jpg",
+    "frame_index": 25410,
+    "timestamp_s": 423.5
+  },
+  {
+    "filename": "frame_00155_t426.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00155_t426.2s.jpg",
+    "frame_index": 25575,
+    "timestamp_s": 426.25
+  },
+  {
+    "filename": "frame_00156_t429.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00156_t429.0s.jpg",
+    "frame_index": 25740,
+    "timestamp_s": 429.0
+  },
+  {
+    "filename": "frame_00157_t431.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00157_t431.8s.jpg",
+    "frame_index": 25905,
+    "timestamp_s": 431.75
+  },
+  {
+    "filename": "frame_00158_t434.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00158_t434.5s.jpg",
+    "frame_index": 26070,
+    "timestamp_s": 434.5
+  },
+  {
+    "filename": "frame_00159_t437.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00159_t437.2s.jpg",
+    "frame_index": 26235,
+    "timestamp_s": 437.25
+  },
+  {
+    "filename": "frame_00160_t440.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00160_t440.0s.jpg",
+    "frame_index": 26400,
+    "timestamp_s": 440.0
+  },
+  {
+    "filename": "frame_00161_t442.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00161_t442.8s.jpg",
+    "frame_index": 26565,
+    "timestamp_s": 442.75
+  },
+  {
+    "filename": "frame_00162_t445.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00162_t445.5s.jpg",
+    "frame_index": 26730,
+    "timestamp_s": 445.5
+  },
+  {
+    "filename": "frame_00163_t448.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00163_t448.2s.jpg",
+    "frame_index": 26895,
+    "timestamp_s": 448.25
+  },
+  {
+    "filename": "frame_00164_t451.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00164_t451.0s.jpg",
+    "frame_index": 27060,
+    "timestamp_s": 451.0
+  },
+  {
+    "filename": "frame_00165_t453.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00165_t453.8s.jpg",
+    "frame_index": 27225,
+    "timestamp_s": 453.75
+  },
+  {
+    "filename": "frame_00166_t456.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00166_t456.5s.jpg",
+    "frame_index": 27390,
+    "timestamp_s": 456.5
+  },
+  {
+    "filename": "frame_00167_t459.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00167_t459.2s.jpg",
+    "frame_index": 27555,
+    "timestamp_s": 459.25
+  },
+  {
+    "filename": "frame_00168_t462.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00168_t462.0s.jpg",
+    "frame_index": 27720,
+    "timestamp_s": 462.0
+  },
+  {
+    "filename": "frame_00169_t464.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00169_t464.8s.jpg",
+    "frame_index": 27885,
+    "timestamp_s": 464.75
+  },
+  {
+    "filename": "frame_00170_t467.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00170_t467.5s.jpg",
+    "frame_index": 28050,
+    "timestamp_s": 467.5
+  },
+  {
+    "filename": "frame_00171_t470.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00171_t470.2s.jpg",
+    "frame_index": 28215,
+    "timestamp_s": 470.25
+  },
+  {
+    "filename": "frame_00172_t473.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00172_t473.0s.jpg",
+    "frame_index": 28380,
+    "timestamp_s": 473.0
+  },
+  {
+    "filename": "frame_00173_t475.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00173_t475.8s.jpg",
+    "frame_index": 28545,
+    "timestamp_s": 475.75
+  },
+  {
+    "filename": "frame_00174_t478.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00174_t478.5s.jpg",
+    "frame_index": 28710,
+    "timestamp_s": 478.5
+  },
+  {
+    "filename": "frame_00175_t481.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00175_t481.2s.jpg",
+    "frame_index": 28875,
+    "timestamp_s": 481.25
+  },
+  {
+    "filename": "frame_00176_t484.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00176_t484.0s.jpg",
+    "frame_index": 29040,
+    "timestamp_s": 484.0
+  },
+  {
+    "filename": "frame_00177_t486.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00177_t486.8s.jpg",
+    "frame_index": 29205,
+    "timestamp_s": 486.75
+  },
+  {
+    "filename": "frame_00178_t489.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00178_t489.5s.jpg",
+    "frame_index": 29370,
+    "timestamp_s": 489.5
+  },
+  {
+    "filename": "frame_00179_t492.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00179_t492.2s.jpg",
+    "frame_index": 29535,
+    "timestamp_s": 492.25
+  },
+  {
+    "filename": "frame_00180_t495.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00180_t495.0s.jpg",
+    "frame_index": 29700,
+    "timestamp_s": 495.0
+  },
+  {
+    "filename": "frame_00181_t497.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00181_t497.8s.jpg",
+    "frame_index": 29865,
+    "timestamp_s": 497.75
+  },
+  {
+    "filename": "frame_00182_t500.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00182_t500.5s.jpg",
+    "frame_index": 30030,
+    "timestamp_s": 500.5
+  },
+  {
+    "filename": "frame_00183_t503.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00183_t503.2s.jpg",
+    "frame_index": 30195,
+    "timestamp_s": 503.25
+  },
+  {
+    "filename": "frame_00184_t506.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00184_t506.0s.jpg",
+    "frame_index": 30360,
+    "timestamp_s": 506.0
+  },
+  {
+    "filename": "frame_00185_t508.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00185_t508.8s.jpg",
+    "frame_index": 30525,
+    "timestamp_s": 508.75
+  },
+  {
+    "filename": "frame_00186_t511.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00186_t511.5s.jpg",
+    "frame_index": 30690,
+    "timestamp_s": 511.5
+  },
+  {
+    "filename": "frame_00187_t514.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00187_t514.2s.jpg",
+    "frame_index": 30855,
+    "timestamp_s": 514.25
+  },
+  {
+    "filename": "frame_00188_t517.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00188_t517.0s.jpg",
+    "frame_index": 31020,
+    "timestamp_s": 517.0
+  },
+  {
+    "filename": "frame_00189_t519.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00189_t519.8s.jpg",
+    "frame_index": 31185,
+    "timestamp_s": 519.75
+  },
+  {
+    "filename": "frame_00190_t522.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00190_t522.5s.jpg",
+    "frame_index": 31350,
+    "timestamp_s": 522.5
+  },
+  {
+    "filename": "frame_00191_t525.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00191_t525.2s.jpg",
+    "frame_index": 31515,
+    "timestamp_s": 525.25
+  },
+  {
+    "filename": "frame_00192_t528.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00192_t528.0s.jpg",
+    "frame_index": 31680,
+    "timestamp_s": 528.0
+  },
+  {
+    "filename": "frame_00193_t530.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00193_t530.8s.jpg",
+    "frame_index": 31845,
+    "timestamp_s": 530.75
+  },
+  {
+    "filename": "frame_00194_t533.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00194_t533.5s.jpg",
+    "frame_index": 32010,
+    "timestamp_s": 533.5
+  },
+  {
+    "filename": "frame_00195_t536.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00195_t536.2s.jpg",
+    "frame_index": 32175,
+    "timestamp_s": 536.25
+  },
+  {
+    "filename": "frame_00196_t539.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00196_t539.0s.jpg",
+    "frame_index": 32340,
+    "timestamp_s": 539.0
+  },
+  {
+    "filename": "frame_00197_t541.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00197_t541.8s.jpg",
+    "frame_index": 32505,
+    "timestamp_s": 541.75
+  },
+  {
+    "filename": "frame_00198_t544.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00198_t544.5s.jpg",
+    "frame_index": 32670,
+    "timestamp_s": 544.5
+  },
+  {
+    "filename": "frame_00199_t547.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00199_t547.2s.jpg",
+    "frame_index": 32835,
+    "timestamp_s": 547.25
+  },
+  {
+    "filename": "frame_00200_t550.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00200_t550.0s.jpg",
+    "frame_index": 33000,
+    "timestamp_s": 550.0
+  },
+  {
+    "filename": "frame_00201_t552.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00201_t552.8s.jpg",
+    "frame_index": 33165,
+    "timestamp_s": 552.75
+  },
+  {
+    "filename": "frame_00202_t555.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00202_t555.5s.jpg",
+    "frame_index": 33330,
+    "timestamp_s": 555.5
+  },
+  {
+    "filename": "frame_00203_t558.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00203_t558.2s.jpg",
+    "frame_index": 33495,
+    "timestamp_s": 558.25
+  },
+  {
+    "filename": "frame_00204_t561.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00204_t561.0s.jpg",
+    "frame_index": 33660,
+    "timestamp_s": 561.0
+  },
+  {
+    "filename": "frame_00205_t563.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00205_t563.8s.jpg",
+    "frame_index": 33825,
+    "timestamp_s": 563.75
+  },
+  {
+    "filename": "frame_00206_t566.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00206_t566.5s.jpg",
+    "frame_index": 33990,
+    "timestamp_s": 566.5
+  },
+  {
+    "filename": "frame_00207_t569.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00207_t569.2s.jpg",
+    "frame_index": 34155,
+    "timestamp_s": 569.25
+  },
+  {
+    "filename": "frame_00208_t572.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00208_t572.0s.jpg",
+    "frame_index": 34320,
+    "timestamp_s": 572.0
+  },
+  {
+    "filename": "frame_00209_t574.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00209_t574.8s.jpg",
+    "frame_index": 34485,
+    "timestamp_s": 574.75
+  },
+  {
+    "filename": "frame_00210_t577.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00210_t577.5s.jpg",
+    "frame_index": 34650,
+    "timestamp_s": 577.5
+  },
+  {
+    "filename": "frame_00211_t580.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00211_t580.2s.jpg",
+    "frame_index": 34815,
+    "timestamp_s": 580.25
+  },
+  {
+    "filename": "frame_00212_t583.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00212_t583.0s.jpg",
+    "frame_index": 34980,
+    "timestamp_s": 583.0
+  },
+  {
+    "filename": "frame_00213_t585.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00213_t585.8s.jpg",
+    "frame_index": 35145,
+    "timestamp_s": 585.75
+  },
+  {
+    "filename": "frame_00214_t588.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00214_t588.5s.jpg",
+    "frame_index": 35310,
+    "timestamp_s": 588.5
+  },
+  {
+    "filename": "frame_00215_t591.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00215_t591.2s.jpg",
+    "frame_index": 35475,
+    "timestamp_s": 591.25
+  },
+  {
+    "filename": "frame_00216_t594.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00216_t594.0s.jpg",
+    "frame_index": 35640,
+    "timestamp_s": 594.0
+  },
+  {
+    "filename": "frame_00217_t596.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00217_t596.8s.jpg",
+    "frame_index": 35805,
+    "timestamp_s": 596.75
+  },
+  {
+    "filename": "frame_00218_t599.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00218_t599.5s.jpg",
+    "frame_index": 35970,
+    "timestamp_s": 599.5
+  },
+  {
+    "filename": "frame_00219_t602.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00219_t602.2s.jpg",
+    "frame_index": 36135,
+    "timestamp_s": 602.25
+  },
+  {
+    "filename": "frame_00220_t605.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00220_t605.0s.jpg",
+    "frame_index": 36300,
+    "timestamp_s": 605.0
+  },
+  {
+    "filename": "frame_00221_t607.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00221_t607.8s.jpg",
+    "frame_index": 36465,
+    "timestamp_s": 607.75
+  },
+  {
+    "filename": "frame_00222_t610.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00222_t610.5s.jpg",
+    "frame_index": 36630,
+    "timestamp_s": 610.5
+  },
+  {
+    "filename": "frame_00223_t613.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00223_t613.2s.jpg",
+    "frame_index": 36795,
+    "timestamp_s": 613.25
+  },
+  {
+    "filename": "frame_00224_t616.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00224_t616.0s.jpg",
+    "frame_index": 36960,
+    "timestamp_s": 616.0
+  },
+  {
+    "filename": "frame_00225_t618.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00225_t618.8s.jpg",
+    "frame_index": 37125,
+    "timestamp_s": 618.75
+  },
+  {
+    "filename": "frame_00226_t621.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00226_t621.5s.jpg",
+    "frame_index": 37290,
+    "timestamp_s": 621.5
+  },
+  {
+    "filename": "frame_00227_t624.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00227_t624.2s.jpg",
+    "frame_index": 37455,
+    "timestamp_s": 624.25
+  },
+  {
+    "filename": "frame_00228_t627.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00228_t627.0s.jpg",
+    "frame_index": 37620,
+    "timestamp_s": 627.0
+  },
+  {
+    "filename": "frame_00229_t629.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00229_t629.8s.jpg",
+    "frame_index": 37785,
+    "timestamp_s": 629.75
+  },
+  {
+    "filename": "frame_00230_t632.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00230_t632.5s.jpg",
+    "frame_index": 37950,
+    "timestamp_s": 632.5
+  },
+  {
+    "filename": "frame_00231_t635.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00231_t635.2s.jpg",
+    "frame_index": 38115,
+    "timestamp_s": 635.25
+  },
+  {
+    "filename": "frame_00232_t638.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00232_t638.0s.jpg",
+    "frame_index": 38280,
+    "timestamp_s": 638.0
+  },
+  {
+    "filename": "frame_00233_t640.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00233_t640.8s.jpg",
+    "frame_index": 38445,
+    "timestamp_s": 640.75
+  },
+  {
+    "filename": "frame_00234_t643.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00234_t643.5s.jpg",
+    "frame_index": 38610,
+    "timestamp_s": 643.5
+  },
+  {
+    "filename": "frame_00235_t646.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00235_t646.2s.jpg",
+    "frame_index": 38775,
+    "timestamp_s": 646.25
+  },
+  {
+    "filename": "frame_00236_t649.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00236_t649.0s.jpg",
+    "frame_index": 38940,
+    "timestamp_s": 649.0
+  },
+  {
+    "filename": "frame_00237_t651.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00237_t651.8s.jpg",
+    "frame_index": 39105,
+    "timestamp_s": 651.75
+  },
+  {
+    "filename": "frame_00238_t654.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00238_t654.5s.jpg",
+    "frame_index": 39270,
+    "timestamp_s": 654.5
+  },
+  {
+    "filename": "frame_00239_t657.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00239_t657.2s.jpg",
+    "frame_index": 39435,
+    "timestamp_s": 657.25
+  },
+  {
+    "filename": "frame_00240_t660.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00240_t660.0s.jpg",
+    "frame_index": 39600,
+    "timestamp_s": 660.0
+  },
+  {
+    "filename": "frame_00241_t662.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00241_t662.8s.jpg",
+    "frame_index": 39765,
+    "timestamp_s": 662.75
+  },
+  {
+    "filename": "frame_00242_t665.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00242_t665.5s.jpg",
+    "frame_index": 39930,
+    "timestamp_s": 665.5
+  },
+  {
+    "filename": "frame_00243_t668.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00243_t668.2s.jpg",
+    "frame_index": 40095,
+    "timestamp_s": 668.25
+  },
+  {
+    "filename": "frame_00244_t671.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00244_t671.0s.jpg",
+    "frame_index": 40260,
+    "timestamp_s": 671.0
+  },
+  {
+    "filename": "frame_00245_t673.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00245_t673.8s.jpg",
+    "frame_index": 40425,
+    "timestamp_s": 673.75
+  },
+  {
+    "filename": "frame_00246_t676.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00246_t676.5s.jpg",
+    "frame_index": 40590,
+    "timestamp_s": 676.5
+  },
+  {
+    "filename": "frame_00247_t679.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00247_t679.2s.jpg",
+    "frame_index": 40755,
+    "timestamp_s": 679.25
+  },
+  {
+    "filename": "frame_00248_t682.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00248_t682.0s.jpg",
+    "frame_index": 40920,
+    "timestamp_s": 682.0
+  },
+  {
+    "filename": "frame_00249_t684.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00249_t684.8s.jpg",
+    "frame_index": 41085,
+    "timestamp_s": 684.75
+  },
+  {
+    "filename": "frame_00250_t687.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00250_t687.5s.jpg",
+    "frame_index": 41250,
+    "timestamp_s": 687.5
+  },
+  {
+    "filename": "frame_00251_t690.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00251_t690.2s.jpg",
+    "frame_index": 41415,
+    "timestamp_s": 690.25
+  },
+  {
+    "filename": "frame_00252_t693.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00252_t693.0s.jpg",
+    "frame_index": 41580,
+    "timestamp_s": 693.0
+  },
+  {
+    "filename": "frame_00253_t695.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00253_t695.8s.jpg",
+    "frame_index": 41745,
+    "timestamp_s": 695.75
+  },
+  {
+    "filename": "frame_00254_t698.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00254_t698.5s.jpg",
+    "frame_index": 41910,
+    "timestamp_s": 698.5
+  },
+  {
+    "filename": "frame_00255_t701.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00255_t701.2s.jpg",
+    "frame_index": 42075,
+    "timestamp_s": 701.25
+  },
+  {
+    "filename": "frame_00256_t704.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00256_t704.0s.jpg",
+    "frame_index": 42240,
+    "timestamp_s": 704.0
+  },
+  {
+    "filename": "frame_00257_t706.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00257_t706.8s.jpg",
+    "frame_index": 42405,
+    "timestamp_s": 706.75
+  },
+  {
+    "filename": "frame_00258_t709.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00258_t709.5s.jpg",
+    "frame_index": 42570,
+    "timestamp_s": 709.5
+  },
+  {
+    "filename": "frame_00259_t712.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00259_t712.2s.jpg",
+    "frame_index": 42735,
+    "timestamp_s": 712.25
+  },
+  {
+    "filename": "frame_00260_t715.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00260_t715.0s.jpg",
+    "frame_index": 42900,
+    "timestamp_s": 715.0
+  },
+  {
+    "filename": "frame_00261_t717.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00261_t717.8s.jpg",
+    "frame_index": 43065,
+    "timestamp_s": 717.75
+  },
+  {
+    "filename": "frame_00262_t720.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00262_t720.5s.jpg",
+    "frame_index": 43230,
+    "timestamp_s": 720.5
+  },
+  {
+    "filename": "frame_00263_t723.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00263_t723.2s.jpg",
+    "frame_index": 43395,
+    "timestamp_s": 723.25
+  },
+  {
+    "filename": "frame_00264_t726.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00264_t726.0s.jpg",
+    "frame_index": 43560,
+    "timestamp_s": 726.0
+  },
+  {
+    "filename": "frame_00265_t728.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00265_t728.8s.jpg",
+    "frame_index": 43725,
+    "timestamp_s": 728.75
+  },
+  {
+    "filename": "frame_00266_t731.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00266_t731.5s.jpg",
+    "frame_index": 43890,
+    "timestamp_s": 731.5
+  },
+  {
+    "filename": "frame_00267_t734.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00267_t734.2s.jpg",
+    "frame_index": 44055,
+    "timestamp_s": 734.25
+  },
+  {
+    "filename": "frame_00268_t737.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00268_t737.0s.jpg",
+    "frame_index": 44220,
+    "timestamp_s": 737.0
+  },
+  {
+    "filename": "frame_00269_t739.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00269_t739.8s.jpg",
+    "frame_index": 44385,
+    "timestamp_s": 739.75
+  },
+  {
+    "filename": "frame_00270_t742.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00270_t742.5s.jpg",
+    "frame_index": 44550,
+    "timestamp_s": 742.5
+  },
+  {
+    "filename": "frame_00271_t745.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00271_t745.2s.jpg",
+    "frame_index": 44715,
+    "timestamp_s": 745.25
+  },
+  {
+    "filename": "frame_00272_t748.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00272_t748.0s.jpg",
+    "frame_index": 44880,
+    "timestamp_s": 748.0
+  },
+  {
+    "filename": "frame_00273_t750.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00273_t750.8s.jpg",
+    "frame_index": 45045,
+    "timestamp_s": 750.75
+  },
+  {
+    "filename": "frame_00274_t753.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00274_t753.5s.jpg",
+    "frame_index": 45210,
+    "timestamp_s": 753.5
+  },
+  {
+    "filename": "frame_00275_t756.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00275_t756.2s.jpg",
+    "frame_index": 45375,
+    "timestamp_s": 756.25
+  },
+  {
+    "filename": "frame_00276_t759.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00276_t759.0s.jpg",
+    "frame_index": 45540,
+    "timestamp_s": 759.0
+  },
+  {
+    "filename": "frame_00277_t761.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00277_t761.8s.jpg",
+    "frame_index": 45705,
+    "timestamp_s": 761.75
+  },
+  {
+    "filename": "frame_00278_t764.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00278_t764.5s.jpg",
+    "frame_index": 45870,
+    "timestamp_s": 764.5
+  },
+  {
+    "filename": "frame_00279_t767.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00279_t767.2s.jpg",
+    "frame_index": 46035,
+    "timestamp_s": 767.25
+  },
+  {
+    "filename": "frame_00280_t770.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00280_t770.0s.jpg",
+    "frame_index": 46200,
+    "timestamp_s": 770.0
+  },
+  {
+    "filename": "frame_00281_t772.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00281_t772.8s.jpg",
+    "frame_index": 46365,
+    "timestamp_s": 772.75
+  },
+  {
+    "filename": "frame_00282_t775.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00282_t775.5s.jpg",
+    "frame_index": 46530,
+    "timestamp_s": 775.5
+  },
+  {
+    "filename": "frame_00283_t778.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00283_t778.2s.jpg",
+    "frame_index": 46695,
+    "timestamp_s": 778.25
+  },
+  {
+    "filename": "frame_00284_t781.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00284_t781.0s.jpg",
+    "frame_index": 46860,
+    "timestamp_s": 781.0
+  },
+  {
+    "filename": "frame_00285_t783.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00285_t783.8s.jpg",
+    "frame_index": 47025,
+    "timestamp_s": 783.75
+  },
+  {
+    "filename": "frame_00286_t786.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00286_t786.5s.jpg",
+    "frame_index": 47190,
+    "timestamp_s": 786.5
+  },
+  {
+    "filename": "frame_00287_t789.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00287_t789.2s.jpg",
+    "frame_index": 47355,
+    "timestamp_s": 789.25
+  },
+  {
+    "filename": "frame_00288_t792.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00288_t792.0s.jpg",
+    "frame_index": 47520,
+    "timestamp_s": 792.0
+  },
+  {
+    "filename": "frame_00289_t794.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00289_t794.8s.jpg",
+    "frame_index": 47685,
+    "timestamp_s": 794.75
+  },
+  {
+    "filename": "frame_00290_t797.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00290_t797.5s.jpg",
+    "frame_index": 47850,
+    "timestamp_s": 797.5
+  },
+  {
+    "filename": "frame_00291_t800.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00291_t800.2s.jpg",
+    "frame_index": 48015,
+    "timestamp_s": 800.25
+  },
+  {
+    "filename": "frame_00292_t803.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00292_t803.0s.jpg",
+    "frame_index": 48180,
+    "timestamp_s": 803.0
+  },
+  {
+    "filename": "frame_00293_t805.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00293_t805.8s.jpg",
+    "frame_index": 48345,
+    "timestamp_s": 805.75
+  },
+  {
+    "filename": "frame_00294_t808.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00294_t808.5s.jpg",
+    "frame_index": 48510,
+    "timestamp_s": 808.5
+  },
+  {
+    "filename": "frame_00295_t811.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00295_t811.2s.jpg",
+    "frame_index": 48675,
+    "timestamp_s": 811.25
+  },
+  {
+    "filename": "frame_00296_t814.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00296_t814.0s.jpg",
+    "frame_index": 48840,
+    "timestamp_s": 814.0
+  },
+  {
+    "filename": "frame_00297_t816.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00297_t816.8s.jpg",
+    "frame_index": 49005,
+    "timestamp_s": 816.75
+  },
+  {
+    "filename": "frame_00298_t819.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00298_t819.5s.jpg",
+    "frame_index": 49170,
+    "timestamp_s": 819.5
+  },
+  {
+    "filename": "frame_00299_t822.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00299_t822.2s.jpg",
+    "frame_index": 49335,
+    "timestamp_s": 822.25
+  },
+  {
+    "filename": "frame_00300_t825.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00300_t825.0s.jpg",
+    "frame_index": 49500,
+    "timestamp_s": 825.0
+  },
+  {
+    "filename": "frame_00301_t827.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00301_t827.8s.jpg",
+    "frame_index": 49665,
+    "timestamp_s": 827.75
+  },
+  {
+    "filename": "frame_00302_t830.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00302_t830.5s.jpg",
+    "frame_index": 49830,
+    "timestamp_s": 830.5
+  },
+  {
+    "filename": "frame_00303_t833.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00303_t833.2s.jpg",
+    "frame_index": 49995,
+    "timestamp_s": 833.25
+  },
+  {
+    "filename": "frame_00304_t836.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00304_t836.0s.jpg",
+    "frame_index": 50160,
+    "timestamp_s": 836.0
+  },
+  {
+    "filename": "frame_00305_t838.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00305_t838.8s.jpg",
+    "frame_index": 50325,
+    "timestamp_s": 838.75
+  },
+  {
+    "filename": "frame_00306_t841.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00306_t841.5s.jpg",
+    "frame_index": 50490,
+    "timestamp_s": 841.5
+  },
+  {
+    "filename": "frame_00307_t844.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00307_t844.2s.jpg",
+    "frame_index": 50655,
+    "timestamp_s": 844.25
+  },
+  {
+    "filename": "frame_00308_t847.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00308_t847.0s.jpg",
+    "frame_index": 50820,
+    "timestamp_s": 847.0
+  },
+  {
+    "filename": "frame_00309_t849.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00309_t849.8s.jpg",
+    "frame_index": 50985,
+    "timestamp_s": 849.75
+  },
+  {
+    "filename": "frame_00310_t852.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00310_t852.5s.jpg",
+    "frame_index": 51150,
+    "timestamp_s": 852.5
+  },
+  {
+    "filename": "frame_00311_t855.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00311_t855.2s.jpg",
+    "frame_index": 51315,
+    "timestamp_s": 855.25
+  },
+  {
+    "filename": "frame_00312_t858.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00312_t858.0s.jpg",
+    "frame_index": 51480,
+    "timestamp_s": 858.0
+  },
+  {
+    "filename": "frame_00313_t860.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00313_t860.8s.jpg",
+    "frame_index": 51645,
+    "timestamp_s": 860.75
+  },
+  {
+    "filename": "frame_00314_t863.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00314_t863.5s.jpg",
+    "frame_index": 51810,
+    "timestamp_s": 863.5
+  },
+  {
+    "filename": "frame_00315_t866.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00315_t866.2s.jpg",
+    "frame_index": 51975,
+    "timestamp_s": 866.25
+  },
+  {
+    "filename": "frame_00316_t869.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00316_t869.0s.jpg",
+    "frame_index": 52140,
+    "timestamp_s": 869.0
+  },
+  {
+    "filename": "frame_00317_t871.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00317_t871.8s.jpg",
+    "frame_index": 52305,
+    "timestamp_s": 871.75
+  },
+  {
+    "filename": "frame_00318_t874.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00318_t874.5s.jpg",
+    "frame_index": 52470,
+    "timestamp_s": 874.5
+  },
+  {
+    "filename": "frame_00319_t877.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00319_t877.2s.jpg",
+    "frame_index": 52635,
+    "timestamp_s": 877.25
+  },
+  {
+    "filename": "frame_00320_t880.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00320_t880.0s.jpg",
+    "frame_index": 52800,
+    "timestamp_s": 880.0
+  },
+  {
+    "filename": "frame_00321_t882.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00321_t882.8s.jpg",
+    "frame_index": 52965,
+    "timestamp_s": 882.75
+  },
+  {
+    "filename": "frame_00322_t885.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00322_t885.5s.jpg",
+    "frame_index": 53130,
+    "timestamp_s": 885.5
+  },
+  {
+    "filename": "frame_00323_t888.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00323_t888.2s.jpg",
+    "frame_index": 53295,
+    "timestamp_s": 888.25
+  },
+  {
+    "filename": "frame_00324_t891.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00324_t891.0s.jpg",
+    "frame_index": 53460,
+    "timestamp_s": 891.0
+  },
+  {
+    "filename": "frame_00325_t893.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00325_t893.8s.jpg",
+    "frame_index": 53625,
+    "timestamp_s": 893.75
+  },
+  {
+    "filename": "frame_00326_t896.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00326_t896.5s.jpg",
+    "frame_index": 53790,
+    "timestamp_s": 896.5
+  },
+  {
+    "filename": "frame_00327_t899.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00327_t899.2s.jpg",
+    "frame_index": 53955,
+    "timestamp_s": 899.25
+  },
+  {
+    "filename": "frame_00328_t902.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00328_t902.0s.jpg",
+    "frame_index": 54120,
+    "timestamp_s": 902.0
+  },
+  {
+    "filename": "frame_00329_t904.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00329_t904.8s.jpg",
+    "frame_index": 54285,
+    "timestamp_s": 904.75
+  },
+  {
+    "filename": "frame_00330_t907.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00330_t907.5s.jpg",
+    "frame_index": 54450,
+    "timestamp_s": 907.5
+  },
+  {
+    "filename": "frame_00331_t910.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00331_t910.2s.jpg",
+    "frame_index": 54615,
+    "timestamp_s": 910.25
+  },
+  {
+    "filename": "frame_00332_t913.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00332_t913.0s.jpg",
+    "frame_index": 54780,
+    "timestamp_s": 913.0
+  },
+  {
+    "filename": "frame_00333_t915.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00333_t915.8s.jpg",
+    "frame_index": 54945,
+    "timestamp_s": 915.75
+  },
+  {
+    "filename": "frame_00334_t918.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00334_t918.5s.jpg",
+    "frame_index": 55110,
+    "timestamp_s": 918.5
+  },
+  {
+    "filename": "frame_00335_t921.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00335_t921.2s.jpg",
+    "frame_index": 55275,
+    "timestamp_s": 921.25
+  },
+  {
+    "filename": "frame_00336_t924.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00336_t924.0s.jpg",
+    "frame_index": 55440,
+    "timestamp_s": 924.0
+  },
+  {
+    "filename": "frame_00337_t926.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00337_t926.8s.jpg",
+    "frame_index": 55605,
+    "timestamp_s": 926.75
+  },
+  {
+    "filename": "frame_00338_t929.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00338_t929.5s.jpg",
+    "frame_index": 55770,
+    "timestamp_s": 929.5
+  },
+  {
+    "filename": "frame_00339_t932.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00339_t932.2s.jpg",
+    "frame_index": 55935,
+    "timestamp_s": 932.25
+  },
+  {
+    "filename": "frame_00340_t935.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00340_t935.0s.jpg",
+    "frame_index": 56100,
+    "timestamp_s": 935.0
+  },
+  {
+    "filename": "frame_00341_t937.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00341_t937.8s.jpg",
+    "frame_index": 56265,
+    "timestamp_s": 937.75
+  },
+  {
+    "filename": "frame_00342_t940.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00342_t940.5s.jpg",
+    "frame_index": 56430,
+    "timestamp_s": 940.5
+  },
+  {
+    "filename": "frame_00343_t943.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00343_t943.2s.jpg",
+    "frame_index": 56595,
+    "timestamp_s": 943.25
+  },
+  {
+    "filename": "frame_00344_t946.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00344_t946.0s.jpg",
+    "frame_index": 56760,
+    "timestamp_s": 946.0
+  },
+  {
+    "filename": "frame_00345_t948.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00345_t948.8s.jpg",
+    "frame_index": 56925,
+    "timestamp_s": 948.75
+  },
+  {
+    "filename": "frame_00346_t951.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00346_t951.5s.jpg",
+    "frame_index": 57090,
+    "timestamp_s": 951.5
+  },
+  {
+    "filename": "frame_00347_t954.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00347_t954.2s.jpg",
+    "frame_index": 57255,
+    "timestamp_s": 954.25
+  },
+  {
+    "filename": "frame_00348_t957.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00348_t957.0s.jpg",
+    "frame_index": 57420,
+    "timestamp_s": 957.0
+  },
+  {
+    "filename": "frame_00349_t959.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00349_t959.8s.jpg",
+    "frame_index": 57585,
+    "timestamp_s": 959.75
+  },
+  {
+    "filename": "frame_00350_t962.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00350_t962.5s.jpg",
+    "frame_index": 57750,
+    "timestamp_s": 962.5
+  },
+  {
+    "filename": "frame_00351_t965.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00351_t965.2s.jpg",
+    "frame_index": 57915,
+    "timestamp_s": 965.25
+  },
+  {
+    "filename": "frame_00352_t968.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00352_t968.0s.jpg",
+    "frame_index": 58080,
+    "timestamp_s": 968.0
+  },
+  {
+    "filename": "frame_00353_t970.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00353_t970.8s.jpg",
+    "frame_index": 58245,
+    "timestamp_s": 970.75
+  },
+  {
+    "filename": "frame_00354_t973.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00354_t973.5s.jpg",
+    "frame_index": 58410,
+    "timestamp_s": 973.5
+  },
+  {
+    "filename": "frame_00355_t976.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00355_t976.2s.jpg",
+    "frame_index": 58575,
+    "timestamp_s": 976.25
+  },
+  {
+    "filename": "frame_00356_t979.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00356_t979.0s.jpg",
+    "frame_index": 58740,
+    "timestamp_s": 979.0
+  },
+  {
+    "filename": "frame_00357_t981.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00357_t981.8s.jpg",
+    "frame_index": 58905,
+    "timestamp_s": 981.75
+  },
+  {
+    "filename": "frame_00358_t984.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00358_t984.5s.jpg",
+    "frame_index": 59070,
+    "timestamp_s": 984.5
+  },
+  {
+    "filename": "frame_00359_t987.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00359_t987.2s.jpg",
+    "frame_index": 59235,
+    "timestamp_s": 987.25
+  },
+  {
+    "filename": "frame_00360_t990.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00360_t990.0s.jpg",
+    "frame_index": 59400,
+    "timestamp_s": 990.0
+  },
+  {
+    "filename": "frame_00361_t992.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00361_t992.8s.jpg",
+    "frame_index": 59565,
+    "timestamp_s": 992.75
+  },
+  {
+    "filename": "frame_00362_t995.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00362_t995.5s.jpg",
+    "frame_index": 59730,
+    "timestamp_s": 995.5
+  },
+  {
+    "filename": "frame_00363_t998.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00363_t998.2s.jpg",
+    "frame_index": 59895,
+    "timestamp_s": 998.25
+  },
+  {
+    "filename": "frame_00364_t1001.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00364_t1001.0s.jpg",
+    "frame_index": 60060,
+    "timestamp_s": 1001.0
+  },
+  {
+    "filename": "frame_00365_t1003.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00365_t1003.8s.jpg",
+    "frame_index": 60225,
+    "timestamp_s": 1003.75
+  },
+  {
+    "filename": "frame_00366_t1006.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00366_t1006.5s.jpg",
+    "frame_index": 60390,
+    "timestamp_s": 1006.5
+  },
+  {
+    "filename": "frame_00367_t1009.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00367_t1009.2s.jpg",
+    "frame_index": 60555,
+    "timestamp_s": 1009.25
+  },
+  {
+    "filename": "frame_00368_t1012.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00368_t1012.0s.jpg",
+    "frame_index": 60720,
+    "timestamp_s": 1012.0
+  },
+  {
+    "filename": "frame_00369_t1014.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00369_t1014.8s.jpg",
+    "frame_index": 60885,
+    "timestamp_s": 1014.75
+  },
+  {
+    "filename": "frame_00370_t1017.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00370_t1017.5s.jpg",
+    "frame_index": 61050,
+    "timestamp_s": 1017.5
+  },
+  {
+    "filename": "frame_00371_t1020.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00371_t1020.2s.jpg",
+    "frame_index": 61215,
+    "timestamp_s": 1020.25
+  },
+  {
+    "filename": "frame_00372_t1023.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00372_t1023.0s.jpg",
+    "frame_index": 61380,
+    "timestamp_s": 1023.0
+  },
+  {
+    "filename": "frame_00373_t1025.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00373_t1025.8s.jpg",
+    "frame_index": 61545,
+    "timestamp_s": 1025.75
+  },
+  {
+    "filename": "frame_00374_t1028.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00374_t1028.5s.jpg",
+    "frame_index": 61710,
+    "timestamp_s": 1028.5
+  },
+  {
+    "filename": "frame_00375_t1031.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00375_t1031.2s.jpg",
+    "frame_index": 61875,
+    "timestamp_s": 1031.25
+  },
+  {
+    "filename": "frame_00376_t1034.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00376_t1034.0s.jpg",
+    "frame_index": 62040,
+    "timestamp_s": 1034.0
+  },
+  {
+    "filename": "frame_00377_t1036.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00377_t1036.8s.jpg",
+    "frame_index": 62205,
+    "timestamp_s": 1036.75
+  },
+  {
+    "filename": "frame_00378_t1039.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00378_t1039.5s.jpg",
+    "frame_index": 62370,
+    "timestamp_s": 1039.5
+  },
+  {
+    "filename": "frame_00379_t1042.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00379_t1042.2s.jpg",
+    "frame_index": 62535,
+    "timestamp_s": 1042.25
+  },
+  {
+    "filename": "frame_00380_t1045.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00380_t1045.0s.jpg",
+    "frame_index": 62700,
+    "timestamp_s": 1045.0
+  },
+  {
+    "filename": "frame_00381_t1047.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00381_t1047.8s.jpg",
+    "frame_index": 62865,
+    "timestamp_s": 1047.75
+  },
+  {
+    "filename": "frame_00382_t1050.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00382_t1050.5s.jpg",
+    "frame_index": 63030,
+    "timestamp_s": 1050.5
+  },
+  {
+    "filename": "frame_00383_t1053.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00383_t1053.2s.jpg",
+    "frame_index": 63195,
+    "timestamp_s": 1053.25
+  },
+  {
+    "filename": "frame_00384_t1056.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00384_t1056.0s.jpg",
+    "frame_index": 63360,
+    "timestamp_s": 1056.0
+  },
+  {
+    "filename": "frame_00385_t1058.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00385_t1058.8s.jpg",
+    "frame_index": 63525,
+    "timestamp_s": 1058.75
+  },
+  {
+    "filename": "frame_00386_t1061.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00386_t1061.5s.jpg",
+    "frame_index": 63690,
+    "timestamp_s": 1061.5
+  },
+  {
+    "filename": "frame_00387_t1064.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00387_t1064.2s.jpg",
+    "frame_index": 63855,
+    "timestamp_s": 1064.25
+  },
+  {
+    "filename": "frame_00388_t1067.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00388_t1067.0s.jpg",
+    "frame_index": 64020,
+    "timestamp_s": 1067.0
+  },
+  {
+    "filename": "frame_00389_t1069.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00389_t1069.8s.jpg",
+    "frame_index": 64185,
+    "timestamp_s": 1069.75
+  },
+  {
+    "filename": "frame_00390_t1072.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00390_t1072.5s.jpg",
+    "frame_index": 64350,
+    "timestamp_s": 1072.5
+  },
+  {
+    "filename": "frame_00391_t1075.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00391_t1075.2s.jpg",
+    "frame_index": 64515,
+    "timestamp_s": 1075.25
+  },
+  {
+    "filename": "frame_00392_t1078.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00392_t1078.0s.jpg",
+    "frame_index": 64680,
+    "timestamp_s": 1078.0
+  },
+  {
+    "filename": "frame_00393_t1080.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00393_t1080.8s.jpg",
+    "frame_index": 64845,
+    "timestamp_s": 1080.75
+  },
+  {
+    "filename": "frame_00394_t1083.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00394_t1083.5s.jpg",
+    "frame_index": 65010,
+    "timestamp_s": 1083.5
+  },
+  {
+    "filename": "frame_00395_t1086.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00395_t1086.2s.jpg",
+    "frame_index": 65175,
+    "timestamp_s": 1086.25
+  },
+  {
+    "filename": "frame_00396_t1089.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00396_t1089.0s.jpg",
+    "frame_index": 65340,
+    "timestamp_s": 1089.0
+  },
+  {
+    "filename": "frame_00397_t1091.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00397_t1091.8s.jpg",
+    "frame_index": 65505,
+    "timestamp_s": 1091.75
+  },
+  {
+    "filename": "frame_00398_t1094.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00398_t1094.5s.jpg",
+    "frame_index": 65670,
+    "timestamp_s": 1094.5
+  },
+  {
+    "filename": "frame_00399_t1097.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00399_t1097.2s.jpg",
+    "frame_index": 65835,
+    "timestamp_s": 1097.25
+  },
+  {
+    "filename": "frame_00400_t1100.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00400_t1100.0s.jpg",
+    "frame_index": 66000,
+    "timestamp_s": 1100.0
+  },
+  {
+    "filename": "frame_00401_t1102.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00401_t1102.8s.jpg",
+    "frame_index": 66165,
+    "timestamp_s": 1102.75
+  },
+  {
+    "filename": "frame_00402_t1105.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00402_t1105.5s.jpg",
+    "frame_index": 66330,
+    "timestamp_s": 1105.5
+  },
+  {
+    "filename": "frame_00403_t1108.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00403_t1108.2s.jpg",
+    "frame_index": 66495,
+    "timestamp_s": 1108.25
+  },
+  {
+    "filename": "frame_00404_t1111.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00404_t1111.0s.jpg",
+    "frame_index": 66660,
+    "timestamp_s": 1111.0
+  },
+  {
+    "filename": "frame_00405_t1113.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00405_t1113.8s.jpg",
+    "frame_index": 66825,
+    "timestamp_s": 1113.75
+  },
+  {
+    "filename": "frame_00406_t1116.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00406_t1116.5s.jpg",
+    "frame_index": 66990,
+    "timestamp_s": 1116.5
+  },
+  {
+    "filename": "frame_00407_t1119.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00407_t1119.2s.jpg",
+    "frame_index": 67155,
+    "timestamp_s": 1119.25
+  },
+  {
+    "filename": "frame_00408_t1122.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00408_t1122.0s.jpg",
+    "frame_index": 67320,
+    "timestamp_s": 1122.0
+  },
+  {
+    "filename": "frame_00409_t1124.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00409_t1124.8s.jpg",
+    "frame_index": 67485,
+    "timestamp_s": 1124.75
+  },
+  {
+    "filename": "frame_00410_t1127.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00410_t1127.5s.jpg",
+    "frame_index": 67650,
+    "timestamp_s": 1127.5
+  },
+  {
+    "filename": "frame_00411_t1130.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00411_t1130.2s.jpg",
+    "frame_index": 67815,
+    "timestamp_s": 1130.25
+  },
+  {
+    "filename": "frame_00412_t1133.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00412_t1133.0s.jpg",
+    "frame_index": 67980,
+    "timestamp_s": 1133.0
+  },
+  {
+    "filename": "frame_00413_t1135.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00413_t1135.8s.jpg",
+    "frame_index": 68145,
+    "timestamp_s": 1135.75
+  },
+  {
+    "filename": "frame_00414_t1138.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00414_t1138.5s.jpg",
+    "frame_index": 68310,
+    "timestamp_s": 1138.5
+  },
+  {
+    "filename": "frame_00415_t1141.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00415_t1141.2s.jpg",
+    "frame_index": 68475,
+    "timestamp_s": 1141.25
+  },
+  {
+    "filename": "frame_00416_t1144.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00416_t1144.0s.jpg",
+    "frame_index": 68640,
+    "timestamp_s": 1144.0
+  },
+  {
+    "filename": "frame_00417_t1146.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00417_t1146.8s.jpg",
+    "frame_index": 68805,
+    "timestamp_s": 1146.75
+  },
+  {
+    "filename": "frame_00418_t1149.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00418_t1149.5s.jpg",
+    "frame_index": 68970,
+    "timestamp_s": 1149.5
+  },
+  {
+    "filename": "frame_00419_t1152.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00419_t1152.2s.jpg",
+    "frame_index": 69135,
+    "timestamp_s": 1152.25
+  },
+  {
+    "filename": "frame_00420_t1155.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00420_t1155.0s.jpg",
+    "frame_index": 69300,
+    "timestamp_s": 1155.0
+  },
+  {
+    "filename": "frame_00421_t1157.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00421_t1157.8s.jpg",
+    "frame_index": 69465,
+    "timestamp_s": 1157.75
+  },
+  {
+    "filename": "frame_00422_t1160.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00422_t1160.5s.jpg",
+    "frame_index": 69630,
+    "timestamp_s": 1160.5
+  },
+  {
+    "filename": "frame_00423_t1163.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00423_t1163.2s.jpg",
+    "frame_index": 69795,
+    "timestamp_s": 1163.25
+  },
+  {
+    "filename": "frame_00424_t1166.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00424_t1166.0s.jpg",
+    "frame_index": 69960,
+    "timestamp_s": 1166.0
+  },
+  {
+    "filename": "frame_00425_t1168.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00425_t1168.8s.jpg",
+    "frame_index": 70125,
+    "timestamp_s": 1168.75
+  },
+  {
+    "filename": "frame_00426_t1171.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00426_t1171.5s.jpg",
+    "frame_index": 70290,
+    "timestamp_s": 1171.5
+  },
+  {
+    "filename": "frame_00427_t1174.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00427_t1174.2s.jpg",
+    "frame_index": 70455,
+    "timestamp_s": 1174.25
+  },
+  {
+    "filename": "frame_00428_t1177.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00428_t1177.0s.jpg",
+    "frame_index": 70620,
+    "timestamp_s": 1177.0
+  },
+  {
+    "filename": "frame_00429_t1179.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00429_t1179.8s.jpg",
+    "frame_index": 70785,
+    "timestamp_s": 1179.75
+  },
+  {
+    "filename": "frame_00430_t1182.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00430_t1182.5s.jpg",
+    "frame_index": 70950,
+    "timestamp_s": 1182.5
+  },
+  {
+    "filename": "frame_00431_t1185.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00431_t1185.2s.jpg",
+    "frame_index": 71115,
+    "timestamp_s": 1185.25
+  },
+  {
+    "filename": "frame_00432_t1188.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00432_t1188.0s.jpg",
+    "frame_index": 71280,
+    "timestamp_s": 1188.0
+  },
+  {
+    "filename": "frame_00433_t1190.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00433_t1190.8s.jpg",
+    "frame_index": 71445,
+    "timestamp_s": 1190.75
+  },
+  {
+    "filename": "frame_00434_t1193.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00434_t1193.5s.jpg",
+    "frame_index": 71610,
+    "timestamp_s": 1193.5
+  },
+  {
+    "filename": "frame_00435_t1196.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00435_t1196.2s.jpg",
+    "frame_index": 71775,
+    "timestamp_s": 1196.25
+  },
+  {
+    "filename": "frame_00436_t1199.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00436_t1199.0s.jpg",
+    "frame_index": 71940,
+    "timestamp_s": 1199.0
+  },
+  {
+    "filename": "frame_00437_t1201.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00437_t1201.8s.jpg",
+    "frame_index": 72105,
+    "timestamp_s": 1201.75
+  },
+  {
+    "filename": "frame_00438_t1204.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00438_t1204.5s.jpg",
+    "frame_index": 72270,
+    "timestamp_s": 1204.5
+  },
+  {
+    "filename": "frame_00439_t1207.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00439_t1207.2s.jpg",
+    "frame_index": 72435,
+    "timestamp_s": 1207.25
+  },
+  {
+    "filename": "frame_00440_t1210.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00440_t1210.0s.jpg",
+    "frame_index": 72600,
+    "timestamp_s": 1210.0
+  },
+  {
+    "filename": "frame_00441_t1212.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00441_t1212.8s.jpg",
+    "frame_index": 72765,
+    "timestamp_s": 1212.75
+  },
+  {
+    "filename": "frame_00442_t1215.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00442_t1215.5s.jpg",
+    "frame_index": 72930,
+    "timestamp_s": 1215.5
+  },
+  {
+    "filename": "frame_00443_t1218.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00443_t1218.2s.jpg",
+    "frame_index": 73095,
+    "timestamp_s": 1218.25
+  },
+  {
+    "filename": "frame_00444_t1221.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00444_t1221.0s.jpg",
+    "frame_index": 73260,
+    "timestamp_s": 1221.0
+  },
+  {
+    "filename": "frame_00445_t1223.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00445_t1223.8s.jpg",
+    "frame_index": 73425,
+    "timestamp_s": 1223.75
+  },
+  {
+    "filename": "frame_00446_t1226.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00446_t1226.5s.jpg",
+    "frame_index": 73590,
+    "timestamp_s": 1226.5
+  },
+  {
+    "filename": "frame_00447_t1229.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00447_t1229.2s.jpg",
+    "frame_index": 73755,
+    "timestamp_s": 1229.25
+  },
+  {
+    "filename": "frame_00448_t1232.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00448_t1232.0s.jpg",
+    "frame_index": 73920,
+    "timestamp_s": 1232.0
+  },
+  {
+    "filename": "frame_00449_t1234.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00449_t1234.8s.jpg",
+    "frame_index": 74085,
+    "timestamp_s": 1234.75
+  },
+  {
+    "filename": "frame_00450_t1237.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00450_t1237.5s.jpg",
+    "frame_index": 74250,
+    "timestamp_s": 1237.5
+  },
+  {
+    "filename": "frame_00451_t1240.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00451_t1240.2s.jpg",
+    "frame_index": 74415,
+    "timestamp_s": 1240.25
+  },
+  {
+    "filename": "frame_00452_t1243.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00452_t1243.0s.jpg",
+    "frame_index": 74580,
+    "timestamp_s": 1243.0
+  },
+  {
+    "filename": "frame_00453_t1245.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00453_t1245.8s.jpg",
+    "frame_index": 74745,
+    "timestamp_s": 1245.75
+  },
+  {
+    "filename": "frame_00454_t1248.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00454_t1248.5s.jpg",
+    "frame_index": 74910,
+    "timestamp_s": 1248.5
+  },
+  {
+    "filename": "frame_00455_t1251.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00455_t1251.2s.jpg",
+    "frame_index": 75075,
+    "timestamp_s": 1251.25
+  },
+  {
+    "filename": "frame_00456_t1254.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00456_t1254.0s.jpg",
+    "frame_index": 75240,
+    "timestamp_s": 1254.0
+  },
+  {
+    "filename": "frame_00457_t1256.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00457_t1256.8s.jpg",
+    "frame_index": 75405,
+    "timestamp_s": 1256.75
+  },
+  {
+    "filename": "frame_00458_t1259.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00458_t1259.5s.jpg",
+    "frame_index": 75570,
+    "timestamp_s": 1259.5
+  },
+  {
+    "filename": "frame_00459_t1262.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00459_t1262.2s.jpg",
+    "frame_index": 75735,
+    "timestamp_s": 1262.25
+  },
+  {
+    "filename": "frame_00460_t1265.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00460_t1265.0s.jpg",
+    "frame_index": 75900,
+    "timestamp_s": 1265.0
+  },
+  {
+    "filename": "frame_00461_t1267.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00461_t1267.8s.jpg",
+    "frame_index": 76065,
+    "timestamp_s": 1267.75
+  },
+  {
+    "filename": "frame_00462_t1270.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00462_t1270.5s.jpg",
+    "frame_index": 76230,
+    "timestamp_s": 1270.5
+  },
+  {
+    "filename": "frame_00463_t1273.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00463_t1273.2s.jpg",
+    "frame_index": 76395,
+    "timestamp_s": 1273.25
+  },
+  {
+    "filename": "frame_00464_t1276.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00464_t1276.0s.jpg",
+    "frame_index": 76560,
+    "timestamp_s": 1276.0
+  },
+  {
+    "filename": "frame_00465_t1278.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00465_t1278.8s.jpg",
+    "frame_index": 76725,
+    "timestamp_s": 1278.75
+  },
+  {
+    "filename": "frame_00466_t1281.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00466_t1281.5s.jpg",
+    "frame_index": 76890,
+    "timestamp_s": 1281.5
+  },
+  {
+    "filename": "frame_00467_t1284.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00467_t1284.2s.jpg",
+    "frame_index": 77055,
+    "timestamp_s": 1284.25
+  },
+  {
+    "filename": "frame_00468_t1287.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00468_t1287.0s.jpg",
+    "frame_index": 77220,
+    "timestamp_s": 1287.0
+  },
+  {
+    "filename": "frame_00469_t1289.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00469_t1289.8s.jpg",
+    "frame_index": 77385,
+    "timestamp_s": 1289.75
+  },
+  {
+    "filename": "frame_00470_t1292.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00470_t1292.5s.jpg",
+    "frame_index": 77550,
+    "timestamp_s": 1292.5
+  },
+  {
+    "filename": "frame_00471_t1295.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00471_t1295.2s.jpg",
+    "frame_index": 77715,
+    "timestamp_s": 1295.25
+  },
+  {
+    "filename": "frame_00472_t1298.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00472_t1298.0s.jpg",
+    "frame_index": 77880,
+    "timestamp_s": 1298.0
+  },
+  {
+    "filename": "frame_00473_t1300.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00473_t1300.8s.jpg",
+    "frame_index": 78045,
+    "timestamp_s": 1300.75
+  },
+  {
+    "filename": "frame_00474_t1303.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00474_t1303.5s.jpg",
+    "frame_index": 78210,
+    "timestamp_s": 1303.5
+  },
+  {
+    "filename": "frame_00475_t1306.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00475_t1306.2s.jpg",
+    "frame_index": 78375,
+    "timestamp_s": 1306.25
+  },
+  {
+    "filename": "frame_00476_t1309.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00476_t1309.0s.jpg",
+    "frame_index": 78540,
+    "timestamp_s": 1309.0
+  },
+  {
+    "filename": "frame_00477_t1311.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00477_t1311.8s.jpg",
+    "frame_index": 78705,
+    "timestamp_s": 1311.75
+  },
+  {
+    "filename": "frame_00478_t1314.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00478_t1314.5s.jpg",
+    "frame_index": 78870,
+    "timestamp_s": 1314.5
+  },
+  {
+    "filename": "frame_00479_t1317.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00479_t1317.2s.jpg",
+    "frame_index": 79035,
+    "timestamp_s": 1317.25
+  },
+  {
+    "filename": "frame_00480_t1320.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00480_t1320.0s.jpg",
+    "frame_index": 79200,
+    "timestamp_s": 1320.0
+  },
+  {
+    "filename": "frame_00481_t1322.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00481_t1322.8s.jpg",
+    "frame_index": 79365,
+    "timestamp_s": 1322.75
+  },
+  {
+    "filename": "frame_00482_t1325.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00482_t1325.5s.jpg",
+    "frame_index": 79530,
+    "timestamp_s": 1325.5
+  },
+  {
+    "filename": "frame_00483_t1328.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00483_t1328.2s.jpg",
+    "frame_index": 79695,
+    "timestamp_s": 1328.25
+  },
+  {
+    "filename": "frame_00484_t1331.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00484_t1331.0s.jpg",
+    "frame_index": 79860,
+    "timestamp_s": 1331.0
+  },
+  {
+    "filename": "frame_00485_t1333.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00485_t1333.8s.jpg",
+    "frame_index": 80025,
+    "timestamp_s": 1333.75
+  },
+  {
+    "filename": "frame_00486_t1336.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00486_t1336.5s.jpg",
+    "frame_index": 80190,
+    "timestamp_s": 1336.5
+  },
+  {
+    "filename": "frame_00487_t1339.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00487_t1339.2s.jpg",
+    "frame_index": 80355,
+    "timestamp_s": 1339.25
+  },
+  {
+    "filename": "frame_00488_t1342.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00488_t1342.0s.jpg",
+    "frame_index": 80520,
+    "timestamp_s": 1342.0
+  },
+  {
+    "filename": "frame_00489_t1344.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00489_t1344.8s.jpg",
+    "frame_index": 80685,
+    "timestamp_s": 1344.75
+  },
+  {
+    "filename": "frame_00490_t1347.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00490_t1347.5s.jpg",
+    "frame_index": 80850,
+    "timestamp_s": 1347.5
+  },
+  {
+    "filename": "frame_00491_t1350.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00491_t1350.2s.jpg",
+    "frame_index": 81015,
+    "timestamp_s": 1350.25
+  },
+  {
+    "filename": "frame_00492_t1353.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00492_t1353.0s.jpg",
+    "frame_index": 81180,
+    "timestamp_s": 1353.0
+  },
+  {
+    "filename": "frame_00493_t1355.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00493_t1355.8s.jpg",
+    "frame_index": 81345,
+    "timestamp_s": 1355.75
+  },
+  {
+    "filename": "frame_00494_t1358.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00494_t1358.5s.jpg",
+    "frame_index": 81510,
+    "timestamp_s": 1358.5
+  },
+  {
+    "filename": "frame_00495_t1361.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00495_t1361.2s.jpg",
+    "frame_index": 81675,
+    "timestamp_s": 1361.25
+  },
+  {
+    "filename": "frame_00496_t1364.0s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00496_t1364.0s.jpg",
+    "frame_index": 81840,
+    "timestamp_s": 1364.0
+  },
+  {
+    "filename": "frame_00497_t1366.8s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00497_t1366.8s.jpg",
+    "frame_index": 82005,
+    "timestamp_s": 1366.75
+  },
+  {
+    "filename": "frame_00498_t1369.5s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00498_t1369.5s.jpg",
+    "frame_index": 82170,
+    "timestamp_s": 1369.5
+  },
+  {
+    "filename": "frame_00499_t1372.2s.jpg",
+    "filepath": "C:\\Users\\User\\Documents\\BT_vision\\vision\\dataset\\btcanal\\images\\frame_00499_t1372.2s.jpg",
+    "frame_index": 82335,
+    "timestamp_s": 1372.25
+  }
+]
