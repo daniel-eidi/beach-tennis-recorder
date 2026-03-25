@@ -112,6 +112,43 @@ class _RecordingScreenState extends State<RecordingScreen>
     });
   }
 
+  Future<void> _saveHighlight(PipelineController pipeline) async {
+    final settings = context.read<SettingsService>();
+    final duration = settings.gestureHighlightDuration;
+
+    try {
+      await pipeline.clipService.saveHighlight(
+        DateTime.now(),
+        duration,
+      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                const Icon(Icons.star, color: Colors.amber),
+                const SizedBox(width: 8),
+                Text('HIGHLIGHT SAVED! (last ${duration}s)'),
+              ],
+            ),
+            backgroundColor: Colors.amber.shade800,
+            duration: const Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Failed to save highlight: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
   Future<void> _stopSession() async {
     _elapsedTimer?.cancel();
     final pipeline = context.read<PipelineController>();
@@ -497,28 +534,42 @@ class _RecordingScreenState extends State<RecordingScreen>
               ),
             ),
 
-            // Frames processed counter.
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  '${pipeline.framesProcessed}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFeatures: [FontFeature.tabularFigures()],
+            // Save highlight button (last 30s).
+            GestureDetector(
+              onTap: pipeline.isRecording ? () => _saveHighlight(pipeline) : null,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: pipeline.isRecording
+                          ? Colors.amber.withOpacity(0.2)
+                          : Colors.white10,
+                      border: Border.all(
+                        color: pipeline.isRecording ? Colors.amber : Colors.white24,
+                        width: 2,
+                      ),
+                    ),
+                    child: Icon(
+                      Icons.star_rounded,
+                      color: pipeline.isRecording ? Colors.amber : Colors.white24,
+                      size: 28,
+                    ),
                   ),
-                ),
-                const Text(
-                  'FRAMES',
-                  style: TextStyle(
-                    color: Colors.white54,
-                    fontSize: 12,
-                    letterSpacing: 1.2,
+                  const SizedBox(height: 4),
+                  Text(
+                    'HIGHLIGHT',
+                    style: TextStyle(
+                      color: pipeline.isRecording ? Colors.white54 : Colors.white24,
+                      fontSize: 10,
+                      letterSpacing: 1.0,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
