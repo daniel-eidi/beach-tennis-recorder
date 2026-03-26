@@ -90,6 +90,41 @@ class Clip {
   /// Whether this clip has highlight markers (bookmarked moments).
   bool get hasHighlights => highlightMarkers.isNotEmpty;
 
+  /// Returns the nearest highlight marker to [position], or null if none exist.
+  Duration? nearestHighlight(Duration position) {
+    if (highlightMarkers.isEmpty) return null;
+    Duration? nearest;
+    int minDiff = 0x7FFFFFFFFFFFFFFF;
+    for (final marker in highlightMarkers) {
+      final diff = (marker.inMilliseconds - position.inMilliseconds).abs();
+      if (diff < minDiff) {
+        minDiff = diff;
+        nearest = marker;
+      }
+    }
+    return nearest;
+  }
+
+  /// Returns the next highlight marker after [position], or null if none.
+  Duration? nextHighlight(Duration position) {
+    final sorted = List<Duration>.from(highlightMarkers)
+      ..sort((a, b) => a.compareTo(b));
+    for (final marker in sorted) {
+      if (marker > position) return marker;
+    }
+    return null;
+  }
+
+  /// Returns the previous highlight marker before [position], or null if none.
+  Duration? previousHighlight(Duration position) {
+    final sorted = List<Duration>.from(highlightMarkers)
+      ..sort((a, b) => b.compareTo(a));
+    for (final marker in sorted) {
+      if (marker < position) return marker;
+    }
+    return null;
+  }
+
   Clip copyWith({
     String? id,
     int? matchId,

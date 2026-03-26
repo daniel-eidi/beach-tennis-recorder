@@ -8,6 +8,7 @@ import 'package:video_player/video_player.dart';
 
 import '../models/clip.dart';
 import '../services/clip_service.dart';
+import '../services/video_trim_service.dart';
 
 /// Screen that displays all saved rally clips grouped by match.
 ///
@@ -315,15 +316,19 @@ class _ClipTile extends StatelessWidget {
   }
 }
 
-/// Full-screen inline video player with enhanced controls.
+/// Full-screen inline video player with enhanced controls and highlight
+/// navigation.
 ///
 /// Features:
 /// - Play/pause
-/// - Seekable progress bar
+/// - Seekable progress bar with highlight markers
+/// - Previous/Next highlight navigation buttons
+/// - Highlight list below the player with tap-to-seek
+/// - Share individual highlights (full video + timestamp message for MVP)
+/// - Full video share
 /// - Playback speed control (0.5x, 1x, 1.5x, 2x) for rally review
 /// - Frame-by-frame stepping (forward/back) using ~33ms steps
 /// - Clip metadata display
-/// - Share button
 ///
 /// Implements TASK-01-11, TASK-01-12.
 class _ClipPlayerScreen extends StatefulWidget {
@@ -346,9 +351,14 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
 
   static const _speedOptions = [0.5, 1.0, 1.5, 2.0];
 
+  /// Sorted list of highlight markers for navigation.
+  late final List<Duration> _sortedMarkers;
+
   @override
   void initState() {
     super.initState();
+    _sortedMarkers = List<Duration>.from(widget.clip.highlightMarkers)
+      ..sort((a, b) => a.compareTo(b));
     _videoController = VideoPlayerController.file(File(widget.clip.filePath))
       ..initialize().then((_) {
         if (mounted) {
@@ -397,9 +407,45 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
     );
   }
 
+  void _jumpToNextHighlight() {
+    if (!_isInitialized || _sortedMarkers.isEmpty) return;
+    final current = _videoController.value.position;
+    final next = widget.clip.nextHighlight(current);
+    if (next != null) {
+      _videoController.seekTo(next);
+    }
+  }
+
+  void _jumpToPreviousHighlight() {
+    if (!_isInitialized || _sortedMarkers.isEmpty) return;
+    final current = _videoController.value.position;
+    final prev = widget.clip.previousHighlight(current);
+    if (prev != null) {
+      _videoController.seekTo(prev);
+    }
+  }
+
+  void _seekToMarker(Duration marker) {
+    if (!_isInitialized) return;
+    _videoController.seekTo(marker);
+  }
+
+  void _shareHighlight(Duration marker, int index) {
+    final message = VideoTrimService.buildShareMessage(
+      rallyNumber: widget.clip.rallyNumber,
+      markerPosition: marker,
+      highlightIndex: index + 1,
+    );
+    Share.shareXFiles(
+      [XFile(widget.clip.filePath)],
+      text: message,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final dateFormat = DateFormat('dd MMM yyyy, HH:mm:ss');
+    final hasMarkers = _sortedMarkers.isNotEmpty;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -414,7 +460,7 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
           ),
           IconButton(
             icon: const Icon(Icons.share),
-            tooltip: 'Share',
+            tooltip: 'Share full video',
             onPressed: _shareClip,
           ),
         ],
@@ -458,12 +504,18 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
                     value:
                         widget.clip.isUploaded ? 'Uploaded' : 'Local only',
                   ),
+                  if (hasMarkers)
+                    _MetadataItem(
+                      label: 'Highlights',
+                      value: '${_sortedMarkers.length}',
+                    ),
                 ],
               ),
             ),
 
           // Video player.
           Expanded(
+            flex: hasMarkers ? 3 : 1,
             child: Center(
               child: _isInitialized
                   ? AspectRatio(
@@ -479,6 +531,13 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
                   : const CircularProgressIndicator(),
             ),
           ),
+
+          // Highlight list below the player.
+          if (hasMarkers && _isInitialized)
+            Expanded(
+              flex: 2,
+              child: _buildHighlightList(),
+            ),
         ],
       ),
     );
@@ -488,6 +547,8 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
     return ValueListenableBuilder<VideoPlayerValue>(
       valueListenable: _videoController,
       builder: (context, value, child) {
+        final hasMarkers = _sortedMarkers.isNotEmpty;
+
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
           decoration: const BoxDecoration(
@@ -500,21 +561,40 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Progress bar.
-              VideoProgressIndicator(
-                _videoController,
-                allowScrubbing: true,
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                colors: const VideoProgressColors(
-                  playedColor: Color(0xFF1E88E5),
-                  bufferedColor: Colors.white24,
-                  backgroundColor: Colors.white12,
+              // Progress bar with highlight markers overlay.
+              if (hasMarkers && value.duration.inMilliseconds > 0)
+                _HighlightProgressBar(
+                  controller: _videoController,
+                  markers: _sortedMarkers,
+                )
+              else
+                VideoProgressIndicator(
+                  _videoController,
+                  allowScrubbing: true,
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  colors: const VideoProgressColors(
+                    playedColor: Color(0xFF1E88E5),
+                    bufferedColor: Colors.white24,
+                    backgroundColor: Colors.white12,
+                  ),
                 ),
-              ),
               const SizedBox(height: 4),
               // Controls row.
               Row(
                 children: [
+                  // Previous highlight button.
+                  if (hasMarkers)
+                    IconButton(
+                      icon: const Icon(Icons.star, color: Colors.amber, size: 16),
+                      iconSize: 22,
+                      tooltip: 'Previous highlight',
+                      padding: const EdgeInsets.all(4),
+                      constraints: const BoxConstraints(),
+                      onPressed: widget.clip.previousHighlight(value.position) != null
+                          ? _jumpToPreviousHighlight
+                          : null,
+                    ),
+
                   // Frame step backward.
                   IconButton(
                     icon: const Icon(Icons.skip_previous, color: Colors.white),
@@ -542,6 +622,19 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
                     tooltip: 'Step forward 1 frame',
                     onPressed: _stepForward,
                   ),
+
+                  // Next highlight button.
+                  if (hasMarkers)
+                    IconButton(
+                      icon: const Icon(Icons.star, color: Colors.amber, size: 16),
+                      iconSize: 22,
+                      tooltip: 'Next highlight',
+                      padding: const EdgeInsets.all(4),
+                      constraints: const BoxConstraints(),
+                      onPressed: widget.clip.nextHighlight(value.position) != null
+                          ? _jumpToNextHighlight
+                          : null,
+                    ),
 
                   const SizedBox(width: 8),
 
@@ -598,11 +691,249 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
     );
   }
 
+  /// Builds the scrollable highlight list below the video player.
+  Widget _buildHighlightList() {
+    return ValueListenableBuilder<VideoPlayerValue>(
+      valueListenable: _videoController,
+      builder: (context, value, child) {
+        final currentPos = value.position;
+
+        return Container(
+          color: const Color(0xFF0D0D1A),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+                child: Row(
+                  children: [
+                    const Icon(Icons.star, color: Colors.amber, size: 16),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Highlights (${_sortedMarkers.length})',
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Divider(height: 1, color: Colors.white12),
+              Expanded(
+                child: ListView.builder(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  itemCount: _sortedMarkers.length,
+                  itemBuilder: (context, index) {
+                    final marker = _sortedMarkers[index];
+                    // Consider a marker "active" if the playhead is within
+                    // 2 seconds of it.
+                    final isActive =
+                        (currentPos.inMilliseconds - marker.inMilliseconds)
+                                .abs() <
+                            2000;
+
+                    return _HighlightListItem(
+                      index: index,
+                      marker: marker,
+                      isActive: isActive,
+                      onTap: () => _seekToMarker(marker),
+                      onShare: () => _shareHighlight(marker, index),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   String _formatPosition(Duration d) {
     final minutes = d.inMinutes.remainder(60);
     final seconds = d.inSeconds.remainder(60);
     return '${minutes.toString().padLeft(2, '0')}:'
         '${seconds.toString().padLeft(2, '0')}';
+  }
+}
+
+/// A single item in the highlight list below the player.
+class _HighlightListItem extends StatelessWidget {
+  final int index;
+  final Duration marker;
+  final bool isActive;
+  final VoidCallback onTap;
+  final VoidCallback onShare;
+
+  const _HighlightListItem({
+    required this.index,
+    required this.marker,
+    required this.isActive,
+    required this.onTap,
+    required this.onShare,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final minutes = marker.inMinutes.remainder(60);
+    final seconds = marker.inSeconds.remainder(60);
+    final timestamp = '${minutes.toString().padLeft(2, '0')}:'
+        '${seconds.toString().padLeft(2, '0')}';
+
+    return Material(
+      color: isActive ? Colors.amber.withOpacity(0.1) : Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: Row(
+            children: [
+              Icon(
+                Icons.star,
+                size: 18,
+                color: isActive ? Colors.amber : Colors.white38,
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  'Highlight ${index + 1}',
+                  style: TextStyle(
+                    color: isActive ? Colors.amber : Colors.white70,
+                    fontSize: 14,
+                    fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
+                  ),
+                ),
+              ),
+              Text(
+                timestamp,
+                style: TextStyle(
+                  color: isActive ? Colors.amber : Colors.white54,
+                  fontSize: 13,
+                  fontFeatures: const [FontFeature.tabularFigures()],
+                ),
+              ),
+              const SizedBox(width: 8),
+              IconButton(
+                icon: Icon(
+                  Icons.share,
+                  size: 18,
+                  color: isActive ? Colors.amber : Colors.white38,
+                ),
+                tooltip: 'Share this highlight',
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+                onPressed: onShare,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Custom progress bar that overlays highlight markers as amber dots.
+///
+/// Wraps the standard [VideoProgressIndicator] and paints markers on top.
+class _HighlightProgressBar extends StatelessWidget {
+  final VideoPlayerController controller;
+  final List<Duration> markers;
+
+  const _HighlightProgressBar({
+    required this.controller,
+    required this.markers,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          VideoProgressIndicator(
+            controller,
+            allowScrubbing: true,
+            padding: EdgeInsets.zero,
+            colors: const VideoProgressColors(
+              playedColor: Color(0xFF1E88E5),
+              bufferedColor: Colors.white24,
+              backgroundColor: Colors.white12,
+            ),
+          ),
+          // Paint highlight markers on top.
+          if (controller.value.duration.inMilliseconds > 0)
+            Positioned.fill(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final totalMs =
+                      controller.value.duration.inMilliseconds.toDouble();
+                  final barWidth = constraints.maxWidth;
+
+                  return CustomPaint(
+                    painter: _MarkerPainter(
+                      markers: markers,
+                      totalDurationMs: totalMs,
+                      barWidth: barWidth,
+                    ),
+                  );
+                },
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Custom painter that draws amber dots at marker positions on the progress bar.
+class _MarkerPainter extends CustomPainter {
+  final List<Duration> markers;
+  final double totalDurationMs;
+  final double barWidth;
+
+  _MarkerPainter({
+    required this.markers,
+    required this.totalDurationMs,
+    required this.barWidth,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (totalDurationMs <= 0) return;
+
+    final paint = Paint()
+      ..color = Colors.amber
+      ..style = PaintingStyle.fill;
+
+    final centerY = size.height / 2;
+
+    for (final marker in markers) {
+      final fraction = marker.inMilliseconds / totalDurationMs;
+      if (fraction < 0 || fraction > 1) continue;
+
+      final x = fraction * barWidth;
+      // Draw a small amber circle as the marker.
+      canvas.drawCircle(Offset(x, centerY), 4.0, paint);
+      // Draw a thin vertical line through the marker for visibility.
+      final linePaint = Paint()
+        ..color = Colors.amber.withOpacity(0.6)
+        ..strokeWidth = 1.5;
+      canvas.drawLine(
+        Offset(x, centerY - 6),
+        Offset(x, centerY + 6),
+        linePaint,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(_MarkerPainter oldDelegate) {
+    return markers != oldDelegate.markers ||
+        totalDurationMs != oldDelegate.totalDurationMs ||
+        barWidth != oldDelegate.barWidth;
   }
 }
 
