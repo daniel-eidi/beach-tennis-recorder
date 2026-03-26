@@ -124,16 +124,15 @@ workflows:
         script: |
           cd ios && pod install
 
-      - name: Build iOS for device (unsigned)
+      - name: Build iOS for device (unsigned debug)
         script: |
-          # flutter build ios --no-codesign only works with --debug but
-          # debug crashes on sideload. Use xcodebuild directly for Release.
+          # Debug build works with Sideloadly (tested successfully before).
           flutter build ios --debug --no-codesign
-          # Now rebuild as Release with xcodebuild, signing fully disabled
+          # Rebuild with xcodebuild to get device binary (not simulator)
           xcodebuild \
             -workspace ios/Runner.xcworkspace \
             -scheme Runner \
-            -configuration Release \
+            -configuration Debug \
             -sdk iphoneos \
             -derivedDataPath build/ios/DerivedData \
             CODE_SIGNING_REQUIRED=NO \
@@ -150,8 +149,8 @@ workflows:
           find ~/Library/Developer/Xcode/DerivedData -name "Runner.app" -type d 2>/dev/null
           echo "=== End search ==="
 
-          # Find Release-iphoneos .app from our DerivedData
-          APP_PATH=$(find build/ios/DerivedData -name "Runner.app" -path "*Release-iphoneos*" -type d 2>/dev/null | head -1)
+          # Find Debug-iphoneos .app from our DerivedData
+          APP_PATH=$(find build/ios/DerivedData -name "Runner.app" -path "*Debug-iphoneos*" -type d 2>/dev/null | head -1)
 
           if [ -z "$APP_PATH" ]; then
             # Any iphoneos build
