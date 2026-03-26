@@ -335,7 +335,7 @@ class ClipService extends ChangeNotifier {
   Future<Clip?> saveFullRecording({
     required String sourceFilePath,
     required int matchId,
-    List<Duration> highlightMarkers = const [],
+    List<HighlightMarker> highlightMarkers = const [],
   }) async {
     if (_clipsDir == null) {
       await initialize();
