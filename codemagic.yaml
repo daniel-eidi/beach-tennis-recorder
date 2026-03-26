@@ -46,7 +46,7 @@ workflows:
             # Insert plugin registration before "return super.application".
             # This registers our MethodChannel so Flutter can call trimVideo.
             sed -i '' '/GeneratedPluginRegistrant.register/a\
-            \    VideoTrimPlugin.register(with: self.registrar(forPlugin: "VideoTrimPlugin")!)
+            \    if let reg = self.registrar(forPlugin: "VideoTrimPlugin") { VideoTrimPlugin.register(with: reg) }
             ' "$APPDELEGATE"
           fi
 
@@ -207,7 +207,7 @@ workflows:
           if [ -f "$APPDELEGATE" ]; then
             grep -q "import AVFoundation" "$APPDELEGATE" || sed -i '' '1s/^/import AVFoundation\n/' "$APPDELEGATE"
             sed -i '' '/GeneratedPluginRegistrant.register/a\
-            \    VideoTrimPlugin.register(with: self.registrar(forPlugin: "VideoTrimPlugin")!)
+            \    if let reg = self.registrar(forPlugin: "VideoTrimPlugin") { VideoTrimPlugin.register(with: reg) }
             ' "$APPDELEGATE"
           fi
 
