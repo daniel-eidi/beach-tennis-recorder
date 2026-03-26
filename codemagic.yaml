@@ -30,59 +30,8 @@ workflows:
             flutter create --org com.beachtennis --project-name beach_tennis_recorder .
           fi
 
-      - name: Inject native VideoTrimPlugin into iOS project
-        script: |
-          # Copy the Swift plugin file into the generated ios/Runner directory.
-          cp ios_native/VideoTrimPlugin.swift ios/Runner/VideoTrimPlugin.swift
-
-          # Register the plugin in AppDelegate.swift by adding the channel setup.
-          # The generated AppDelegate uses @objc class AppDelegate: FlutterAppDelegate.
-          # We inject the plugin registration into the application(_:didFinishLaunchingWithOptions:) method.
-          APPDELEGATE="ios/Runner/AppDelegate.swift"
-          if [ -f "$APPDELEGATE" ]; then
-            # Add AVFoundation import at the top if not present.
-            grep -q "import AVFoundation" "$APPDELEGATE" || sed -i '' '1s/^/import AVFoundation\n/' "$APPDELEGATE"
-
-            # Insert plugin registration before "return super.application".
-            # This registers our MethodChannel so Flutter can call trimVideo.
-            sed -i '' '/GeneratedPluginRegistrant.register/a\
-            \    if let reg = self.registrar(forPlugin: "VideoTrimPlugin") { VideoTrimPlugin.register(with: reg) }
-            ' "$APPDELEGATE"
-          fi
-
-          # Add VideoTrimPlugin.swift to the Xcode project build sources.
-          # Ruby script to modify project.pbxproj via xcodeproj gem.
-          gem install xcodeproj 2>/dev/null || true
-          ruby - <<'RUBY'
-          require 'xcodeproj'
-          project_path = 'ios/Runner.xcodeproj'
-          project = Xcodeproj::Project.open(project_path)
-
-          # Find the Runner target.
-          target = project.targets.find { |t| t.name == 'Runner' }
-          unless target
-            puts "WARNING: Runner target not found, skipping xcodeproj modification"
-            exit 0
-          end
-
-          # Find the Runner group.
-          runner_group = project.main_group.find_subpath('Runner', true)
-          unless runner_group
-            puts "WARNING: Runner group not found, skipping xcodeproj modification"
-            exit 0
-          end
-
-          # Check if already added.
-          existing = runner_group.files.find { |f| f.display_name == 'VideoTrimPlugin.swift' }
-          unless existing
-            file_ref = runner_group.new_file('VideoTrimPlugin.swift')
-            target.source_build_phase.add_file_reference(file_ref)
-            project.save
-            puts "Added VideoTrimPlugin.swift to Xcode project"
-          else
-            puts "VideoTrimPlugin.swift already in Xcode project"
-          end
-          RUBY
+      # VideoTrimPlugin injection disabled for now - was causing crash
+      # TODO: Re-enable when signing issue is resolved
 
       - name: Set iOS deployment target and permissions
         script: |
@@ -198,33 +147,6 @@ workflows:
             rm -rf ios android
             flutter create --org com.beachtennis --project-name beach_tennis_recorder .
           fi
-
-      - name: Inject native VideoTrimPlugin into iOS project
-        script: |
-          cp ios_native/VideoTrimPlugin.swift ios/Runner/VideoTrimPlugin.swift
-
-          APPDELEGATE="ios/Runner/AppDelegate.swift"
-          if [ -f "$APPDELEGATE" ]; then
-            grep -q "import AVFoundation" "$APPDELEGATE" || sed -i '' '1s/^/import AVFoundation\n/' "$APPDELEGATE"
-            sed -i '' '/GeneratedPluginRegistrant.register/a\
-            \    if let reg = self.registrar(forPlugin: "VideoTrimPlugin") { VideoTrimPlugin.register(with: reg) }
-            ' "$APPDELEGATE"
-          fi
-
-          gem install xcodeproj 2>/dev/null || true
-          ruby - <<'RUBY'
-          require 'xcodeproj'
-          project = Xcodeproj::Project.open('ios/Runner.xcodeproj')
-          target = project.targets.find { |t| t.name == 'Runner' }
-          exit 0 unless target
-          runner_group = project.main_group.find_subpath('Runner', true)
-          exit 0 unless runner_group
-          unless runner_group.files.find { |f| f.display_name == 'VideoTrimPlugin.swift' }
-            file_ref = runner_group.new_file('VideoTrimPlugin.swift')
-            target.source_build_phase.add_file_reference(file_ref)
-            project.save
-          end
-          RUBY
 
       - name: Get Flutter packages
         script: |

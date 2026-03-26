@@ -16,10 +16,9 @@ dependencies:
 
   # Video processing
   video_player: ^2.9.2
-  video_compress: ^3.1.3
 
-  # On-device ML
-  tflite_flutter: ^0.11.0
+  # On-device ML (disabled for MVP - causes CocoaPods issues)
+  # tflite_flutter: ^0.11.0
 
   # File system & paths
   path_provider: ^2.1.4
