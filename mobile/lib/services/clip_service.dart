@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:developer' as developer;
 
@@ -157,6 +158,7 @@ class ClipService extends ChangeNotifier {
       return null;
     } finally {
       _isProcessing = false;
+      await _saveClipsIndex();
       notifyListeners();
     }
   }
@@ -258,6 +260,7 @@ class ClipService extends ChangeNotifier {
       return null;
     } finally {
       _isProcessing = false;
+      await _saveClipsIndex();
       notifyListeners();
     }
   }
@@ -320,6 +323,7 @@ class ClipService extends ChangeNotifier {
       return null;
     } finally {
       _isProcessing = false;
+      await _saveClipsIndex();
       notifyListeners();
     }
   }
@@ -384,6 +388,7 @@ class ClipService extends ChangeNotifier {
       return null;
     } finally {
       _isProcessing = false;
+      await _saveClipsIndex();
       notifyListeners();
     }
   }
@@ -409,6 +414,7 @@ class ClipService extends ChangeNotifier {
       }
 
       _clips.removeAt(index);
+      await _saveClipsIndex();
       notifyListeners();
       _log('info', 'Deleted clip: ${clip.fileName}');
       return true;
@@ -477,40 +483,66 @@ class ClipService extends ChangeNotifier {
     return null;
   }
 
-  /// Scans the clips directory for existing clip files.
+  /// Loads clips from the JSON index file, falling back to directory scan.
   Future<void> _loadExistingClips() async {
     if (_clipsDir == null) return;
 
+    // Try loading from JSON index first (preserves all metadata).
+    final indexFile = File(p.join(_clipsDir!.path, 'clips_index.json'));
+    if (await indexFile.exists()) {
+      try {
+        final jsonStr = await indexFile.readAsString();
+        final jsonList = json.decode(jsonStr) as List<dynamic>;
+        for (final item in jsonList) {
+          final clip = Clip.fromJson(item as Map<String, dynamic>);
+          // Verify the video file still exists on disk.
+          if (await File(clip.filePath).exists()) {
+            _clips.add(clip);
+          }
+        }
+        _clips.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+        _log('info', 'Loaded ${_clips.length} clips from index');
+        return;
+      } catch (e) {
+        _log('warn', 'Failed to parse clips index, falling back to scan: $e');
+        _clips.clear();
+      }
+    }
+
+    // Fallback: scan directory for .mp4 files.
     try {
       final entities = await _clipsDir!.list().toList();
       for (final entity in entities) {
         if (entity is File && entity.path.endsWith('.mp4')) {
-          final fileName = p.basename(entity.path);
-          final parsed = _parseFileName(fileName);
-          if (parsed == null) continue;
-
           final fileSize = await entity.length();
-          final thumbnailPath = entity.path.replaceAll('.mp4', '_thumb.jpg');
-          final thumbExists = await File(thumbnailPath).exists();
-
           _clips.add(Clip(
             id: _uuid.v4(),
-            matchId: parsed['matchId'] as int,
-            rallyNumber: parsed['rallyNumber'] as int,
+            matchId: 0,
+            rallyNumber: 0,
             filePath: entity.path,
-            thumbnailPath: thumbExists ? thumbnailPath : null,
-            durationSeconds: 0, // Will be probed lazily if needed.
+            thumbnailPath: null,
+            durationSeconds: 0,
             fileSizeBytes: fileSize,
             createdAt: entity.statSync().modified,
-            clipType: parsed['clipType'] as ClipType? ?? ClipType.rally,
           ));
         }
       }
-
-      // Sort newest first.
       _clips.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     } catch (e) {
-      _log('warn', 'Failed to load existing clips: $e');
+      _log('warn', 'Failed to scan clips directory: $e');
+    }
+  }
+
+  /// Persists the clips list to a JSON index file.
+  Future<void> _saveClipsIndex() async {
+    if (_clipsDir == null) return;
+    try {
+      final indexFile = File(p.join(_clipsDir!.path, 'clips_index.json'));
+      final jsonList = _clips.map((c) => c.toJson()).toList();
+      await indexFile.writeAsString(json.encode(jsonList));
+      _log('info', 'Clips index saved (${_clips.length} clips)');
+    } catch (e) {
+      _log('warn', 'Failed to save clips index: $e');
     }
   }
 
