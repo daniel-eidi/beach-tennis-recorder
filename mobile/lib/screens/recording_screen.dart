@@ -42,30 +42,37 @@ class _RecordingScreenState extends State<RecordingScreen>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _initializeCamera();
-    _listenForGestureEvents();
+    // Delay gesture listener to after first frame to avoid context issues
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _listenForGestureEvents();
+    });
   }
 
   void _listenForGestureEvents() {
-    final pipeline = context.read<PipelineController>();
-    _gestureEventSubscription =
-        pipeline.gestureDetectorService.gestureEvents.listen((_) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: const Row(
-              children: [
-                Icon(Icons.star, color: Colors.yellow),
-                SizedBox(width: 8),
-                Text('HIGHLIGHT SAVED!'),
-              ],
+    try {
+      final pipeline = context.read<PipelineController>();
+      _gestureEventSubscription =
+          pipeline.gestureDetectorService.gestureEvents.listen((_) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: const Row(
+                children: [
+                  Icon(Icons.star, color: Colors.yellow),
+                  SizedBox(width: 8),
+                  Text('HIGHLIGHT SAVED!'),
+                ],
+              ),
+              backgroundColor: Colors.green.shade700,
+              duration: const Duration(seconds: 2),
+              behavior: SnackBarBehavior.floating,
             ),
-            backgroundColor: Colors.green.shade700,
-            duration: const Duration(seconds: 2),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    } catch (e) {
+      // Gesture detection not available, ignore
+    }
   }
 
   Future<void> _initializeCamera() async {

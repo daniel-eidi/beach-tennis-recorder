@@ -124,11 +124,9 @@ workflows:
         script: |
           cd ios && pod install
 
-      - name: Build iOS for device (unsigned debug)
+      - name: Build iOS for device (debug)
         script: |
-          # Debug build works with Sideloadly (tested successfully before).
           flutter build ios --debug --no-codesign
-          # Rebuild with xcodebuild to get device binary (not simulator)
           xcodebuild \
             -workspace ios/Runner.xcworkspace \
             -scheme Runner \
@@ -142,39 +140,20 @@ workflows:
             PROVISIONING_PROFILE="" \
             DEVELOPMENT_TEAM=""
 
-      - name: Package unsigned IPA
+      - name: Package IPA
         script: |
-          echo "=== Searching for all .app bundles ==="
-          find . -name "Runner.app" -type d 2>/dev/null
-          find ~/Library/Developer/Xcode/DerivedData -name "Runner.app" -type d 2>/dev/null
-          echo "=== End search ==="
-
-          # Find Debug-iphoneos .app from our DerivedData
           APP_PATH=$(find build/ios/DerivedData -name "Runner.app" -path "*Debug-iphoneos*" -type d 2>/dev/null | head -1)
-
           if [ -z "$APP_PATH" ]; then
-            # Any iphoneos build
-            APP_PATH=$(find build/ios/DerivedData -name "Runner.app" -path "*iphoneos*" -type d 2>/dev/null | head -1)
-          fi
-
-          if [ -z "$APP_PATH" ]; then
-            # Search broader
             APP_PATH=$(find build -name "Runner.app" -type d 2>/dev/null | grep -v Simulator | head -1)
           fi
-
           echo "Using .app at: $APP_PATH"
-          echo "App contents:"
-          ls -la "$APP_PATH/" 2>/dev/null || echo "PATH NOT FOUND"
-          echo "App size: $(du -sh "$APP_PATH" 2>/dev/null | cut -f1)"
-
           if [ -d "$APP_PATH" ]; then
             mkdir -p Payload
             cp -r "$APP_PATH" Payload/Runner.app
             zip -r beach_tennis_recorder.ipa Payload/
-            ls -la beach_tennis_recorder.ipa
             echo "IPA size: $(du -sh beach_tennis_recorder.ipa | cut -f1)"
           else
-            echo "ERROR: No .app found anywhere"
+            echo "No device .app found"
             exit 1
           fi
 

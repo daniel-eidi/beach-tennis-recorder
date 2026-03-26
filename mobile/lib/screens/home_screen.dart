@@ -33,15 +33,19 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _initializeServices() async {
-    final matchService = context.read<MatchService>();
-    final clipService = context.read<ClipService>();
-    final calibrationService = context.read<CalibrationService>();
+    try {
+      final matchService = context.read<MatchService>();
+      final clipService = context.read<ClipService>();
+      final calibrationService = context.read<CalibrationService>();
 
-    await Future.wait([
-      matchService.initialize(),
-      clipService.initialize(),
-      calibrationService.initialize(),
-    ]);
+      await Future.wait([
+        matchService.initialize(),
+        clipService.initialize(),
+        calibrationService.initialize(),
+      ]);
+    } catch (e) {
+      debugPrint('Service initialization error: $e');
+    }
   }
 
   @override
