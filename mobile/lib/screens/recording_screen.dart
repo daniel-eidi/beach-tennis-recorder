@@ -115,7 +115,8 @@ class _RecordingScreenState extends State<RecordingScreen>
   void _saveHighlight(PipelineController pipeline) {
     // Just add a bookmark marker — recording continues uninterrupted.
     // The full video + markers are saved when the session stops.
-    pipeline.addHighlightMarker();
+    final settings = context.read<SettingsService>();
+    pipeline.addHighlightMarker(settings);
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(

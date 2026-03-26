@@ -1,3 +1,63 @@
+/// A highlight bookmark with position and trim window.
+///
+/// The trim window ([clipStartOffset] to [clipEndOffset]) defines how much
+/// video to extract around the marker position, based on user settings
+/// at the time the marker was created.
+class HighlightMarker {
+  /// Position in the recording where the marker was placed.
+  final Duration position;
+
+  /// How many seconds before the marker to include in the clip.
+  final int secondsBefore;
+
+  /// How many seconds after the marker to include in the clip.
+  final int secondsAfter;
+
+  const HighlightMarker({
+    required this.position,
+    this.secondsBefore = 15,
+    this.secondsAfter = 15,
+  });
+
+  /// The start of the clip to extract (clamped to 0).
+  Duration get clipStart {
+    final ms = position.inMilliseconds - (secondsBefore * 1000);
+    return Duration(milliseconds: ms < 0 ? 0 : ms);
+  }
+
+  /// The end of the clip to extract.
+  Duration get clipEnd =>
+      Duration(milliseconds: position.inMilliseconds + (secondsAfter * 1000));
+
+  /// Total duration of the highlight clip.
+  int get clipDurationSeconds => secondsBefore + secondsAfter;
+
+  /// Formatted position string (e.g. "02:34").
+  String get positionFormatted {
+    final totalSeconds = position.inSeconds;
+    final m = totalSeconds ~/ 60;
+    final s = totalSeconds % 60;
+    return '${m.toString().padLeft(2, '0')}:${s.toString().padLeft(2, '0')}';
+  }
+
+  Map<String, dynamic> toJson() => {
+        'positionMs': position.inMilliseconds,
+        'secondsBefore': secondsBefore,
+        'secondsAfter': secondsAfter,
+      };
+
+  factory HighlightMarker.fromJson(Map<String, dynamic> json) =>
+      HighlightMarker(
+        position: Duration(milliseconds: json['positionMs'] as int),
+        secondsBefore: json['secondsBefore'] as int? ?? 15,
+        secondsAfter: json['secondsAfter'] as int? ?? 15,
+      );
+
+  @override
+  String toString() =>
+      'Highlight(${positionFormatted}, -${secondsBefore}s/+${secondsAfter}s)';
+}
+
 /// The type of a saved clip.
 enum ClipType {
   /// Clip automatically generated when a rally completes.
@@ -46,9 +106,9 @@ class Clip {
   /// Remote URL if the clip has been uploaded. Null otherwise.
   final String? remoteUrl;
 
-  /// Highlight bookmark markers (timestamps from start of recording).
-  /// Used in the player to jump to marked moments.
-  final List<Duration> highlightMarkers;
+  /// Highlight bookmark markers with trim windows.
+  /// Used in the player to jump to marked moments and extract clips.
+  final List<HighlightMarker> highlightMarkers;
 
   const Clip({
     required this.id,
@@ -62,7 +122,7 @@ class Clip {
     this.clipType = ClipType.rally,
     this.isUploaded = false,
     this.remoteUrl,
-    this.highlightMarkers = const [],
+    this.highlightMarkers = const <HighlightMarker>[],
   });
 
   /// Human-readable duration string (e.g. "0:12").
@@ -91,12 +151,12 @@ class Clip {
   bool get hasHighlights => highlightMarkers.isNotEmpty;
 
   /// Returns the nearest highlight marker to [position], or null if none exist.
-  Duration? nearestHighlight(Duration position) {
+  HighlightMarker? nearestHighlight(Duration position) {
     if (highlightMarkers.isEmpty) return null;
-    Duration? nearest;
+    HighlightMarker? nearest;
     int minDiff = 0x7FFFFFFFFFFFFFFF;
     for (final marker in highlightMarkers) {
-      final diff = (marker.inMilliseconds - position.inMilliseconds).abs();
+      final diff = (marker.position.inMilliseconds - position.inMilliseconds).abs();
       if (diff < minDiff) {
         minDiff = diff;
         nearest = marker;
@@ -106,21 +166,21 @@ class Clip {
   }
 
   /// Returns the next highlight marker after [position], or null if none.
-  Duration? nextHighlight(Duration position) {
-    final sorted = List<Duration>.from(highlightMarkers)
-      ..sort((a, b) => a.compareTo(b));
+  HighlightMarker? nextHighlight(Duration position) {
+    final sorted = List<HighlightMarker>.from(highlightMarkers)
+      ..sort((a, b) => a.position.compareTo(b.position));
     for (final marker in sorted) {
-      if (marker > position) return marker;
+      if (marker.position > position) return marker;
     }
     return null;
   }
 
   /// Returns the previous highlight marker before [position], or null if none.
-  Duration? previousHighlight(Duration position) {
-    final sorted = List<Duration>.from(highlightMarkers)
-      ..sort((a, b) => b.compareTo(a));
+  HighlightMarker? previousHighlight(Duration position) {
+    final sorted = List<HighlightMarker>.from(highlightMarkers)
+      ..sort((a, b) => b.position.compareTo(a.position));
     for (final marker in sorted) {
-      if (marker < position) return marker;
+      if (marker.position < position) return marker;
     }
     return null;
   }
@@ -137,7 +197,7 @@ class Clip {
     ClipType? clipType,
     bool? isUploaded,
     String? remoteUrl,
-    List<Duration>? highlightMarkers,
+    List<HighlightMarker>? highlightMarkers,
   }) {
     return Clip(
       id: id ?? this.id,
@@ -167,7 +227,7 @@ class Clip {
         'clipType': clipType.name,
         'isUploaded': isUploaded,
         'remoteUrl': remoteUrl,
-        'highlightMarkers': highlightMarkers.map((d) => d.inMilliseconds).toList(),
+        'highlightMarkers': highlightMarkers.map((m) => m.toJson()).toList(),
       };
 
   factory Clip.fromJson(Map<String, dynamic> json) => Clip(
@@ -185,9 +245,17 @@ class Clip {
         isUploaded: json['isUploaded'] as bool? ?? false,
         remoteUrl: json['remoteUrl'] as String?,
         highlightMarkers: (json['highlightMarkers'] as List<dynamic>?)
-                ?.map((ms) => Duration(milliseconds: ms as int))
+                ?.map((item) {
+                  if (item is Map<String, dynamic>) {
+                    return HighlightMarker.fromJson(item);
+                  }
+                  // Backwards compat: old format was just milliseconds
+                  return HighlightMarker(
+                    position: Duration(milliseconds: item as int),
+                  );
+                })
                 .toList() ??
-            const [],
+            const <HighlightMarker>[],
       );
 
   @override

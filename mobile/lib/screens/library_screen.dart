@@ -352,13 +352,13 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
   static const _speedOptions = [0.5, 1.0, 1.5, 2.0];
 
   /// Sorted list of highlight markers for navigation.
-  late final List<Duration> _sortedMarkers;
+  late final List<HighlightMarker> _sortedMarkers;
 
   @override
   void initState() {
     super.initState();
-    _sortedMarkers = List<Duration>.from(widget.clip.highlightMarkers)
-      ..sort((a, b) => a.compareTo(b));
+    _sortedMarkers = List<HighlightMarker>.from(widget.clip.highlightMarkers)
+      ..sort((a, b) => a.position.compareTo(b.position));
     _videoController = VideoPlayerController.file(File(widget.clip.filePath))
       ..initialize().then((_) {
         if (mounted) {
@@ -412,7 +412,7 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
     final current = _videoController.value.position;
     final next = widget.clip.nextHighlight(current);
     if (next != null) {
-      _videoController.seekTo(next);
+      _videoController.seekTo(next.position);
     }
   }
 
@@ -421,7 +421,7 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
     final current = _videoController.value.position;
     final prev = widget.clip.previousHighlight(current);
     if (prev != null) {
-      _videoController.seekTo(prev);
+      _videoController.seekTo(prev.position);
     }
   }
 
@@ -430,16 +430,44 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
     _videoController.seekTo(marker);
   }
 
-  void _shareHighlight(Duration marker, int index) {
+  bool _isTrimming = false;
+
+  Future<void> _shareHighlight(HighlightMarker marker, int index) async {
     final message = VideoTrimService.buildShareMessage(
       rallyNumber: widget.clip.rallyNumber,
-      markerPosition: marker,
+      markerPosition: marker.position,
       highlightIndex: index + 1,
     );
-    Share.shareXFiles(
-      [XFile(widget.clip.filePath)],
-      text: message,
-    );
+
+    setState(() => _isTrimming = true);
+
+    try {
+      // Use the marker's trim window (configured by user settings)
+      final trimmedPath = await VideoTrimService.trimHighlight(
+        videoPath: widget.clip.filePath,
+        marker: marker,
+      );
+
+      if (!mounted) return;
+
+      if (trimmedPath != null) {
+        // Share the trimmed highlight clip.
+        Share.shareXFiles(
+          [XFile(trimmedPath)],
+          text: message,
+        );
+      } else {
+        // Fallback: share full video with timestamp message.
+        Share.shareXFiles(
+          [XFile(widget.clip.filePath)],
+          text: message,
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isTrimming = false);
+      }
+    }
   }
 
   @override
@@ -525,6 +553,29 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
                         children: [
                           VideoPlayer(_videoController),
                           _buildControls(),
+                          // Trimming progress overlay.
+                          if (_isTrimming)
+                            Container(
+                              color: Colors.black54,
+                              child: const Center(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    CircularProgressIndicator(
+                                      color: Colors.amber,
+                                    ),
+                                    SizedBox(height: 12),
+                                    Text(
+                                      'Trimming highlight...',
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                         ],
                       ),
                     )
@@ -730,7 +781,7 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
                     // Consider a marker "active" if the playhead is within
                     // 2 seconds of it.
                     final isActive =
-                        (currentPos.inMilliseconds - marker.inMilliseconds)
+                        (currentPos.inMilliseconds - marker.position.inMilliseconds)
                                 .abs() <
                             2000;
 
@@ -738,7 +789,7 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
                       index: index,
                       marker: marker,
                       isActive: isActive,
-                      onTap: () => _seekToMarker(marker),
+                      onTap: () => _seekToMarker(marker.position),
                       onShare: () => _shareHighlight(marker, index),
                     );
                   },
@@ -762,7 +813,7 @@ class _ClipPlayerScreenState extends State<_ClipPlayerScreen> {
 /// A single item in the highlight list below the player.
 class _HighlightListItem extends StatelessWidget {
   final int index;
-  final Duration marker;
+  final HighlightMarker marker;
   final bool isActive;
   final VoidCallback onTap;
   final VoidCallback onShare;
@@ -777,8 +828,8 @@ class _HighlightListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final minutes = marker.inMinutes.remainder(60);
-    final seconds = marker.inSeconds.remainder(60);
+    final minutes = marker.position.inMinutes.remainder(60);
+    final seconds = marker.position.inSeconds.remainder(60);
     final timestamp = '${minutes.toString().padLeft(2, '0')}:'
         '${seconds.toString().padLeft(2, '0')}';
 
@@ -797,13 +848,25 @@ class _HighlightListItem extends StatelessWidget {
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: Text(
-                  'Highlight ${index + 1}',
-                  style: TextStyle(
-                    color: isActive ? Colors.amber : Colors.white70,
-                    fontSize: 14,
-                    fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Highlight ${index + 1}',
+                      style: TextStyle(
+                        color: isActive ? Colors.amber : Colors.white70,
+                        fontSize: 14,
+                        fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
+                      ),
+                    ),
+                    Text(
+                      '${marker.secondsBefore}s before / ${marker.secondsAfter}s after',
+                      style: TextStyle(
+                        color: isActive ? Colors.amber.withOpacity(0.6) : Colors.white30,
+                        fontSize: 11,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Text(
@@ -839,7 +902,7 @@ class _HighlightListItem extends StatelessWidget {
 /// Wraps the standard [VideoProgressIndicator] and paints markers on top.
 class _HighlightProgressBar extends StatelessWidget {
   final VideoPlayerController controller;
-  final List<Duration> markers;
+  final List<HighlightMarker> markers;
 
   const _HighlightProgressBar({
     required this.controller,
@@ -890,7 +953,7 @@ class _HighlightProgressBar extends StatelessWidget {
 
 /// Custom painter that draws amber dots at marker positions on the progress bar.
 class _MarkerPainter extends CustomPainter {
-  final List<Duration> markers;
+  final List<HighlightMarker> markers;
   final double totalDurationMs;
   final double barWidth;
 
@@ -911,7 +974,7 @@ class _MarkerPainter extends CustomPainter {
     final centerY = size.height / 2;
 
     for (final marker in markers) {
-      final fraction = marker.inMilliseconds / totalDurationMs;
+      final fraction = marker.position.inMilliseconds / totalDurationMs;
       if (fraction < 0 || fraction > 1) continue;
 
       final x = fraction * barWidth;

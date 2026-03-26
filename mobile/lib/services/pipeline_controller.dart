@@ -4,9 +4,11 @@ import 'dart:developer' as developer;
 import 'package:camera/camera.dart';
 import 'package:flutter/foundation.dart';
 
+import '../models/clip.dart';
 import '../models/gesture.dart';
 import '../models/match.dart';
 import '../models/rally.dart';
+import 'settings_service.dart';
 import 'buffer_service.dart';
 import 'camera_service.dart';
 import 'clip_service.dart';
@@ -48,7 +50,7 @@ class PipelineController extends ChangeNotifier {
   DateTime? _recordingStartTime;
 
   // Highlight bookmarks (timestamps relative to recording start)
-  final List<Duration> _highlightMarkers = [];
+  final List<HighlightMarker> _highlightMarkers = [];
 
   // --- Performance stats ---
   int _framesProcessed = 0;
@@ -125,20 +127,32 @@ class PipelineController extends ChangeNotifier {
   /// The clip service (for accessing saved clips).
   ClipService get clipService => _clipService;
 
-  /// Highlight bookmark markers (timestamps from recording start).
-  List<Duration> get highlightMarkers => List.unmodifiable(_highlightMarkers);
+  /// Highlight bookmark markers with trim windows.
+  List<HighlightMarker> get highlightMarkers => List.unmodifiable(_highlightMarkers);
 
   /// Number of highlight markers in current session.
   int get highlightCount => _highlightMarkers.length;
 
   /// Adds a highlight marker at the current recording position.
+  /// Uses [settings] to determine the trim window (seconds before/after).
   /// Does NOT stop the recording — just saves the timestamp.
-  void addHighlightMarker() {
+  void addHighlightMarker(SettingsService settings) {
     if (!_isRecording || _recordingStartTime == null) return;
-    final marker = DateTime.now().difference(_recordingStartTime!);
+    final position = DateTime.now().difference(_recordingStartTime!);
+    final duration = settings.gestureHighlightDuration;
+    // Split the duration: more time before the marker than after
+    // (the interesting action usually happened before the tap)
+    final secondsBefore = (duration * 0.7).round();
+    final secondsAfter = duration - secondsBefore;
+
+    final marker = HighlightMarker(
+      position: position,
+      secondsBefore: secondsBefore,
+      secondsAfter: secondsAfter,
+    );
     _highlightMarkers.add(marker);
-    _log('info', 'Highlight marker added at ${marker.inSeconds}s '
-        '(total: ${_highlightMarkers.length})');
+    _log('info', 'Highlight marker added at ${position.inSeconds}s '
+        '(-${secondsBefore}s/+${secondsAfter}s, total: ${_highlightMarkers.length})');
     notifyListeners();
   }
 
