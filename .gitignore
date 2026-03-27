@@ -69,3 +69,5 @@ vision/dataset/labels/
 !vision/dataset/data.yaml
 !vision/dataset/images/.gitkeep
 !vision/dataset/labels/.gitkeep
+Runner.app*
+*.ipa
