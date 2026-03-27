@@ -30,9 +30,6 @@ workflows:
             flutter create --org com.beachtennis --project-name beach_tennis_recorder .
           fi
 
-      # VideoTrimPlugin injection disabled for now - was causing crash
-      # TODO: Re-enable when signing issue is resolved
-
       - name: Set iOS deployment target and permissions
         script: |
           /usr/libexec/PlistBuddy -c "Set :NSCameraUsageDescription 'BT Recorder precisa da camera para gravar partidas de beach tennis.'" ios/Runner/Info.plist || true
@@ -43,9 +40,8 @@ workflows:
           /usr/libexec/PlistBuddy -c "Add :NSPhotoLibraryUsageDescription string 'BT Recorder precisa acessar fotos para salvar clipes.'" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Delete :UISupportedInterfaceOrientations" ios/Runner/Info.plist || true
           /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations array" ios/Runner/Info.plist
-          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:0 string UIInterfaceOrientationPortrait" ios/Runner/Info.plist
-          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:1 string UIInterfaceOrientationLandscapeLeft" ios/Runner/Info.plist
-          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:2 string UIInterfaceOrientationLandscapeRight" ios/Runner/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:0 string UIInterfaceOrientationLandscapeLeft" ios/Runner/Info.plist
+          /usr/libexec/PlistBuddy -c "Add :UISupportedInterfaceOrientations:1 string UIInterfaceOrientationLandscapeRight" ios/Runner/Info.plist
           sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9.]*/IPHONEOS_DEPLOYMENT_TARGET = 14.0/g' ios/Runner.xcodeproj/project.pbxproj
 
       - name: Get Flutter packages
@@ -73,42 +69,15 @@ workflows:
         script: |
           cd ios && pod install
 
-      - name: Build iOS for device (debug)
+      - name: Build iOS (no codesign)
         script: |
-          flutter build ios --debug --no-codesign
-          xcodebuild \
-            -workspace ios/Runner.xcworkspace \
-            -scheme Runner \
-            -configuration Debug \
-            -sdk iphoneos \
-            -derivedDataPath build/ios/DerivedData \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGN_ENTITLEMENTS="" \
-            PROVISIONING_PROFILE="" \
-            DEVELOPMENT_TEAM=""
-
-      - name: Package IPA
-        script: |
-          APP_PATH=$(find build/ios/DerivedData -name "Runner.app" -path "*Debug-iphoneos*" -type d 2>/dev/null | head -1)
-          if [ -z "$APP_PATH" ]; then
-            APP_PATH=$(find build -name "Runner.app" -type d 2>/dev/null | grep -v Simulator | head -1)
-          fi
-          echo "Using .app at: $APP_PATH"
-          if [ -d "$APP_PATH" ]; then
-            mkdir -p Payload
-            cp -r "$APP_PATH" Payload/Runner.app
-            zip -r beach_tennis_recorder.ipa Payload/
-            echo "IPA size: $(du -sh beach_tennis_recorder.ipa | cut -f1)"
-          else
-            echo "No device .app found"
-            exit 1
-          fi
+          flutter build ios --debug --no-codesign --simulator
 
     artifacts:
-      - "**/*.ipa"
-      - "**/*.app"
+      - mobile/build/ios/**/*.app
+      - mobile/build/ios/ipa/*.ipa
+      - mobile/build/**/outputs/**/*.apk
+      - /tmp/xcodebuild_logs/*.log
 
     publishing:
       email:
