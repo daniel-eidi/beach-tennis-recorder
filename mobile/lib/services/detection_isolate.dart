@@ -7,8 +7,13 @@ import '../models/detection.dart';
 class DetectionResult {
   final List<Detection> detections;
   final int inferenceTimeMs;
+  final DateTime frameTimestamp;
 
-  DetectionResult({required this.detections, required this.inferenceTimeMs});
+  DetectionResult({
+    required this.detections,
+    required this.inferenceTimeMs,
+    DateTime? frameTimestamp,
+  }) : frameTimestamp = frameTimestamp ?? DateTime.now();
 }
 
 /// Detection service stub — TFLite disabled for MVP.
